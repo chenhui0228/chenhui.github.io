@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="这篇文档主要介绍ceph的搭建过程。 服务器规划及配置，如下：    hostname public ip cluster ip 节点说明 配置     ch-osd-1 172.16.30.73 172.16.31.73 osd节点 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz  48; 1.2T SAS  12; 480G SSD * 2   ch-osd">
+<meta name="description" content="这篇文档主要介绍ceph的搭建过程。 ###集群规划 服务器规划及配置，如下：    hostname public ip cluster ip 节点说明 配置     ch-osd-1 172.16.30.73 172.16.31.73 osd节点 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz  48; 1.2T SAS  3; 480G SSD * 2">
 <meta name="keywords" content="ceph,分布式存储">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CEPH 运维">
+<meta property="og:title" content="CEPH 运维之安装部署">
 <meta property="og:url" content="http://202.104.112.179:8085/2017/08/01/ceph-ops/index.html">
 <meta property="og:site_name" content="陈辉的博客">
-<meta property="og:description" content="这篇文档主要介绍ceph的搭建过程。 服务器规划及配置，如下：    hostname public ip cluster ip 节点说明 配置     ch-osd-1 172.16.30.73 172.16.31.73 osd节点 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz  48; 1.2T SAS  12; 480G SSD * 2   ch-osd">
+<meta property="og:description" content="这篇文档主要介绍ceph的搭建过程。 ###集群规划 服务器规划及配置，如下：    hostname public ip cluster ip 节点说明 配置     ch-osd-1 172.16.30.73 172.16.31.73 osd节点 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz  48; 1.2T SAS  3; 480G SSD * 2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-01T08:32:16.105Z">
+<meta property="og:updated_time" content="2017-08-01T11:19:39.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CEPH 运维">
-<meta name="twitter:description" content="这篇文档主要介绍ceph的搭建过程。 服务器规划及配置，如下：    hostname public ip cluster ip 节点说明 配置     ch-osd-1 172.16.30.73 172.16.31.73 osd节点 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz  48; 1.2T SAS  12; 480G SSD * 2   ch-osd">
+<meta name="twitter:title" content="CEPH 运维之安装部署">
+<meta name="twitter:description" content="这篇文档主要介绍ceph的搭建过程。 ###集群规划 服务器规划及配置，如下：    hostname public ip cluster ip 节点说明 配置     ch-osd-1 172.16.30.73 172.16.31.73 osd节点 Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz  48; 1.2T SAS  3; 480G SSD * 2">
 
 
 
@@ -144,7 +144,7 @@
 
 
 
-  <title> CEPH 运维 | 陈辉的博客 </title>
+  <title> CEPH 运维之安装部署 | 陈辉的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -314,7 +314,7 @@
             
             
               
-                CEPH 运维
+                CEPH 运维之安装部署
               
             
           </h1>
@@ -414,6 +414,7 @@
 
       
         <p>这篇文档主要介绍ceph的搭建过程。</p>
+<p>###集群规划</p>
 <p>服务器规划及配置，如下：</p>
 <table>
 <thead>
@@ -431,34 +432,34 @@
 <td style="text-align:left">172.16.30.73</td>
 <td style="text-align:left">172.16.31.73</td>
 <td style="text-align:left">osd节点</td>
-<td style="text-align:left">Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz <em> 48; 1.2T SAS </em> 12; 480G SSD * 2</td>
+<td style="text-align:left">Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz <em> 48; 1.2T SAS </em> 3; 480G SSD * 2</td>
 </tr>
 <tr>
 <td style="text-align:left">ch-osd-2</td>
 <td style="text-align:left">172.16.30.74</td>
 <td style="text-align:left">172.16.31.74</td>
 <td style="text-align:left">osd节点</td>
-<td style="text-align:left">Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz <em> 48; 1.2T SAS </em> 12; 480G SSD * 2</td>
+<td style="text-align:left">Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz <em> 48; 1.2T SAS </em> 3; 480G SSD * 2</td>
 </tr>
 <tr>
 <td style="text-align:left">ch-osd-3</td>
 <td style="text-align:left">172.16.30.75</td>
 <td style="text-align:left">172.16.31.75</td>
 <td style="text-align:left">osd节点</td>
-<td style="text-align:left">Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz <em> 48; 1.2T SAS </em> 12; 480G SSD * 2</td>
+<td style="text-align:left">Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz <em> 48; 1.2T SAS </em> 3; 480G SSD * 2</td>
 </tr>
 <tr>
 <td style="text-align:left">ch-osd-4</td>
 <td style="text-align:left">172.16.30.77</td>
 <td style="text-align:left">172.16.31.77</td>
 <td style="text-align:left">osd节点</td>
-<td style="text-align:left">Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz <em> 48; 1.2T SAS </em> 12; 480G SSD * 2</td>
+<td style="text-align:left">Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz <em> 48; 1.2T SAS </em> 3; 480G SSD * 2</td>
 </tr>
 <tr>
 <td style="text-align:left">ch-mon-1</td>
 <td style="text-align:left">172.16.30.78</td>
 <td style="text-align:left">172.16.31.78</td>
-<td style="text-align:left">mon+rgw节点</td>
+<td style="text-align:left">mon+rgw+manger节点</td>
 <td style="text-align:left">Intel(R) Xeon(R) CPU E5-2650 0 @ 2.00GHz <em> 32; 600G SAS </em> 2</td>
 </tr>
 <tr>
@@ -477,8 +478,54 @@
 </tr>
 </tbody>
 </table>
-<p>dd</p>
+<ul>
+<li>操作系统：centos release 7.2</li>
+<li>内存大小：OSD 为256GB； MON为64GB</li>
+<li>网络配置：public 网络和 cluster 均为万兆光纤</li>
+<li>每台服务器第1，2块磁盘做RAID1；其余磁盘做RAID0</li>
+<li>ch-mon-1节点作为管理节点，部署ceph-deploy</li>
+</ul>
+<p>###环境准备</p>
+<p>####基础环境检查</p>
+<ol>
+<li>网络连接正常（方法略）</li>
+<li>ntp服务正常（方法略）</li>
+<li>集群服务器时间，时区一致（方法略）</li>
+<li>磁盘阵列检查</li>
+</ol>
+<p>首先需要在存储节点安装Megacli，下载RPM包，如MegaCli-8.07.14-1.noarch.rpm，安装命令如下：</p>
+<pre><code>rpm -ivh MegaCli-8.07.14-1.noarch.rpm
+</code></pre><p>使用磁盘阵列检查工具Megacli进行相关检查，查看是否满足需要的配置策略。</p>
+<pre><code>/opt/MegaRAID/MegaCli64 -LDGetProp -Cache -LALL -aALL
+</code></pre><p>一般情况可在安装操作系统前对各硬盘做好磁盘阵列，不同厂商的设备磁盘阵列配置略有不同，这里不做详述。如果没做磁盘阵列，这里需要做磁盘阵列，使用MegaCli来对磁盘做日常管理。</p>
+<p>OSD数据盘做RAID0 ，并分别设置读、写、缓存策略，其中读策略为Read-Ahead；写策略为WriteBack，写入缓存直接返回；磁盘缓存Disk cache设置为disable；I/O策略为Direct请求不被系统Cache缓存。如磁盘编号为10 的物理磁盘组成一个RAID0</p>
+<pre><code>/opt/MegaRAID/MegaCli64 -cfgldadd -r0 [32:10] WB RA RA -a0
+</code></pre><p>或者</p>
+<pre><code>/opt/MegaRAID/MegaCli64 -LDSetProp 10 WB -a0
+/opt/MegaRAID/MegaCli64 -LDSetProp 10 RA -a0
+/opt/MegaRAID/MegaCli64 -LDSetProp 10 RA -a0
+</code></pre><p>SSD做日志盘做RAID0，读策略为Normal，不适用预读，写策略为Write Through直接写入磁盘；如果SSD有掉电保护，磁盘缓存Disk cache设置为Enable；I/O策略为Direct请求不被Cache缓存。</p>
+<pre><code>/opt/MegaRAID/MegaCli64 -cfgldadd -r0 [32:13] WT NORA Direct -a0
+</code></pre><p>Megacli更详细的使用，可以参考其他资料，如<a href="https://supportforums.cisco.com/document/62901/megacli-common-commands-and-procedures" target="_blank" rel="external">参考文档1</a>等</p>
+<p>####基础环境配置</p>
+<p>配置CEPH可用的YUM源，包括CEPH本身和EPEL源，如下：</p>
+<pre><code>[root@node-5 env-check-init]# cat /etc/yum.repos.d/CentOS.repo` 
+...
 
+[CENTOS7-epel]
+name=CENTOS7 epel resource
+baseurl=http://yum17.int.sfdc.com.cn/epel7Server/$basearch
+enabled=1
+gpgcheck=0
+gpgkey=http://yum17.int.sfdc.com.cn/epel7/$basearch/RPM-GPG-KEY-EPEL-7
+
+[CENTOS7-ceph]
+name=CENTOS7 ceph resource
+baseurl=http://yum17.int.sfdc.com.cn/ceph/el7/$basearch
+enabled=1
+gpgcheck=0
+gpgkey=http://yum17.int.sfdc.com.cn/ceph/el7/$basearch/RPM-GPG-KEY-EPEL-7
+</code></pre>
       
     </div>
 
@@ -587,7 +634,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/08/01/ceph-ops/"
-           data-title="CEPH 运维" data-url="http://202.104.112.179:8085/2017/08/01/ceph-ops/">
+           data-title="CEPH 运维之安装部署" data-url="http://202.104.112.179:8085/2017/08/01/ceph-ops/">
       </div>
     
   </div>
