@@ -541,8 +541,7 @@
         
           
             <p>这篇文档主要介绍ceph的搭建过程。</p>
-<p>###集群规划</p>
-<p>服务器规划及配置，如下：</p>
+<h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><p>服务器规划及配置，如下：</p>
 <table>
 <thead>
 <tr>
@@ -612,9 +611,7 @@
 <li>每台服务器第1，2块磁盘做RAID1；其余磁盘做RAID0</li>
 <li>ch-mon-1节点作为管理节点，部署ceph-deploy</li>
 </ul>
-<p>###环境准备</p>
-<p>####基础环境检查</p>
-<ol>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="基础环境检查"><a href="#基础环境检查" class="headerlink" title="基础环境检查"></a>基础环境检查</h4><ol>
 <li>网络连接正常（方法略）</li>
 <li>ntp服务正常（方法略）</li>
 <li>集群服务器时间，时区一致（方法略）</li>
@@ -634,11 +631,9 @@
 </code></pre><p>SSD做日志盘做RAID0，读策略为Normal，不适用预读，写策略为Write Through直接写入磁盘；如果SSD有掉电保护，磁盘缓存Disk cache设置为Enable；I/O策略为Direct请求不被Cache缓存。</p>
 <pre><code>/opt/MegaRAID/MegaCli64 -cfgldadd -r0 [32:13] WT NORA Direct -a0
 </code></pre><p>Megacli更详细的使用，可以参考其他资料，如<a href="https://supportforums.cisco.com/document/62901/megacli-common-commands-and-procedures" target="_blank" rel="external">参考文档1</a>等</p>
-<p>####基础环境配置</p>
-<p>配置CEPH可用的YUM源，包括CEPH本身和EPEL源，如下：</p>
-<pre><code>[root@node-5 env-check-init]# cat /etc/yum.repos.d/CentOS.repo` 
+<h4 id="基础环境配置"><a href="#基础环境配置" class="headerlink" title="基础环境配置"></a>基础环境配置</h4><p>配置CEPH可用的YUM源，包括CEPH本身和EPEL源，如下：</p>
+<pre><code>[root@node-5 env-check-init]# cat /etc/yum.repos.d/CentOS.repo 
 ...
-
 [CENTOS7-epel]
 name=CENTOS7 epel resource
 baseurl=http://yum17.int.sfdc.com.cn/epel7Server/$basearch
