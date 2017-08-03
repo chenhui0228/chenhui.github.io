@@ -820,7 +820,16 @@ ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF
 10   hdd  1.09039         osd.10        up  1.00000 1.00000 
 11   hdd  1.09039         osd.11        up  1.00000 1.00000 
 </code></pre><p>至此，整个集群就搭建完毕。</p>
-<h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h4 id="增加-删除-MONITORs"><a href="#增加-删除-MONITORs" class="headerlink" title="增加/删除 MONITORs"></a>增加/删除 MONITORs</h4><h5 id="增加MONITOR"><a href="#增加MONITOR" class="headerlink" title="增加MONITOR"></a>增加MONITOR</h5><h5 id="删除MONITOR"><a href="#删除MONITOR" class="headerlink" title="删除MONITOR"></a>删除MONITOR</h5><p>首先停需要删除的monitor守护进程，命令如下：</p>
+<p>通过对目前最新版本Ceph部署，可见比老版本比如生产上大量使用的Hammer版部署起来简单，当然这里没有太多的配置优化。</p>
+<h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h5 id="开启监控模块"><a href="#开启监控模块" class="headerlink" title="开启监控模块"></a>开启监控模块</h5><p>在配置文件/etc/ceph/ceph.conf中添加</p>
+<pre><code>[mgr]
+mgr modules = dashboard
+</code></pre><p>设置dashboard的ip和端口</p>
+<pre><code>ceph config-key put mgr/dashboard/server_addr 172.16.30.78
+ceph config-key put mgr/dashboard/server_port 7000
+</code></pre><p>重启mgr服务</p>
+<pre><code>[root@ch-osd-1 ~]# systemctl restart ceph-mgr@ch-mon-1
+</code></pre><h4 id="增加-删除-MONITORs"><a href="#增加-删除-MONITORs" class="headerlink" title="增加/删除 MONITORs"></a>增加/删除 MONITORs</h4><h5 id="增加MONITOR"><a href="#增加MONITOR" class="headerlink" title="增加MONITOR"></a>增加MONITOR</h5><h5 id="删除MONITOR"><a href="#删除MONITOR" class="headerlink" title="删除MONITOR"></a>删除MONITOR</h5><p>首先停需要删除的monitor守护进程，命令如下：</p>
 <pre><code>service ceph -a stop mon.{mon-id}
 #for example
 service ceph -a stop mon.ch-mon-1
