@@ -821,7 +821,7 @@ ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF
 11   hdd  1.09039         osd.11        up  1.00000 1.00000 
 </code></pre><p>至此，整个集群就搭建完毕。</p>
 <p>通过对目前最新版本Ceph部署，可见比老版本比如生产上大量使用的Hammer版部署起来简单，当然这里没有太多的配置优化。</p>
-<h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h5 id="开启监控模块"><a href="#开启监控模块" class="headerlink" title="开启监控模块"></a>开启监控模块</h5><p>在配置文件/etc/ceph/ceph.conf中添加</p>
+<h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h4 id="开启监控模块"><a href="#开启监控模块" class="headerlink" title="开启监控模块"></a>开启监控模块</h4><p>在配置文件/etc/ceph/ceph.conf中添加</p>
 <pre><code>[mgr]
 mgr modules = dashboard
 </code></pre><p>设置dashboard的ip和端口</p>
