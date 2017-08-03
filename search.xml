@@ -11,7 +11,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[CEPH 运维之安装部署]]></title>
+      <title><![CDATA[CEPH运维之安装部署（luminous）]]></title>
       <url>/2017/08/01/ceph-ops/</url>
       <content type="html"><![CDATA[<p>这篇文档主要介绍ceph的搭建过程。</p>
 <h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><p>服务器规划及配置，如下：</p>
@@ -77,7 +77,7 @@
 <li>网络配置：public 网络和 cluster 均为万兆光纤</li>
 <li>每台服务器第1，2块磁盘做RAID1；其余磁盘做RAID0</li>
 <li>ch-mon-1节点作为管理节点，部署ceph-deploy</li>
-<li>Ceph版本：12.1.2</li>
+<li>Ceph版本：目前最新版 v12.1.2</li>
 <li>ceph-deploy版本：1.5.38</li>
 <li>这里使用root用户安装，如果不是root用户，应该拥有root权限</li>
 </ul>
@@ -136,8 +136,8 @@ gpgkey=http://yum17.int.sfdc.com.cn/ceph/el7/$basearch/RPM-GPG-KEY-EPEL-7
 ceph version 12.1.2 (b661348f156f148d764b998b65b90451f096cb27) luminous (rc)
 </code></pre><p>同时，可以看到在/etc目录下新增了一个ceph目录。进入/etc/ceph目录</p>
 <pre><code>cd /etc/ceph
-</code></pre><p>创建集群</p>
-<pre><code>ceph-deploy new new ch-mon-1 ch-mon-2 ch-mon-3
+</code></pre><h4 id="创建集群"><a href="#创建集群" class="headerlink" title="创建集群"></a>创建集群</h4><h5 id="初始化集群"><a href="#初始化集群" class="headerlink" title="初始化集群"></a>初始化集群</h5><p>准备3个Monitor节点</p>
+<pre><code>ceph-deploy new ch-mon-1 ch-mon-2 ch-mon-3
 </code></pre><p>执行完毕后再该目录下可以看到有如下文件</p>
 <pre><code>[root@ch-mon-1 ceph]# pwd
 /etc/ceph
@@ -145,7 +145,108 @@ ceph version 12.1.2 (b661348f156f148d764b998b65b90451f096cb27) luminous (rc)
 -rw-r--r-- 1 root root   805 Aug  3 13:44 ceph.conf
 -rw-r--r-- 1 root root 33736 Aug  3 13:45 ceph-deploy-ceph.log
 -rw------- 1 root root    73 Aug  3 13:43 ceph.mon.keyring
-</code></pre><h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h4 id="增加-删除-MONITORs"><a href="#增加-删除-MONITORs" class="headerlink" title="增加/删除 MONITORs"></a>增加/删除 MONITORs</h4><h5 id="增加MONITOR"><a href="#增加MONITOR" class="headerlink" title="增加MONITOR"></a>增加MONITOR</h5><h5 id="删除MONITOR"><a href="#删除MONITOR" class="headerlink" title="删除MONITOR"></a>删除MONITOR</h5><p>首先停需要删除的monitor守护进程，命令如下：</p>
+</code></pre><p>此时可以开始规划集群配置，如集群网络配置，我这里的配置如下：</p>
+<p>默认配置</p>
+<pre><code>[root@ch-mon-1 ceph]# cat ceph.conf 
+[global]
+fsid = 31fc3bef-d912-4d12-aa1e-130d3270d5db
+mon_initial_members = ch-mon-1, ch-mon-2, ch-mon-3
+mon_host = 172.16.30.78,172.16.30.79,172.16.30.80
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+</code></pre><p>修改后</p>
+<pre><code>[root@ch-mon-1 ceph]# cat ceph.conf 
+[global]
+fsid = 31fc3bef-d912-4d12-aa1e-130d3270d5db
+mon_initial_members = ch-mon-1, ch-mon-2, ch-mon-3
+mon_host = 172.16.30.78,172.16.30.79,172.16.30.80
+auth_cluster_required = cephx
+auth_service_required = cephx
+auth_client_required = cephx
+
+public_network = 172.16.30.0/24
+cluster_network = 172.16.31.0/24
+osd_pool_default_size = 3
+osd_pool_default_min_size = 1
+osd_pool_default_pg_num = 8
+osd_pool_default_pgp_num = 8
+osd_crush_chooseleaf_type = 1
+
+[mon]
+mon_clock_drift_allowed = 0.5
+
+[osd]
+osd_mkfs_type = xfs
+osd_mkfs_options_xfs = -f
+filestore_max_sync_interval = 5
+filestore_min_sync_interval = 0.1
+filestore_fd_cache_size = 655350
+filestore_omap_header_cache_size = 655350
+filestore_fd_cache_random = true
+osd op threads = 8
+osd disk threads = 4
+filestore op threads = 8
+max_open_files = 655350
+</code></pre><h5 id="初始化Monitor"><a href="#初始化Monitor" class="headerlink" title="初始化Monitor"></a>初始化Monitor</h5><p>部署初始的monitors，并获得keys</p>
+<pre><code>ceph-deploy mon create-initial
+</code></pre><p>做完这一步，在当前目录下就会看到有如下的keyrings：</p>
+<pre><code>[root@ch-mon-1 ceph]# ll
+-rw------- 1 root root    71 Aug  3 13:45 ceph.bootstrap-mds.keyring
+-rw------- 1 root root    71 Aug  3 13:45 ceph.bootstrap-mgr.keyring
+-rw------- 1 root root    71 Aug  3 13:45 ceph.bootstrap-osd.keyring
+-rw------- 1 root root    71 Aug  3 13:45 ceph.bootstrap-rgw.keyring
+-rw------- 1 root root    63 Aug  3 13:45 ceph.client.admin.keyring
+</code></pre><p>要在节点使用ceph命令行需要将ceph.client.admin.keyring放在需要的节点的/etc/ceph目录下。如这里希望在所有的节点使用命令行，可以通过如下命令将ceph.client.admin.keyring拷贝到各节点，当然也可以使用cp命令。</p>
+<pre><code>ceph-deploy admin ch-mon-2 ch-mon-3 ch-osd-1 ch-osd-2 ch-osd-3 ch-osd-4
+</code></pre><p>在L版本的Ceph中新增了manager daemon，如下命令部署一个Manager守护进程</p>
+<pre><code>ceph-deploy mgr create ch-mon-1
+</code></pre><h5 id="增加OSDs"><a href="#增加OSDs" class="headerlink" title="增加OSDs"></a>增加OSDs</h5><p>我们使用的版本后端存储默认使用bluestore</p>
+<p>下面我们添加OSDs</p>
+<pre><code>ceph-deploy osd create ch-osd-1:/dev/sdb ch-osd-1:/dev/sdc ch-osd-1:/dev/sdd ch-osd-2:/dev/sdb ch-osd-2:/dev/sdc ch-osd-2:/dev/sdd ch-osd-3:/dev/sdb ch-osd-3:/dev/sdc ch-osd-3:/dev/sdd ch-osd-4:/dev/sdb ch-osd-4:/dev/sdc ch-osd-4:/dev/sdd
+</code></pre><blockquote>
+<p><strong>提示</strong>：在早期的版本中，添加OSD分为prepare和activate两步，这里不详述</p>
+</blockquote>
+<p>等命令执行结束之后可以查看集群状态</p>
+<pre><code>[root@ch-osd-1 ~]# ceph -s
+  cluster:
+    id:     31fc3bef-d912-4d12-aa1e-130d3270d5db
+    health: HEALTH_WARN
+            application not enabled on 1 pool(s)
+            too few PGs per OSD (1 &lt; min 30)
+
+  services:
+    mon: 3 daemons, quorum ch-mon-1,ch-mon-2,ch-mon-3
+    mgr: ch-mon-1(active)
+    osd: 12 osds: 12 up, 12 in
+
+  data:
+    pools:   1 pools, 16 pgs
+    objects: 1 objects, 499 bytes
+    usage:   12742 MB used, 13386 GB / 13398 GB avail
+    pgs:     16 active+clean
+</code></pre><p>查看OSDs</p>
+<pre><code>[root@ch-osd-1 ~]# ceph osd tree
+ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF 
+-1       13.08472 root default                              
+-3        3.27118     host ch-osd-1                         
+ 0   hdd  1.09039         osd.0         up  1.00000 1.00000 
+ 1   hdd  1.09039         osd.1         up  1.00000 1.00000 
+ 2   hdd  1.09039         osd.2         up  1.00000 1.00000 
+-5        3.27118     host ch-osd-2                         
+ 3   hdd  1.09039         osd.3         up  1.00000 1.00000 
+ 4   hdd  1.09039         osd.4         up  1.00000 1.00000 
+ 5   hdd  1.09039         osd.5         up  1.00000 1.00000 
+-7        3.27118     host ch-osd-3                         
+ 6   hdd  1.09039         osd.6         up  1.00000 1.00000 
+ 7   hdd  1.09039         osd.7         up  1.00000 1.00000 
+ 8   hdd  1.09039         osd.8         up  1.00000 1.00000 
+-9        3.27118     host ch-osd-4                         
+ 9   hdd  1.09039         osd.9         up  1.00000 1.00000 
+10   hdd  1.09039         osd.10        up  1.00000 1.00000 
+11   hdd  1.09039         osd.11        up  1.00000 1.00000 
+</code></pre><p>至此，整个集群就搭建完毕。</p>
+<h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h4 id="增加-删除-MONITORs"><a href="#增加-删除-MONITORs" class="headerlink" title="增加/删除 MONITORs"></a>增加/删除 MONITORs</h4><h5 id="增加MONITOR"><a href="#增加MONITOR" class="headerlink" title="增加MONITOR"></a>增加MONITOR</h5><h5 id="删除MONITOR"><a href="#删除MONITOR" class="headerlink" title="删除MONITOR"></a>删除MONITOR</h5><p>首先停需要删除的monitor守护进程，命令如下：</p>
 <pre><code>service ceph -a stop mon.{mon-id}
 #for example
 service ceph -a stop mon.ch-mon-1
@@ -195,6 +296,8 @@ ceph osd rm 2
             <category> 分布式存储 </category>
             
             <category> 运维操作 </category>
+            
+            <category> Ceph </category>
             
         </categories>
         
