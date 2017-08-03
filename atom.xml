@@ -34,7 +34,7 @@
     <link href="http://202.104.112.179:8085/2017/08/01/ceph-ops/"/>
     <id>http://202.104.112.179:8085/2017/08/01/ceph-ops/</id>
     <published>2017-08-01T06:09:41.000Z</published>
-    <updated>2017-08-02T06:57:47.055Z</updated>
+    <updated>2017-08-03T05:43:07.126Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文档主要介绍ceph的搭建过程。</p>
 <h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><p>服务器规划及配置，如下：</p>
@@ -56,8 +56,8 @@
 </tr>
 <tr>
 <td style="text-align:left">ch-osd-2</td>
-<td style="text-align:left">172.16.30.74</td>
-<td style="text-align:left">172.16.31.74</td>
+<td style="text-align:left">172.16.30.72</td>
+<td style="text-align:left">172.16.31.72</td>
 <td style="text-align:left">osd节点</td>
 </tr>
 <tr>
@@ -100,8 +100,8 @@
 <li>网络配置：public 网络和 cluster 均为万兆光纤</li>
 <li>每台服务器第1，2块磁盘做RAID1；其余磁盘做RAID0</li>
 <li>ch-mon-1节点作为管理节点，部署ceph-deploy</li>
-<li>Ceph版本：12.1.0</li>
-<li>ceph-deploy版本：1.5.36</li>
+<li>Ceph版本：12.1.2</li>
+<li>ceph-deploy版本：1.5.38</li>
 <li>这里使用root用户安装，如果不是root用户，应该拥有root权限</li>
 </ul>
 <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="基础环境检查"><a href="#基础环境检查" class="headerlink" title="基础环境检查"></a>基础环境检查</h4><ol>
@@ -126,7 +126,7 @@
 </code></pre><p>SSD做日志盘做RAID0，读策略为Normal，不适用预读，写策略为Write Through直接写入磁盘；如果SSD有掉电保护，磁盘缓存Disk cache设置为Enable；I/O策略为Direct请求不被Cache缓存。</p>
 <pre><code>/opt/MegaRAID/MegaCli64 -cfgldadd -r0 [32:13] WT NORA Direct -a0
 </code></pre><p>Megacli更详细的使用，可以参考其他资料，如<a href="https://supportforums.cisco.com/document/62901/megacli-common-commands-and-procedures" target="_blank" rel="external">参考文档1</a>等</p>
-<h4 id="基础环境配置"><a href="#基础环境配置" class="headerlink" title="基础环境配置"></a>基础环境配置</h4><p>这里采用yum安装，我已经将CEPH二进制RPM包上传至YUM镜像，所以先配置CEPH可用的YUM源，包括CEPH本身和EPEL源，如下：</p>
+<h4 id="基础环境配置"><a href="#基础环境配置" class="headerlink" title="基础环境配置"></a>基础环境配置</h4><h5 id="yum源配置"><a href="#yum源配置" class="headerlink" title="yum源配置"></a>yum源配置</h5><p>这里采用yum安装，我已经将CEPH二进制RPM包上传至YUM镜像，所以先配置CEPH可用的YUM源，包括CEPH本身和EPEL源，如下：</p>
 <pre><code>[root@node-5 env-check-init]# cat /etc/yum.repos.d/CentOS.repo 
 ...
 [CENTOS7-epel]
@@ -145,8 +145,30 @@ gpgkey=http://yum17.int.sfdc.com.cn/ceph/el7/$basearch/RPM-GPG-KEY-EPEL-7
 </code></pre><blockquote>
 <p><strong>提示</strong>：如果你没有自己的YUM源可使用国内开源镜像，如<a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="external">清华镜像</a>，<a href="http://mirrors.ustc.edu.cn/" target="_blank" rel="external">中科大镜像</a>，<a href="https://mirrors.aliyun.com/" target="_blank" rel="external">阿里镜像</a>等，也可以使用<a href="http://docs.ceph.com/docs/master/start/quick-start-preflight/#rhel-centos" target="_blank" rel="external">Ceph官方文档</a>给出的配置。</p>
 </blockquote>
-<h3 id="集群部署"><a href="#集群部署" class="headerlink" title="集群部署"></a>集群部署</h3><h4 id="软件包安装"><a href="#软件包安装" class="headerlink" title="软件包安装"></a>软件包安装</h4><p>在管理节点安装ceph-deploy</p>
-<h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h4 id="增加-删除-MONITORs"><a href="#增加-删除-MONITORs" class="headerlink" title="增加/删除 MONITORs"></a>增加/删除 MONITORs</h4><h5 id="增加MONITOR"><a href="#增加MONITOR" class="headerlink" title="增加MONITOR"></a>增加MONITOR</h5><h5 id="删除MONITOR"><a href="#删除MONITOR" class="headerlink" title="删除MONITOR"></a>删除MONITOR</h5><p>首先停需要删除的monitor守护进程，命令如下：</p>
+<h5 id="SSH互信"><a href="#SSH互信" class="headerlink" title="SSH互信"></a>SSH互信</h5><p>需要为管理节点和其他集群节点建立ssh互信，使管理节点可以免验证登录其他各节点</p>
+<p>在管理节点生成ssh keys，命令如下：</p>
+<pre><code>ssh-keygen
+</code></pre><p>将管理节点的ssh key 拷贝到其它个节点：</p>
+<pre><code>ssh-copy-id root@172.16.30.xxx
+</code></pre><h3 id="集群部署"><a href="#集群部署" class="headerlink" title="集群部署"></a>集群部署</h3><h4 id="软件包安装"><a href="#软件包安装" class="headerlink" title="软件包安装"></a>软件包安装</h4><p>在管理节点安装ceph-deploy</p>
+<pre><code>yum install ceph-deploy -y
+</code></pre><p>安装Ceph，在各个节点执行命令</p>
+<pre><code>yum install ceph -y
+</code></pre><p>安装完后可以使用如下命令查看版本</p>
+<pre><code>[root@ch-mon-1 ~]# ceph -v
+ceph version 12.1.2 (b661348f156f148d764b998b65b90451f096cb27) luminous (rc)
+</code></pre><p>同时，可以看到在/etc目录下新增了一个ceph目录。进入/etc/ceph目录</p>
+<pre><code>cd /etc/ceph
+</code></pre><p>创建集群</p>
+<pre><code>ceph-deploy new new ch-mon-1 ch-mon-2 ch-mon-3
+</code></pre><p>执行完毕后再该目录下可以看到有如下文件</p>
+<pre><code>[root@ch-mon-1 ceph]# pwd
+/etc/ceph
+[root@ch-mon-1 ceph]# ll
+-rw-r--r-- 1 root root   805 Aug  3 13:44 ceph.conf
+-rw-r--r-- 1 root root 33736 Aug  3 13:45 ceph-deploy-ceph.log
+-rw------- 1 root root    73 Aug  3 13:43 ceph.mon.keyring
+</code></pre><h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h4 id="增加-删除-MONITORs"><a href="#增加-删除-MONITORs" class="headerlink" title="增加/删除 MONITORs"></a>增加/删除 MONITORs</h4><h5 id="增加MONITOR"><a href="#增加MONITOR" class="headerlink" title="增加MONITOR"></a>增加MONITOR</h5><h5 id="删除MONITOR"><a href="#删除MONITOR" class="headerlink" title="删除MONITOR"></a>删除MONITOR</h5><p>首先停需要删除的monitor守护进程，命令如下：</p>
 <pre><code>service ceph -a stop mon.{mon-id}
 #for example
 service ceph -a stop mon.ch-mon-1
