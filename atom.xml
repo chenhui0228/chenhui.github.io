@@ -34,7 +34,7 @@
     <link href="http://202.104.112.179:8085/2017/08/01/ceph-ops/"/>
     <id>http://202.104.112.179:8085/2017/08/01/ceph-ops/</id>
     <published>2017-08-01T06:09:41.000Z</published>
-    <updated>2017-08-04T01:24:38.632Z</updated>
+    <updated>2017-08-04T01:33:45.411Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文档主要介绍ceph的搭建过程。</p>
 <h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><p>服务器规划及配置，如下：</p>
@@ -231,12 +231,10 @@ max_open_files = 655350
 <p><strong>提示</strong>：在早期的版本中，添加OSD分为prepare和activate两步，这里不详述</p>
 </blockquote>
 <p>等命令执行结束之后可以查看集群状态</p>
-<pre><code>[root@ch-osd-1 ~]# ceph -s
+<pre><code>[root@ch-mon-1 ~]# ceph -s
   cluster:
     id:     31fc3bef-d912-4d12-aa1e-130d3270d5db
-    health: HEALTH_WARN
-            application not enabled on 1 pool(s)
-            too few PGs per OSD (1 &lt; min 30)
+    health: HEALTH_OK
 
   services:
     mon: 3 daemons, quorum ch-mon-1,ch-mon-2,ch-mon-3
@@ -244,10 +242,10 @@ max_open_files = 655350
     osd: 12 osds: 12 up, 12 in
 
   data:
-    pools:   1 pools, 16 pgs
-    objects: 1 objects, 499 bytes
+    pools:   0 pools, 0 pgs
+    objects: 0 objects, 0 bytes
     usage:   12742 MB used, 13386 GB / 13398 GB avail
-    pgs:     16 active+clean
+    pgs:
 </code></pre><p>查看OSDs</p>
 <pre><code>[root@ch-osd-1 ~]# ceph osd tree
 ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF 

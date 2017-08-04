@@ -208,12 +208,10 @@ max_open_files = 655350
 <p><strong>提示</strong>：在早期的版本中，添加OSD分为prepare和activate两步，这里不详述</p>
 </blockquote>
 <p>等命令执行结束之后可以查看集群状态</p>
-<pre><code>[root@ch-osd-1 ~]# ceph -s
+<pre><code>[root@ch-mon-1 ~]# ceph -s
   cluster:
     id:     31fc3bef-d912-4d12-aa1e-130d3270d5db
-    health: HEALTH_WARN
-            application not enabled on 1 pool(s)
-            too few PGs per OSD (1 &lt; min 30)
+    health: HEALTH_OK
 
   services:
     mon: 3 daemons, quorum ch-mon-1,ch-mon-2,ch-mon-3
@@ -221,10 +219,10 @@ max_open_files = 655350
     osd: 12 osds: 12 up, 12 in
 
   data:
-    pools:   1 pools, 16 pgs
-    objects: 1 objects, 499 bytes
+    pools:   0 pools, 0 pgs
+    objects: 0 objects, 0 bytes
     usage:   12742 MB used, 13386 GB / 13398 GB avail
-    pgs:     16 active+clean
+    pgs:
 </code></pre><p>查看OSDs</p>
 <pre><code>[root@ch-osd-1 ~]# ceph osd tree
 ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF 
