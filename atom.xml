@@ -34,7 +34,7 @@
     <link href="http://202.104.112.179:8085/2017/08/01/ceph-ops/"/>
     <id>http://202.104.112.179:8085/2017/08/01/ceph-ops/</id>
     <published>2017-08-01T06:09:41.000Z</published>
-    <updated>2017-08-04T01:33:45.411Z</updated>
+    <updated>2017-08-04T01:43:52.126Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文档主要介绍ceph的搭建过程。</p>
 <h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><p>服务器规划及配置，如下：</p>
@@ -320,7 +320,9 @@ ceph auth del osd.2
 ceph osd rm 2
 </code></pre><p>如果在ceph.conf文件中有该OSD的配置，还需要删除相关配置</p>
 <p>更详细的使用方法见<a href="http://docs.ceph.com/docs/master/rados/operations/add-or-rm-osds/#removing-osds-manual" target="_blank" rel="external">官方文档</a></p>
-<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！    </p>
+<h4 id="配置推送"><a href="#配置推送" class="headerlink" title="配置推送"></a>配置推送</h4><p>我们无需再每台服务器上修改ceph.conf文件中的配置信息，只需要在管理节点修改一份，然后推送到需要更行的节点上即可，如这里我们修改了ch-mon-1上/etc/ceph/ceph.conf内容，需要同时在ch-mon-2, ch-mon-3生效</p>
+<pre><code>ceph-deploy --overwrite-conf config push ch-mon-2 ch-mon-3
+</code></pre><p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！    </p>
 ]]></content>
     
     <summary type="html">
