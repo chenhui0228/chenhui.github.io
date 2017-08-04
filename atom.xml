@@ -34,7 +34,7 @@
     <link href="http://202.104.112.179:8085/2017/08/01/ceph-ops/"/>
     <id>http://202.104.112.179:8085/2017/08/01/ceph-ops/</id>
     <published>2017-08-01T06:09:41.000Z</published>
-    <updated>2017-08-03T13:22:48.726Z</updated>
+    <updated>2017-08-04T01:24:38.632Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文档主要介绍ceph的搭建过程。</p>
 <h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><p>服务器规划及配置，如下：</p>
@@ -273,6 +273,8 @@ ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF
 <h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h4 id="开启监控模块"><a href="#开启监控模块" class="headerlink" title="开启监控模块"></a>开启监控模块</h4><p>在配置文件/etc/ceph/ceph.conf中添加</p>
 <pre><code>[mgr]
 mgr modules = dashboard
+</code></pre><p>或者</p>
+<pre><code>ceph mgr module enable dashboard
 </code></pre><p>设置dashboard的ip和端口</p>
 <pre><code>ceph config-key put mgr/dashboard/server_addr 172.16.30.78
 ceph config-key put mgr/dashboard/server_port 7000
@@ -304,9 +306,9 @@ sudo systemctl stop ceph-osd@{osd-num}
 ssh ch-osd-1
 systemctl stop ceph-osd@2
 </code></pre><p>或者</p>
-<pre><code>service ceph stop osd.2
-</code></pre><p>或者</p>
 <pre><code>kill -9 {pid}
+</code></pre><p>在早期的版本中使用如下命令</p>
+<pre><code>service ceph stop osd.2
 </code></pre><p>最后需要将OSD从集群的CRUSH MAP中删除，同时删除其权限，并且从OSD MAP删除OSD，在<strong>管理节点</strong>执行命令：</p>
 <pre><code>#remove osd from crush map
 ceph osd crush remove {name}

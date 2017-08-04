@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="陈辉的博客">
 <meta property="og:description" content="这篇文档主要介绍ceph的搭建过程。 集群规划服务器规划及配置，如下：    hostname public ip cluster ip 节点说明     ch-osd-1 172.16.30.73 172.16.31.73 osd节点   ch-osd-2 172.16.30.72 172.16.31.72 osd节点   ch-osd-3 172.16.30.75 172.16.31.75 o">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-03T13:22:48.726Z">
+<meta property="og:updated_time" content="2017-08-04T01:24:38.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CEPH运维之安装部署（luminous）">
 <meta name="twitter:description" content="这篇文档主要介绍ceph的搭建过程。 集群规划服务器规划及配置，如下：    hostname public ip cluster ip 节点说明     ch-osd-1 172.16.30.73 172.16.31.73 osd节点   ch-osd-2 172.16.30.72 172.16.31.72 osd节点   ch-osd-3 172.16.30.75 172.16.31.75 o">
@@ -697,6 +697,8 @@ ID CLASS WEIGHT   TYPE NAME         STATUS REWEIGHT PRI-AFF
 <h3 id="常用运维"><a href="#常用运维" class="headerlink" title="常用运维"></a>常用运维</h3><h4 id="开启监控模块"><a href="#开启监控模块" class="headerlink" title="开启监控模块"></a>开启监控模块</h4><p>在配置文件/etc/ceph/ceph.conf中添加</p>
 <pre><code>[mgr]
 mgr modules = dashboard
+</code></pre><p>或者</p>
+<pre><code>ceph mgr module enable dashboard
 </code></pre><p>设置dashboard的ip和端口</p>
 <pre><code>ceph config-key put mgr/dashboard/server_addr 172.16.30.78
 ceph config-key put mgr/dashboard/server_port 7000
@@ -728,9 +730,9 @@ sudo systemctl stop ceph-osd@{osd-num}
 ssh ch-osd-1
 systemctl stop ceph-osd@2
 </code></pre><p>或者</p>
-<pre><code>service ceph stop osd.2
-</code></pre><p>或者</p>
 <pre><code>kill -9 {pid}
+</code></pre><p>在早期的版本中使用如下命令</p>
+<pre><code>service ceph stop osd.2
 </code></pre><p>最后需要将OSD从集群的CRUSH MAP中删除，同时删除其权限，并且从OSD MAP删除OSD，在<strong>管理节点</strong>执行命令：</p>
 <pre><code>#remove osd from crush map
 ceph osd crush remove {name}
