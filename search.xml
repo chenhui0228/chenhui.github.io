@@ -912,7 +912,16 @@ ceph osd rm 2
 <p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
 <p><strong>转载申明</strong>：本文转载博主的文章test，转载请注明出处！</p>
 <hr>
-]]></content>
+<pre><code>[code lang=&quot;bash&quot;]
+
+E:\IDC\Workspace&gt;md vuedemo
+
+E:\IDC\Workspace&gt;cd vuedemo
+
+E:\IDC\Workspace\vuedemo&gt;
+
+[/code]
+</code></pre>]]></content>
       
         
     </entry>

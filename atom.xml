@@ -949,13 +949,22 @@ ceph osd rm 2
     <link href="http://202.104.112.179:8085/2017/07/10/test/"/>
     <id>http://202.104.112.179:8085/2017/07/10/test/</id>
     <published>2017-07-10T11:24:35.000Z</published>
-    <updated>2017-08-10T11:30:06.171Z</updated>
+    <updated>2017-08-10T11:45:56.922Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
 <p><strong>转载申明</strong>：本文转载博主的文章test，转载请注明出处！</p>
 <hr>
-]]></content>
+<pre><code>[code lang=&quot;bash&quot;]
+
+E:\IDC\Workspace&gt;md vuedemo
+
+E:\IDC\Workspace&gt;cd vuedemo
+
+E:\IDC\Workspace\vuedemo&gt;
+
+[/code]
+</code></pre>]]></content>
     
     <summary type="html">
     
@@ -963,7 +972,7 @@ ceph osd rm 2
 &lt;p&gt;&lt;strong&gt;原创申明&lt;/strong&gt;：本文为博主原创，转载请注明出处！&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;转载申明&lt;/strong&gt;：本文转载博主的文章test，转载请注明出处！&lt;/p&gt;
 &lt;hr&gt;
-
+&lt;pre&gt;&lt;code&gt;[code lang=&amp;quot;bash
     
     </summary>
     
