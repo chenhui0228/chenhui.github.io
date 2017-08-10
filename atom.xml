@@ -140,7 +140,7 @@
     <link href="http://202.104.112.179:8085/2017/08/01/vuejs-demo/"/>
     <id>http://202.104.112.179:8085/2017/08/01/vuejs-demo/</id>
     <published>2017-08-01T06:17:19.000Z</published>
-    <updated>2017-08-10T06:02:43.082Z</updated>
+    <updated>2017-08-10T06:08:38.211Z</updated>
     
     <content type="html"><![CDATA[<p>这里主要记录vue.js+webpack在一个简单实例中的使用过程</p>
 <blockquote>
@@ -330,17 +330,17 @@ E:.
 │  ├─.bin
 │  └─...
 ├─src
-│   ├─assets
-│   │   ├─imgs
-│  │   │   └─logo.png
-│   │   └─styles
-│  │       └─base.css
-│   ├─components
-│  │       └─header.vue
-│   ├─views
-│  │    ├─about.vue
-│  │    └─home.vue
-│   ├─App.vue
+│ ├─assets
+│ │ ├─imgs
+│ │ │ └─logo.p
+│ │ └─styles
+│       └─bascss
+│ ├─components
+│  │   └─header.v
+│ ├─views
+│    ├─about.v
+│    └─home.v
+│ ├─App.vue
 │  ├─main.js
 │  └─routes.js
 ├─index.html  

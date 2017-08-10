@@ -306,17 +306,17 @@ E:.
 │  ├─.bin
 │  └─...
 ├─src
-│   ├─assets
-│   │   ├─imgs
-│  │   │   └─logo.png
-│   │   └─styles
-│  │       └─base.css
-│   ├─components
-│  │       └─header.vue
-│   ├─views
-│  │    ├─about.vue
-│  │    └─home.vue
-│   ├─App.vue
+│ ├─assets
+│ │ ├─imgs
+│ │ │ └─logo.p
+│ │ └─styles
+│       └─bascss
+│ ├─components
+│  │   └─header.v
+│ ├─views
+│    ├─about.v
+│    └─home.v
+│ ├─App.vue
 │  ├─main.js
 │  └─routes.js
 ├─index.html  
