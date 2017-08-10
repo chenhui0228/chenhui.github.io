@@ -95,27 +95,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[linux常用操作总结]]></title>
-      <url>/2017/08/01/linux-ops/</url>
-      <content type="html"><![CDATA[<h4 id="查看当前文件夹大小"><a href="#查看当前文件夹大小" class="headerlink" title="查看当前文件夹大小"></a>查看当前文件夹大小</h4><pre><code>du -sh *
-</code></pre>]]></content>
-      
-        <categories>
-            
-            <category> linux </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> linux </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Vue.js学习-搭建一个简单的demo]]></title>
       <url>/2017/08/01/vuejs-demo/</url>
       <content type="html"><![CDATA[<p>这里主要记录vue.js+webpack在一个简单实例中的使用过程</p>
@@ -298,7 +277,7 @@ npm install --save-dev webpack webpack-dev-server            #本地安装
     &quot;webpack-dev-server&quot;: &quot;^2.7.1&quot;
   }
 }
-</code></pre><h4 id="编辑显目目录和添加代码"><a href="#编辑显目目录和添加代码" class="headerlink" title="编辑显目目录和添加代码"></a>编辑显目目录和添加代码</h4><p>查看当前目录</p>
+</code></pre><h4 id="编辑项目目录和添加代码"><a href="#编辑项目目录和添加代码" class="headerlink" title="编辑项目目录和添加代码"></a>编辑项目目录和添加代码</h4><p>查看当前目录</p>
 <pre><code>E:\IDC\Workspace\vuedemo&gt;tree
 E:.
 ├─dist
@@ -308,17 +287,17 @@ E:.
 ├─src
 │   ├─assets
 │   │   ├─imgs
-│    │   │   └─logo.png
+│  │   │   └─logo.png
 │   │   └─styles
-│    │       └─base.css
+│  │       └─base.css
 │   ├─components
-│    │       └─header.vue
+│  │       └─header.vue
 │   ├─views
-│    │    ├─about.vue
-│    │    └─home.vue
+│  │    ├─about.vue
+│  │    └─home.vue
 │   ├─App.vue
-│    ├─main.js
-│    └─routes.js
+│  ├─main.js
+│  └─routes.js
 ├─index.html  
 ├─package.json    
 └─webpack.config.js
@@ -598,6 +577,27 @@ export default {
         <tags>
             
             <tag> vue </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[linux常用操作总结]]></title>
+      <url>/2017/08/01/linux-ops/</url>
+      <content type="html"><![CDATA[<h4 id="查看当前文件夹大小"><a href="#查看当前文件夹大小" class="headerlink" title="查看当前文件夹大小"></a>查看当前文件夹大小</h4><pre><code>du -sh *
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> linux </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> linux </tag>
             
         </tags>
         

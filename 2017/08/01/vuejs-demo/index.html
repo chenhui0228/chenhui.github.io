@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/webpack.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/webpack-dev-server.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/index.jpg">
-<meta property="og:updated_time" content="2017-08-10T05:52:45.987Z">
+<meta property="og:updated_time" content="2017-08-10T05:59:34.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js学习-搭建一个简单的demo">
 <meta name="twitter:description" content="这里主要记录vue.js+webpack在一个简单实例中的使用过程  说明：本次搭建基于Win 7平台  Node.js 安装官网提供了支持多种平台的的LTS版本下载，我们根据需要来进行下载安装。对于Windows平台提供了.mis和.zip(二进制)两种选择，我们可以根据自己需要任选一种安装。具体安装过程就不详说。  注意：为了使用方便，我们需要检测PATH环境变量是否配置了Node.js。点击">
@@ -622,7 +622,7 @@ npm install --save-dev webpack webpack-dev-server            #本地安装
     &quot;webpack-dev-server&quot;: &quot;^2.7.1&quot;
   }
 }
-</code></pre><h4 id="编辑显目目录和添加代码"><a href="#编辑显目目录和添加代码" class="headerlink" title="编辑显目目录和添加代码"></a>编辑显目目录和添加代码</h4><p>查看当前目录</p>
+</code></pre><h4 id="编辑项目目录和添加代码"><a href="#编辑项目目录和添加代码" class="headerlink" title="编辑项目目录和添加代码"></a>编辑项目目录和添加代码</h4><p>查看当前目录</p>
 <pre><code>E:\IDC\Workspace\vuedemo&gt;tree
 E:.
 ├─dist
@@ -632,17 +632,17 @@ E:.
 ├─src
 │   ├─assets
 │   │   ├─imgs
-│    │   │   └─logo.png
+│  │   │   └─logo.png
 │   │   └─styles
-│    │       └─base.css
+│  │       └─base.css
 │   ├─components
-│    │       └─header.vue
+│  │       └─header.vue
 │   ├─views
-│    │    ├─about.vue
-│    │    └─home.vue
+│  │    ├─about.vue
+│  │    └─home.vue
 │   ├─App.vue
-│    ├─main.js
-│    └─routes.js
+│  ├─main.js
+│  └─routes.js
 ├─index.html  
 ├─package.json    
 └─webpack.config.js
@@ -952,8 +952,8 @@ export default {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/01/ceph-ops/" rel="next" title="CEPH运维之安装部署（luminous）">
-                <i class="fa fa-chevron-left"></i> CEPH运维之安装部署（luminous）
+              <a href="/2017/08/01/linux-ops/" rel="next" title="linux常用操作总结">
+                <i class="fa fa-chevron-left"></i> linux常用操作总结
               </a>
             
           </div>
@@ -962,8 +962,8 @@ export default {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/01/linux-ops/" rel="prev" title="linux常用操作总结">
-                linux常用操作总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/04/python-learning-01/" rel="prev" title="python学习笔记（一）">
+                python学习笔记（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1163,7 +1163,7 @@ export default {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-安装"><span class="nav-number">1.</span> <span class="nav-text">Node.js 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目搭建"><span class="nav-number">2.</span> <span class="nav-text">项目搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化项目"><span class="nav-number">2.1.</span> <span class="nav-text">初始化项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装依赖库"><span class="nav-number">2.2.</span> <span class="nav-text">安装依赖库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装vue及相关组件"><span class="nav-number">2.2.1.</span> <span class="nav-text">安装vue及相关组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装webpack及相关组件"><span class="nav-number">2.2.2.</span> <span class="nav-text">安装webpack及相关组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装其他有用的组件"><span class="nav-number">2.2.3.</span> <span class="nav-text">安装其他有用的组件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑显目目录和添加代码"><span class="nav-number">2.3.</span> <span class="nav-text">编辑显目目录和添加代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#项目目录"><span class="nav-number">2.3.1.</span> <span class="nav-text">项目目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码"><span class="nav-number">2.3.2.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#根目录代码"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">根目录代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#components组件目录代码"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">components组件目录代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#views目录代码"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">views目录代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#style目录代码"><span class="nav-number">2.3.2.4.</span> <span class="nav-text">style目录代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目启动"><span class="nav-number">2.4.</span> <span class="nav-text">项目启动</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-安装"><span class="nav-number">1.</span> <span class="nav-text">Node.js 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目搭建"><span class="nav-number">2.</span> <span class="nav-text">项目搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化项目"><span class="nav-number">2.1.</span> <span class="nav-text">初始化项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装依赖库"><span class="nav-number">2.2.</span> <span class="nav-text">安装依赖库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装vue及相关组件"><span class="nav-number">2.2.1.</span> <span class="nav-text">安装vue及相关组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装webpack及相关组件"><span class="nav-number">2.2.2.</span> <span class="nav-text">安装webpack及相关组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装其他有用的组件"><span class="nav-number">2.2.3.</span> <span class="nav-text">安装其他有用的组件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑项目目录和添加代码"><span class="nav-number">2.3.</span> <span class="nav-text">编辑项目目录和添加代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#项目目录"><span class="nav-number">2.3.1.</span> <span class="nav-text">项目目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码"><span class="nav-number">2.3.2.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#根目录代码"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">根目录代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#components组件目录代码"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">components组件目录代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#views目录代码"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">views目录代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#style目录代码"><span class="nav-number">2.3.2.4.</span> <span class="nav-text">style目录代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目启动"><span class="nav-number">2.4.</span> <span class="nav-text">项目启动</span></a></li></ol></li></ol></div>
             
 
           </div>
