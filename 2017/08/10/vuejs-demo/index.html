@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/10/vuejs-demo/webpack.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/10/vuejs-demo/webpack-dev-server.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/10/vuejs-demo/index.jpg">
-<meta property="og:updated_time" content="2017-08-10T11:08:33.255Z">
+<meta property="og:updated_time" content="2017-08-10T12:03:49.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js学习-搭建一个简单的demo">
 <meta name="twitter:description" content="原创申明：本文为博主原创，转载请注明出处！  这里主要记录vue.js+webpack在一个简单实例中的使用过程  说明：本次搭建基于Win 7平台  Node.js 安装官网提供了支持多种平台的的LTS版本下载，我们根据需要来进行下载安装。对于Windows平台提供了.mis和.zip(二进制)两种选择，我们可以根据自己需要任选一种安装。具体安装过程就不详说。  注意：为了使用方便，我们需要检">
@@ -452,108 +452,18 @@
 <h3 id="Node-js-安装"><a href="#Node-js-安装" class="headerlink" title="Node.js 安装"></a>Node.js 安装</h3><p><a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="external">官网</a>提供了支持多种平台的的LTS版本下载，我们根据需要来进行下载安装。对于Windows平台提供了.mis和.zip(二进制)两种选择，我们可以根据自己需要任选一种安装。具体安装过程就不详说。</p>
 <blockquote>
 <p><strong>注意</strong>：为了使用方便，我们需要检测PATH环境变量是否配置了Node.js。点击开始=》运行=》输入“cmd”=》输入命令“path”（我们也可以直接使用命令win+R输入“cmd”=》输入命令“path”），输出如下结果：</p>
-<pre><code>C:\Users\01107267&gt;path
-PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;
-D:\Program Files\java\jdk1.8.0-windows-x64\bin;D:\Program Files\java\jdk1.8.0-windows-x64\jre\bin;
-D:\Program Files\TortoiseSVN\bin;D:\Program Files\apache-maven-3.3.9\bin;D:\Program Files\gradle-2.2.1\BIN;
-D:\Python27\Scripts;D:\Python27\;D:\Program Files\nodejs\;D:\Program Files\nodejs\node_global;
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;     C:\Users\01107267&gt;path</div><div class="line">&gt;     PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;</div><div class="line">&gt;     D:\Program Files\java\jdk1.8.0-windows-x64\bin;D:\Program Files\java\jdk1.8.0-windows-x64\jre\bin;</div><div class="line">&gt;     D:\Program Files\TortoiseSVN\bin;D:\Program Files\apache-maven-3.3.9\bin;D:\Program Files\gradle-2.2.1\BIN;</div><div class="line">&gt;     D:\Python27\Scripts;D:\Python27\;D:\Program Files\nodejs\;D:\Program Files\nodejs\node_global;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </code></pre><p>我们看到环境变量中已经包含了D:\Program Files\nodejs，我们可以检查一下Node.js版本</p>
-<pre><code>C:\Users\01107267&gt;node --version
-v6.9.4
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;     C:\Users\01107267&gt;node --version</div><div class="line">&gt;     v6.9.4</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </code></pre><p>我们可以看到有这样一个路径在Node.js目录下还有一个npm，这是Nodejs中的包管理工具，它是随Nodejs一起安装的</p>
-<pre><code>C:\Users\01107267&gt;npm -v
-3.10.10 
-</code></pre><p>这里需要说明的是可以看到还有一个路径D:\Program Files\nodejs\node_global;这个路径是说将npm安装时指定全局安装的包放在该路径下，比如后面我们会用的webpack，我们可以去到该目录看一下</p>
-<pre><code>D:\Program Files&gt;cd nodejs
-
-D:\Program Files\nodejs&gt;dir
- 驱动器 D 中的卷没有标签。
- 卷的序列号是 0005-FCB7
-
- D:\Program Files\nodejs 的目录
-
-2017/03/12  11:52&lt;DIR .
-2017/03/12  11:52&lt;DIR ..
-2017/01/05  21:0018,513,048 node.exe
-2016/12/22  18:01   702 nodevars.bat
-2017/08/07  19:29&lt;DIR node_cache
-2017/01/05  20:46 8,997 node_etw_provider.man
-2017/08/08  09:49&lt;DIR node_global
-2017/01/16  10:57&lt;DIR node_modules
-2016/12/22  18:01 4,974 node_perfctr_provider.man
-2016/11/16  19:45   867 npm
-2016/11/16  19:45   483 npm.cmd
-   6 个文件 18,529,071 字节
-   5 个目录 146,669,424,640 可用字节
-
-D:\Program Files\nodejs&gt;cd node_global
-
-D:\Program Files\nodejs\node_global&gt;dir
- 驱动器 D 中的卷没有标签。
- 卷的序列号是 0005-FCB7
-
- D:\Program Files\nodejs\node_global 的目录
-
-2017/08/08  09:49&lt;DIR .
-2017/08/08  09:49&lt;DIR ..
-2017/03/12  11:56&lt;DIR etc
-2017/08/08  09:49&lt;DIR node_modules
-2017/08/07  17:46   321 vue
-2017/08/07  17:46   333 vue-build
-2017/08/07  17:46   210 vue-build.cmd
-2017/08/07  17:46   331 vue-init
-2017/08/07  17:46   208 vue-init.cmd
-2017/08/07  17:46   331 vue-list
-2017/08/07  17:46   208 vue-list.cmd
-2017/08/07  17:46   198 vue.cmd
-2017/08/08  09:49   335 webpack
-2017/08/08  09:49   379 webpack-dev-server
-2017/08/08  09:49   256 webpack-dev-server.cmd
-2017/08/08  09:49   212 webpack.cmd
-  12 个文件  3,322 字节
-   4 个目录 146,669,424,640 可用字节
-
-D:\Program Files\nodejs\node_global&gt;
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">&gt;     C:\Users\01107267&gt;npm -v</div><div class="line">&gt;     3.10.10</div><div class="line">&gt;     ``` </div><div class="line">&gt;</div><div class="line">&gt; 这里需要说明的是可以看到还有一个路径D:\Program Files\nodejs\node_global;这个路径是说将npm安装时指定全局安装的包放在该路径下，比如后面我们会用的webpack，我们可以去到该目录看一下</div><div class="line"></div><div class="line">&gt;     ```bash</div><div class="line">&gt;     D:\Program Files&gt;<span class="built_in">cd</span> nodejs</div><div class="line">&gt;     </div><div class="line">&gt;     D:\Program Files\nodejs&gt;dir</div><div class="line">&gt;      驱动器 D 中的卷没有标签。</div><div class="line">&gt;      卷的序列号是 0005-FCB7</div><div class="line">&gt;     </div><div class="line">&gt;      D:\Program Files\nodejs 的目录</div><div class="line">&gt;     </div><div class="line">&gt;     2017/03/12  11:52&lt;DIR .</div><div class="line">&gt;     2017/03/12  11:52&lt;DIR ..</div><div class="line">&gt;     2017/01/05  21:0018,513,048 node.exe</div><div class="line">&gt;     2016/12/22  18:01   702 nodevars.bat</div><div class="line">&gt;     2017/08/07  19:29&lt;DIR node_cache</div><div class="line">&gt;     2017/01/05  20:46 8,997 node_etw_provider.man</div><div class="line">&gt;     2017/08/08  09:49&lt;DIR node_global</div><div class="line">&gt;     2017/01/16  10:57&lt;DIR node_modules</div><div class="line">&gt;     2016/12/22  18:01 4,974 node_perfctr_provider.man</div><div class="line">&gt;     2016/11/16  19:45   867 npm</div><div class="line">&gt;     2016/11/16  19:45   483 npm.cmd</div><div class="line">&gt;        6 个文件 18,529,071 字节</div><div class="line">&gt;        5 个目录 146,669,424,640 可用字节</div><div class="line">&gt;     </div><div class="line">&gt;     D:\Program Files\nodejs&gt;<span class="built_in">cd</span> node_global</div><div class="line">&gt;     </div><div class="line">&gt;     D:\Program Files\nodejs\node_global&gt;dir</div><div class="line">&gt;      驱动器 D 中的卷没有标签。</div><div class="line">&gt;      卷的序列号是 0005-FCB7</div><div class="line">&gt;     </div><div class="line">&gt;      D:\Program Files\nodejs\node_global 的目录</div><div class="line">&gt;     </div><div class="line">&gt;     2017/08/08  09:49&lt;DIR .</div><div class="line">&gt;     2017/08/08  09:49&lt;DIR ..</div><div class="line">&gt;     2017/03/12  11:56&lt;DIR etc</div><div class="line">&gt;     2017/08/08  09:49&lt;DIR node_modules</div><div class="line">&gt;     2017/08/07  17:46   321 vue</div><div class="line">&gt;     2017/08/07  17:46   333 vue-build</div><div class="line">&gt;     2017/08/07  17:46   210 vue-build.cmd</div><div class="line">&gt;     2017/08/07  17:46   331 vue-init</div><div class="line">&gt;     2017/08/07  17:46   208 vue-init.cmd</div><div class="line">&gt;     2017/08/07  17:46   331 vue-list</div><div class="line">&gt;     2017/08/07  17:46   208 vue-list.cmd</div><div class="line">&gt;     2017/08/07  17:46   198 vue.cmd</div><div class="line">&gt;     2017/08/08  09:49   335 webpack</div><div class="line">&gt;     2017/08/08  09:49   379 webpack-dev-server</div><div class="line">&gt;     2017/08/08  09:49   256 webpack-dev-server.cmd</div><div class="line">&gt;     2017/08/08  09:49   212 webpack.cmd</div><div class="line">&gt;       12 个文件  3,322 字节</div><div class="line">&gt;        4 个目录 146,669,424,640 可用字节</div><div class="line">&gt;     </div><div class="line">&gt;     D:\Program Files\nodejs\node_global&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </code></pre></blockquote>
 <h3 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h3><h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><p>新建一个项目文件夹，名为vuedemo</p>
-<pre><code>E:\IDC\Workspace&gt;md vuedemo
-
-E:\IDC\Workspace&gt;cd vuedemo
-
-E:\IDC\Workspace\vuedemo&gt;
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">E:\IDC\Workspace&gt;md vuedemo</div><div class="line">   </div><div class="line">   E:\IDC\Workspace&gt;<span class="built_in">cd</span> vuedemo</div><div class="line">   </div><div class="line">   E:\IDC\Workspace\vuedemo&gt;</div></pre></td></tr></table></figure>
 </code></pre><p>初始化项目，生成package.json文件</p>
-<pre><code>E:\IDC\Workspace\vuedemo&gt;npm init -y
-Wrote to E:\IDC\Workspace\vuedemo\package.json:
-
-{
-  &quot;name&quot;: &quot;vuedemo&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;&quot;,
-  &quot;main&quot;: &quot;index.js&quot;,
-  &quot;scripts&quot;: {
-&quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
-  },
-  &quot;keywords&quot;: [],
-  &quot;author&quot;: &quot;&quot;,
-  &quot;license&quot;: &quot;ISC&quot;
-}
-
-
-
-E:\IDC\Workspace\vuedemo&gt;dir
- 驱动器 E 中的卷没有标签。
- 卷的序列号是 000D-8BC6
-
- E:\IDC\Workspace\vuedemo 的目录
-
-2017/08/10  09:59&lt;DIR&gt;  .
-2017/08/10  09:59&lt;DIR&gt;  ..
-2017/08/10  09:59   221 package.json
-   1 个文件221 字节
-   2 个目录 91,132,411,904 可用字节
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">E:\IDC\Workspace\vuedemo&gt;npm init -y</div><div class="line">Wrote to E:\IDC\Workspace\vuedemo\package.json:</div><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"vuedemo"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line"><span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"keywords"</span>: [],</div><div class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">E:\IDC\Workspace\vuedemo&gt;dir</div><div class="line"> 驱动器 E 中的卷没有标签。</div><div class="line"> 卷的序列号是 000D-8BC6</div><div class="line"></div><div class="line"> E:\IDC\Workspace\vuedemo 的目录</div><div class="line"></div><div class="line">2017/08/10  09:59&lt;DIR&gt;  .</div><div class="line">2017/08/10  09:59&lt;DIR&gt;  ..</div><div class="line">2017/08/10  09:59   221 package.json</div><div class="line">   1 个文件221 字节</div><div class="line">   2 个目录 91,132,411,904 可用字节</div></pre></td></tr></table></figure>
 </code></pre><h4 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h4><p>在使用npm安装依赖之前，我先解释几个参数。npm安装分为全局安装和和本地安装。如：</p>
-<pre><code>npm install express        # 本地安装
-npm install express -g    # 全局安装
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install express		<span class="comment"># 本地安装</span></div><div class="line">npm install express -g	<span class="comment"># 全局安装</span></div></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p><strong>说明</strong>：</p>
 <p>本地安装</p>
@@ -574,57 +484,27 @@ npm install express -g    # 全局安装
 </blockquote>
 <p>另外，npm install在安装npm包时，有两种命令可以把他们的信息写入package.json文件，一个是npm install –save另一个是 npm install –save-dev，他们表面上的区别是–save 会把依赖包名称添加到 package.json 文件 dependencies 键下，–save-dev 则添加到 package.json 文件 devDependencies 键下，–save-dev 是你开发时候依赖的东西，–save 是你发布之后还依赖的东西。</p>
 <h5 id="安装vue及相关组件"><a href="#安装vue及相关组件" class="headerlink" title="安装vue及相关组件"></a>安装vue及相关组件</h5><p>安装<a href="https://cn.vuejs.org/" target="_blank" rel="external">vue.js</a>，默认安装最新的版本</p>
-<pre><code>nmp install --save vue
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nmp install --save vue</div></pre></td></tr></table></figure>
 </code></pre><p>安装路由组件vue-router.js</p>
-<pre><code>nmp install --save vue-router
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nmp install --save vue-router</div></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p><strong>拓展</strong>：在一个项目中通常还需要用到的组件<a href="https://github.com/pagekit/vue-resource" target="_blank" rel="external">vue-resource</a>进行HTTP异步请求提交，还可以使用<a href="http://element.eleme.io/#/zh-CN/component/installation" target="_blank" rel="external">element-ui</a>提供的各种前端组件帮助我们快速完成开发。</p>
 </blockquote>
 <h5 id="安装webpack及相关组件"><a href="#安装webpack及相关组件" class="headerlink" title="安装webpack及相关组件"></a>安装webpack及相关组件</h5><p>全局和本地安装<a href="https://webpack.github.io" target="_blank" rel="external">webpack</a>，以及Nodejs.js解释服务器webpack-dev-server</p>
-<pre><code>npm install webpack webpack-dev-server -g                    #全局安装
-npm install --save-dev webpack webpack-dev-server            #本地安装
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install webpack webpack-dev-server -g					<span class="comment">#全局安装</span></div><div class="line">npm install --save-dev webpack webpack-dev-server			<span class="comment">#本地安装</span></div></pre></td></tr></table></figure>
 </code></pre><h5 id="安装其他有用的组件"><a href="#安装其他有用的组件" class="headerlink" title="安装其他有用的组件"></a>安装其他有用的组件</h5><p>安装babel，其作用是将ES6的语法编译成浏览器认识的语法ES5</p>
-<pre><code>npm install --save-dev babel-core babel-loader babel-preset-es2015
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev babel-core babel-loader babel-preset-es2015</div></pre></td></tr></table></figure>
 </code></pre><p>安装vue解析组件，解析.vue后缀文件</p>
-<pre><code>npm install --save-dev vue-loader vue-template-compiler
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev vue-loader vue-template-compiler</div></pre></td></tr></table></figure>
 </code></pre><p>安装css解析组件</p>
-<pre><code>npm install --save-dev css-loader style-loader
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev css-loader style-loader</div></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p><strong>拓展</strong>：css-loader 和 style-loader，二者处理的任务不同，css-loader使你能够使用类似@import 和 url(…)的方法实现 require()的功能,style-loader将所有的计算后的样式加入页面中，二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中。</p>
 </blockquote>
 <p>安装url-loader，file-loader打包文件和图片</p>
-<pre><code>npm install --save-dev url-loader file-loader
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev url-loader file-loader</div></pre></td></tr></table></figure>
 </code></pre><p>查看一下package.json文件的内容</p>
-<pre><code>E:\IDC\Workspace\vuedemo&gt;type package.json
-{
-  &quot;name&quot;: &quot;vuedemo&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;&quot;,
-  &quot;main&quot;: &quot;index.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
-  },
-  &quot;keywords&quot;: [],
-  &quot;author&quot;: &quot;&quot;,
-  &quot;license&quot;: &quot;ISC&quot;,
-  &quot;dependencies&quot;: {
-    &quot;vue&quot;: &quot;^2.4.2&quot;,
-    &quot;vue-router&quot;: &quot;^2.7.0&quot;
-  },
-  &quot;devDependencies&quot;: {
-    &quot;babel-core&quot;: &quot;^6.25.0&quot;,
-    &quot;babel-loader&quot;: &quot;^7.1.1&quot;,
-    &quot;babel-preset-es2015&quot;: &quot;^6.24.1&quot;,
-    &quot;css-loader&quot;: &quot;^0.28.4&quot;,
-    &quot;file-loader&quot;: &quot;^0.11.2&quot;,
-    &quot;style-loader&quot;: &quot;^0.18.2&quot;,
-    &quot;url-loader&quot;: &quot;^0.5.9&quot;,
-    &quot;vue-loader&quot;: &quot;^13.0.4&quot;,
-    &quot;vue-template-compiler&quot;: &quot;^2.4.2&quot;,
-    &quot;webpack&quot;: &quot;^3.5.2&quot;,
-    &quot;webpack-dev-server&quot;: &quot;^2.7.1&quot;
-  }
-}
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">E:\IDC\Workspace\vuedemo&gt;type package.json</div><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;vuedemo&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">	&quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;keywords&quot;: [],</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">	&quot;vue&quot;: &quot;^2.4.2&quot;,</div><div class="line">	&quot;vue-router&quot;: &quot;^2.7.0&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line"> &quot;babel-core&quot;: &quot;^6.25.0&quot;,</div><div class="line"> &quot;babel-loader&quot;: &quot;^7.1.1&quot;,</div><div class="line"> &quot;babel-preset-es2015&quot;: &quot;^6.24.1&quot;,</div><div class="line"> &quot;css-loader&quot;: &quot;^0.28.4&quot;,</div><div class="line"> &quot;file-loader&quot;: &quot;^0.11.2&quot;,</div><div class="line"> &quot;style-loader&quot;: &quot;^0.18.2&quot;,</div><div class="line"> &quot;url-loader&quot;: &quot;^0.5.9&quot;,</div><div class="line"> &quot;vue-loader&quot;: &quot;^13.0.4&quot;,</div><div class="line"> &quot;vue-template-compiler&quot;: &quot;^2.4.2&quot;,</div><div class="line"> &quot;webpack&quot;: &quot;^3.5.2&quot;,</div><div class="line"> &quot;webpack-dev-server&quot;: &quot;^2.7.1&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </code></pre><h4 id="编辑项目目录和添加代码"><a href="#编辑项目目录和添加代码" class="headerlink" title="编辑项目目录和添加代码"></a>编辑项目目录和添加代码</h4><p>查看当前目录</p>
 <pre><code>E:\IDC\Workspace\vuedemo&gt;tree
 E:.
@@ -658,257 +538,35 @@ E:.
 <p>//components目录里面放了公共组件header文件。</p>
 <p>//views文件放详情页面；</p>
 <h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><h6 id="根目录代码"><a href="#根目录代码" class="headerlink" title="根目录代码"></a>根目录代码</h6><p>这里主要是编写webpack.config.js配置文件</p>
-<pre><code>/**
- * Created by 01107267 on 2017/8/7.
- */
-var path = require(&apos;path&apos;)
-var webpack = require(&apos;webpack&apos;)
-
-module.exports = {
-    entry: &apos;./src/main.js&apos;,//也可以是数组，对象
-    output: {
-        path: path.resolve(__dirname, &apos;./dist&apos;),//webpack 构建后的结果存在此位置
-        publicPath: &apos;/dist/&apos;,   //许多Webpack的插件用于在生产模式和开发模式下下更新内嵌到css、html，img文件里的url值
-        filename: &apos;build.js&apos;
-    },
-    module: {
-        rules: [
-            {
-                test: /\.vue$/, //一个匹配loaders所处理的文件的拓展名的正则表达式（必须）
-                loader: &apos;vue-loader&apos;, //loader的名称（必须）
-                options: {
-                    loaders: {
-                    }
-                    //other vue-oader options go here
-                }
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
-                loader: &apos;file-loader&apos;,
-                query: {
-                    name: &apos;[name].[ext]?[hash]&apos;
-                }
-            },
-            {
-                test: /\.js$/,
-                loader: &apos;babel-loader&apos;,
-                exclude: /node_modules/
-            },
-            // self define
-            {
-                test: /\.css$/,
-                loader: &quot;style-loader!css-loader&quot;
-            }
-            ,
-            {
-                test: /\.scss$/,
-                loader: &quot;style-loader!css-loader!sass-loader!&quot;
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
-                loader: &apos;file-loader&apos;
-            }
-          ]
-    },
-    resolve: {
-        alias: {
-            &apos;vue$&apos;: &apos;vue/dist/vue.esm.js&apos;
-        }
-    },
-    devServer: {//webpack-dev-server配置
-        historyApiFallback: true,//不跳转
-        noInfo: true,
-        inline: true//实时刷新
-    },
-    performance: {
-        hints: false
-    },
-    devtool: &apos;#eval-source-map&apos;
-}
-
-if (process.env.NODE_ENV === &apos;production&apos;) {
-    module.exports.devtool = &apos;#source-map&apos;
-    // http://vue-loader.vuejs.org/en/workflow/production.html
-    module.exports.plugins = (module.exports.plugins || []).concat([
-        new webpack.DefinePlugin({
-            &apos;process.env&apos;: {
-                NODE_ENV: &apos;&quot;production&quot;&apos;
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                warnings: false
-            }
-        }),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true
-        })
-    ])
-}
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">    * Created by 01107267 on 2017/8/7.</div><div class="line">    */</div><div class="line">   <span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line">   <span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line">   </div><div class="line">   <span class="built_in">module</span>.exports = &#123;</div><div class="line">   	<span class="attr">entry</span>: <span class="string">'./src/main.js'</span>,<span class="comment">//也可以是数组，对象</span></div><div class="line">   	output: &#123;</div><div class="line">    	<span class="attr">path</span>: path.resolve(__dirname, <span class="string">'./dist'</span>),<span class="comment">//webpack 构建后的结果存在此位置</span></div><div class="line">    	publicPath: <span class="string">'/dist/'</span>,   <span class="comment">//许多Webpack的插件用于在生产模式和开发模式下下更新内嵌到css、html，img文件里的url值</span></div><div class="line">    	filename: <span class="string">'build.js'</span></div><div class="line">   	&#125;,</div><div class="line">    <span class="attr">module</span>: &#123;</div><div class="line">    	<span class="attr">rules</span>: [</div><div class="line">    		&#123;</div><div class="line">		    	<span class="attr">test</span>: <span class="regexp">/\.vue$/</span>, <span class="comment">//一个匹配loaders所处理的文件的拓展名的正则表达式（必须）</span></div><div class="line">			    loader: <span class="string">'vue-loader'</span>, <span class="comment">//loader的名称（必须）</span></div><div class="line">			    options: &#123;</div><div class="line">				    <span class="attr">loaders</span>: &#123;</div><div class="line">		    		&#125;</div><div class="line">	    			<span class="comment">//other vue-oader options go here</span></div><div class="line">	    		&#125;</div><div class="line">	    	&#125;,</div><div class="line">		    &#123;</div><div class="line">			    <span class="attr">test</span>: <span class="regexp">/\.(png|jpe?g|gif|svg)(\?\S*)?$/</span>,</div><div class="line">			    <span class="attr">loader</span>: <span class="string">'file-loader'</span>,</div><div class="line">			    <span class="attr">query</span>: &#123;</div><div class="line">				    <span class="attr">name</span>: <span class="string">'[name].[ext]?[hash]'</span></div><div class="line">			    &#125;</div><div class="line">		    &#125;,</div><div class="line">		    &#123;</div><div class="line">			    <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">			    <span class="attr">loader</span>: <span class="string">'babel-loader'</span>,</div><div class="line">			    <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span></div><div class="line">		    &#125;,</div><div class="line">		    <span class="comment">// self define</span></div><div class="line">		    &#123;</div><div class="line">			    <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">			    <span class="attr">loader</span>: <span class="string">"style-loader!css-loader"</span></div><div class="line">		    &#125;</div><div class="line">		    ,</div><div class="line">		    &#123;</div><div class="line">			    <span class="attr">test</span>: <span class="regexp">/\.scss$/</span>,</div><div class="line">			    <span class="attr">loader</span>: <span class="string">"style-loader!css-loader!sass-loader!"</span></div><div class="line">		    &#125;,</div><div class="line">		    &#123;</div><div class="line">			    <span class="attr">test</span>: <span class="regexp">/\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/</span>,</div><div class="line">			    <span class="attr">loader</span>: <span class="string">'file-loader'</span></div><div class="line">		    &#125;</div><div class="line">  		]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">resolve</span>: &#123;</div><div class="line">	    <span class="attr">alias</span>: &#123;</div><div class="line">	    	<span class="string">'vue$'</span>: <span class="string">'vue/dist/vue.esm.js'</span></div><div class="line">	    &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">devServer</span>: &#123;<span class="comment">//webpack-dev-server配置</span></div><div class="line">	    historyApiFallback: <span class="literal">true</span>,<span class="comment">//不跳转</span></div><div class="line">	    noInfo: <span class="literal">true</span>,</div><div class="line">	    <span class="attr">inline</span>: <span class="literal">true</span><span class="comment">//实时刷新</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">performance</span>: &#123;</div><div class="line">	    <span class="attr">hints</span>: <span class="literal">false</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">devtool</span>: <span class="string">'#eval-source-map'</span></div><div class="line">   &#125;</div><div class="line">    </div><div class="line">   <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</div><div class="line">    <span class="built_in">module</span>.exports.devtool = <span class="string">'#source-map'</span></div><div class="line">    <span class="comment">// http://vue-loader.vuejs.org/en/workflow/production.html</span></div><div class="line">    <span class="built_in">module</span>.exports.plugins = (<span class="built_in">module</span>.exports.plugins || []).concat([</div><div class="line">	    <span class="keyword">new</span> webpack.DefinePlugin(&#123;</div><div class="line">	    	<span class="string">'process.env'</span>: &#123;</div><div class="line">	    		<span class="attr">NODE_ENV</span>: <span class="string">'"production"'</span></div><div class="line">	    	&#125;</div><div class="line">	    &#125;),</div><div class="line">	    <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">	    	<span class="attr">sourceMap</span>: <span class="literal">true</span>,</div><div class="line">	    	<span class="attr">compress</span>: &#123;</div><div class="line">	    		<span class="attr">warnings</span>: <span class="literal">false</span></div><div class="line">    		&#125;</div><div class="line">	    &#125;),</div><div class="line">	    <span class="keyword">new</span> webpack.LoaderOptionsPlugin(&#123;</div><div class="line">	    	<span class="attr">minimize</span>: <span class="literal">true</span></div><div class="line">	    &#125;)</div><div class="line">    ])</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p><strong>注释</strong>：<br>test：一个匹配loaders所处理的文件的拓展名的正则表达式（必须）<br>loader：loader的名称（必须）<br>include/exclude:手动添加必须处理的文件（文件夹）或屏蔽不需要处理的文件（文件夹）（可选）</p>
 </blockquote>
 <p>编写routes.js文件</p>
-<pre><code>// 引用模板
-import Vue from &apos;vue&apos;;
-import Router from &apos;vue-router&apos;;
-import indexPage from &apos;./components/header.vue&apos;
-import homePage from &apos;./views/home.vue&apos;
-import aboutPage from &apos;./views/about.vue&apos;
-
-Vue.use(Router)
-
-export default new Router({
-    routes:[
-        {
-            path:&apos;/&apos;,
-            component:homePage
-        },
-        {
-            path:&apos;/about&apos;,
-            component:aboutPage
-        }
-    ]
-})
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 引用模板</span></div><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</div><div class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span>;</div><div class="line"><span class="keyword">import</span> indexPage <span class="keyword">from</span> <span class="string">'./components/header.vue'</span></div><div class="line"><span class="keyword">import</span> homePage <span class="keyword">from</span> <span class="string">'./views/home.vue'</span></div><div class="line"><span class="keyword">import</span> aboutPage <span class="keyword">from</span> <span class="string">'./views/about.vue'</span></div><div class="line"></div><div class="line">Vue.use(Router)</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</div><div class="line">    <span class="attr">routes</span>:[</div><div class="line">        &#123;</div><div class="line">            <span class="attr">path</span>:<span class="string">'/'</span>,</div><div class="line">            <span class="attr">component</span>:homePage</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            <span class="attr">path</span>:<span class="string">'/about'</span>,</div><div class="line">            <span class="attr">component</span>:aboutPage</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </code></pre><p>编写index.html文件</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;appIndex&quot;&gt;
-
-    &lt;/div&gt;
-    &lt;script src=&quot;./dist/build.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"appIndex"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/build.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 </code></pre><p>编写App.vue文件</p>
-<pre><code>&lt;!--App.vue是项目入口文件。--&gt;
-&lt;template&gt;
-    &lt;div id=&quot;app&quot;&gt;
-        &lt;header-tab&gt;&lt;/header-tab&gt;
-        &lt;h2&gt;{{msg}}&lt;/h2&gt;
-        &lt;div class=&quot;nav-box&quot;&gt;
-            &lt;p class=&quot;nav-list&quot;&gt;
-                &lt;router-link class=&quot;nav-item&quot; to=&quot;/&quot;&gt;首页&lt;/router-link&gt;
-                &lt;router-link class=&quot;nav-item&quot; to=&quot;/about&quot;&gt;关于&lt;/router-link&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;router-view&gt;&lt;/router-view&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+<pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--App.vue是项目入口文件。--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">header-tab</span>&gt;</span><span class="tag">&lt;/<span class="name">header-tab</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"nav-box"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"nav-list"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">class</span>=<span class="string">"nav-item"</span> <span class="attr">to</span>=<span class="string">"/"</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">class</span>=<span class="string">"nav-item"</span> <span class="attr">to</span>=<span class="string">"/about"</span>&gt;</span>关于<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
 
-&lt;script&gt;
-import HeaderTab from &apos;./components/header.vue&apos;;
-export default {
-  name: &apos;app&apos;,
-  data () {
-    return {
-      msg: &apos;Welcome to Your Vue.js App&apos;
-    }
-  },
-  components:{
-    HeaderTab
-  }
-}
-&lt;/script&gt;
 
-&lt;style type=&quot;text/css&quot;&gt;
-    h2{
-        color:#ff0000;
-    }
-    #app {
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
-    h1, h2 {
-        font-weight: normal;
-    }
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    li {
-        text-align: left;
-        margin: 0 10px;
-    }
-    a {
-        color: #42b983;
-    }
-&lt;/style&gt;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">import HeaderTab from &apos;./components/header.vue&apos;;</div><div class="line">export default &#123;</div><div class="line">  name: &apos;app&apos;,</div><div class="line">  data () &#123;</div><div class="line">    return &#123;</div><div class="line">      msg: &apos;Welcome to Your Vue.js App&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  components:&#123;</div><div class="line">    HeaderTab</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;style type="text/css"&gt;</div><div class="line">    h2&#123;</div><div class="line">        color:#ff0000;</div><div class="line">    &#125;</div><div class="line">    #app &#123;</div><div class="line">        text-align: center;</div><div class="line">        color: #2c3e50;</div><div class="line">        margin-top: 60px;</div><div class="line">    &#125;</div><div class="line">    h1, h2 &#123;</div><div class="line">        font-weight: normal;</div><div class="line">    &#125;</div><div class="line">    ul &#123;</div><div class="line">        list-style-type: none;</div><div class="line">        padding: 0;</div><div class="line">    &#125;</div><div class="line">    li &#123;</div><div class="line">        text-align: left;</div><div class="line">        margin: 0 10px;</div><div class="line">    &#125;</div><div class="line">    a &#123;</div><div class="line">        color: #42b983;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
 </code></pre><p>编写main.js文件</p>
-<pre><code>//main.js这是项目的核心文件。全局的配置都在这个文件里面配置
-import Vue from &apos;vue&apos;
-import App from &apos;./App.vue&apos;
-import router from &apos;./routes.js&apos;
-
-import &apos;./assets/styles/base.css&apos;
-Vue.config.debug = true;//开启错误提示
-
-new Vue({
-        router,
-        el: &apos;#appIndex&apos;,
-        render: h =&gt; h(App)
-})
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//main.js这是项目的核心文件。全局的配置都在这个文件里面配置</span></div><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></div><div class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./routes.js'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">'./assets/styles/base.css'</span></div><div class="line">Vue.config.debug = <span class="literal">true</span>;<span class="comment">//开启错误提示</span></div><div class="line"></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">        router,</div><div class="line">        <span class="attr">el</span>: <span class="string">'#appIndex'</span>,</div><div class="line">        <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </code></pre><h6 id="components组件目录代码"><a href="#components组件目录代码" class="headerlink" title="components组件目录代码"></a>components组件目录代码</h6><p>编写header.vue文件</p>
-<pre><code>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;共同header&lt;/h1&gt;
-        &lt;img src=&quot;../assets/imgs/logo.png&quot;&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+<pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>共同header<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../assets/imgs/logo.png"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
 </code></pre><h6 id="views目录代码"><a href="#views目录代码" class="headerlink" title="views目录代码"></a>views目录代码</h6><p>编写about.vue文件</p>
-<pre><code>//about.vue
-&lt;template&gt;
-    &lt;div&gt;about&lt;/div&gt;
-&lt;/template&gt;
-</code></pre><p>编写home.vue文件</p>
-<pre><code>//index.vue
-&lt;template&gt;
-    &lt;div&gt;
-        &lt;ol&gt;
-            &lt;li v-for=&quot;todo in todos&quot;&gt;
-                {{ todo.text }}
-            &lt;/li&gt;
-        &lt;/ol&gt;
-        &lt;button @click=&quot;eClick()&quot;&gt;事件&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-export default {
-  name: &apos;indexP&apos;,
-  data () {
-    return {
-       todos: [
-          { text: &apos;Learn JavaScript&apos; },
-          { text: &apos;Learn Vue&apos; },
-          { text: &apos;Build something awesome&apos; }
-        ]
-    }
-  },
-  methods:{
-    eClick(){
-        console.log(9999);
-    }
-  }
-}
-&lt;/script&gt;
+<pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">	//about.vue</div><div class="line">	<span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">	    <span class="tag">&lt;<span class="name">div</span>&gt;</span>about<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">	```	</div><div class="line"></div><div class="line">编写home.vue文件</div><div class="line"></div><div class="line">	```html</div><div class="line">	//index.vue</div><div class="line">	<span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">	    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">	        <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">	            <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></div><div class="line">	                &#123;&#123; todo.text &#125;&#125;</div><div class="line">	            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">	        <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line">	        <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"eClick()"</span>&gt;</span>事件<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">	    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">	```	</div><div class="line"></div><div class="line">	```javascript</div><div class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">	  <span class="attr">name</span>: <span class="string">'indexP'</span>,</div><div class="line">	  data () &#123;</div><div class="line">	    <span class="keyword">return</span> &#123;</div><div class="line">	       <span class="attr">todos</span>: [</div><div class="line">	          &#123; <span class="attr">text</span>: <span class="string">'Learn JavaScript'</span> &#125;,</div><div class="line">	          &#123; <span class="attr">text</span>: <span class="string">'Learn Vue'</span> &#125;,</div><div class="line">	          &#123; <span class="attr">text</span>: <span class="string">'Build something awesome'</span> &#125;</div><div class="line">	        ]</div><div class="line">	    &#125;</div><div class="line">	  &#125;,</div><div class="line">	  <span class="attr">methods</span>:&#123;</div><div class="line">	    eClick()&#123;</div><div class="line">	        <span class="built_in">console</span>.log(<span class="number">9999</span>);</div><div class="line">	    &#125;</div><div class="line">	  &#125;</div><div class="line">	&#125;</div><div class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 </code></pre><h6 id="style目录代码"><a href="#style目录代码" class="headerlink" title="style目录代码"></a>style目录代码</h6><p>编写base.css文件</p>
-<pre><code>h1{
-    color: #999;
-}
+<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span>&#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </code></pre><h4 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h4><p>构建打包</p>
-<pre><code>webpack
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack</div></pre></td></tr></table></figure>
 </code></pre><img src="/2017/08/10/vuejs-demo/webpack.png" alt="webpack.png" title="">
 <p>执行webpack-dev-server</p>
-<pre><code>webpack-dev-server
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack-dev-server</div></pre></td></tr></table></figure>
 </code></pre><img src="/2017/08/10/vuejs-demo/webpack-dev-server.png" alt="webpack-dev-server.png" title="">
 <p>页面效果</p>
 <img src="/2017/08/10/vuejs-demo/index.jpg" alt="index.jpg" title="">

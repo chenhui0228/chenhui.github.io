@@ -2,13 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://202.104.112.179:8085/tags/vue/</loc>
-        <lastmod>2017-08-10T11:08:33.255Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://202.104.112.179:8085/tags/ceph/</loc>
         <lastmod>2017-08-10T11:11:47.796Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -60,6 +53,13 @@
     <url>
         <loc>http://202.104.112.179:8085/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/</loc>
         <lastmod>2017-08-10T11:14:00.688Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://202.104.112.179:8085/tags/vue/</loc>
+        <lastmod>2017-08-10T12:03:49.977Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://202.104.112.179:8085/2017/08/10/vuejs-demo/</loc>
+        <lastmod>2017-08-10T12:03:49.977Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://202.104.112.179:8085/2017/07/10/test/</loc>
         <lastmod>2017-08-10T11:50:26.109Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -41,14 +49,6 @@
     <url>
         <loc>http://202.104.112.179:8085/2017/08/01/ceph-ops/</loc>
         <lastmod>2017-08-10T11:11:47.796Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://202.104.112.179:8085/2017/08/10/vuejs-demo/</loc>
-        <lastmod>2017-08-10T11:08:33.255Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -3,7 +3,7 @@
 
     <sitemap>
         <loc>http://202.104.112.179:8085/post-sitemap.xml</loc>
-        <lastmod>2017-08-10T11:50:26.109Z</lastmod>
+        <lastmod>2017-08-10T12:03:49.977Z</lastmod>
     </sitemap>
 
     <sitemap>
@@ -13,12 +13,12 @@
 
     <sitemap>
         <loc>http://202.104.112.179:8085/category-sitemap.xml</loc>
-        <lastmod>2017-08-10T11:08:33.255Z</lastmod>
+        <lastmod>2017-08-10T11:11:47.796Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>http://202.104.112.179:8085/tag-sitemap.xml</loc>
-        <lastmod>2017-08-10T11:08:33.255Z</lastmod>
+        <lastmod>2017-08-10T11:11:47.796Z</lastmod>
     </sitemap>
 
 </sitemapindex>
