@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://202.104.112.179:8085/"/>
-  <updated>2017-08-10T06:39:32.522Z</updated>
+  <updated>2017-08-10T10:58:03.989Z</updated>
   <id>http://202.104.112.179:8085/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://202.104.112.179:8085/2017/08/10/vuejs-demo/"/>
     <id>http://202.104.112.179:8085/2017/08/10/vuejs-demo/</id>
     <published>2017-08-10T02:17:19.000Z</published>
-    <updated>2017-08-10T06:39:32.522Z</updated>
+    <updated>2017-08-10T10:58:03.989Z</updated>
     
     <content type="html"><![CDATA[<p>这里主要记录vue.js+webpack在一个简单实例中的使用过程</p>
 <blockquote>
@@ -489,6 +489,7 @@ export default {
 </code></pre><img src="/2017/08/10/vuejs-demo/webpack-dev-server.png" alt="webpack-dev-server.png" title="">
 <p>页面效果</p>
 <img src="/2017/08/10/vuejs-demo/index.jpg" alt="index.jpg" title="">
+<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
 ]]></content>
     
     <summary type="html">
