@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/webpack.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/webpack-dev-server.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/index.jpg">
-<meta property="og:updated_time" content="2017-08-10T06:08:38.211Z">
+<meta property="og:updated_time" content="2017-08-10T06:20:16.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js学习-搭建一个简单的demo">
 <meta name="twitter:description" content="这里主要记录vue.js+webpack在一个简单实例中的使用过程  说明：本次搭建基于Win 7平台  Node.js 安装官网提供了支持多种平台的的LTS版本下载，我们根据需要来进行下载安装。对于Windows平台提供了.mis和.zip(二进制)两种选择，我们可以根据自己需要任选一种安装。具体安装过程就不详说。  注意：为了使用方便，我们需要检测PATH环境变量是否配置了Node.js。点击">
@@ -625,27 +625,27 @@ npm install --save-dev webpack webpack-dev-server            #本地安装
 </code></pre><h4 id="编辑项目目录和添加代码"><a href="#编辑项目目录和添加代码" class="headerlink" title="编辑项目目录和添加代码"></a>编辑项目目录和添加代码</h4><p>查看当前目录</p>
 <pre><code>E:\IDC\Workspace\vuedemo&gt;tree
 E:.
-├─dist
-├─node_modules
-│  ├─.bin
-│  └─...
-├─src
-│ ├─assets
-│ │ ├─imgs
-│ │ │ └─logo.p
-│ │ └─styles
-│       └─bascss
-│ ├─components
-│  │   └─header.v
-│ ├─views
-│    ├─about.v
-│    └─home.v
-│ ├─App.vue
-│  ├─main.js
-│  └─routes.js
-├─index.html  
-├─package.json    
-└─webpack.config.js
+├─ dist
+├─ node_modules
+│   ├─ .bin
+│   └─ ...
+├─ src
+│   ├─ assets
+│   │   ├─ imgs
+│   │   │   └─ logo.png
+│   │   └─ styles
+│   │       └─ base.css
+│   ├─ components
+│   │      └─ header.vue
+│   ├─ views
+│   │   ├─ about.vue
+│   │   └─ home.vue
+│   ├─ App.vue
+│   ├─ main.js
+│   └─ routes.js
+├─ index.html  
+├─ package.json    
+└─ webpack.config.js    
 </code></pre><h5 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h5><p>//dist文件是后面执行webpack指令生产的，不用管；</p>
 <p>//webpack.config.js 配置文件，本身也是一个标准的Commonjs规范的模块；</p>
 <p>//routes.js文件放路由配置文件；</p>
