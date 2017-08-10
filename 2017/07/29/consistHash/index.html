@@ -101,13 +101,13 @@
 
 
 
-<meta name="description" content="转载申明：本文转载博主oilbeater的文章聊聊一致性哈希，转载请注明出处！ 既然有一致性哈希，就肯定还有不一致哈希，为啥平时没人说不一致哈希呢？因为常见的哈希都是不一致的，所以就不修饰了，到了一致性哈希才特殊加个描述词修饰一下。 哈希一般都是将一个大数字取模然后分散到不同的桶里，假设我们只有两个桶，有 2、3、4、5 四个数字，那么模 2 分桶的结果就是：  这时我们嫌桶太少要给哈希表扩容加了">
+<meta name="description" content="转载申明：本文转载博主oilbeater的文章聊聊一致性哈希，转载请注明出处！  既然有一致性哈希，就肯定还有不一致哈希，为啥平时没人说不一致哈希呢？因为常见的哈希都是不一致的，所以就不修饰了，到了一致性哈希才特殊加个描述词修饰一下。 哈希一般都是将一个大数字取模然后分散到不同的桶里，假设我们只有两个桶，有 2、3、4、5 四个数字，那么模 2 分桶的结果就是：  这时我们嫌桶太少要给哈希表扩容">
 <meta name="keywords" content="算法,哈希,分布式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一致性哈希算法">
 <meta property="og:url" content="http://202.104.112.179:8085/2017/07/29/consistHash/index.html">
 <meta property="og:site_name" content="陈辉的博客">
-<meta property="og:description" content="转载申明：本文转载博主oilbeater的文章聊聊一致性哈希，转载请注明出处！ 既然有一致性哈希，就肯定还有不一致哈希，为啥平时没人说不一致哈希呢？因为常见的哈希都是不一致的，所以就不修饰了，到了一致性哈希才特殊加个描述词修饰一下。 哈希一般都是将一个大数字取模然后分散到不同的桶里，假设我们只有两个桶，有 2、3、4、5 四个数字，那么模 2 分桶的结果就是：  这时我们嫌桶太少要给哈希表扩容加了">
+<meta property="og:description" content="转载申明：本文转载博主oilbeater的文章聊聊一致性哈希，转载请注明出处！  既然有一致性哈希，就肯定还有不一致哈希，为啥平时没人说不一致哈希呢？因为常见的哈希都是不一致的，所以就不修饰了，到了一致性哈希才特殊加个描述词修饰一下。 哈希一般都是将一个大数字取模然后分散到不同的桶里，假设我们只有两个桶，有 2、3、4、5 四个数字，那么模 2 分桶的结果就是：  这时我们嫌桶太少要给哈希表扩容">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/07/29/consistHash/unconsist-hash-1.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/07/29/consistHash/unconsist-hash-2.png">
@@ -115,10 +115,10 @@
 <meta property="og:image" content="http://202.104.112.179:8085/2017/07/29/consistHash/consist-hash-2.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/07/29/consistHash/consist-hash-3.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/07/29/consistHash/finger-table.png">
-<meta property="og:updated_time" content="2017-08-10T11:01:09.980Z">
+<meta property="og:updated_time" content="2017-08-10T11:12:12.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一致性哈希算法">
-<meta name="twitter:description" content="转载申明：本文转载博主oilbeater的文章聊聊一致性哈希，转载请注明出处！ 既然有一致性哈希，就肯定还有不一致哈希，为啥平时没人说不一致哈希呢？因为常见的哈希都是不一致的，所以就不修饰了，到了一致性哈希才特殊加个描述词修饰一下。 哈希一般都是将一个大数字取模然后分散到不同的桶里，假设我们只有两个桶，有 2、3、4、5 四个数字，那么模 2 分桶的结果就是：  这时我们嫌桶太少要给哈希表扩容加了">
+<meta name="twitter:description" content="转载申明：本文转载博主oilbeater的文章聊聊一致性哈希，转载请注明出处！  既然有一致性哈希，就肯定还有不一致哈希，为啥平时没人说不一致哈希呢？因为常见的哈希都是不一致的，所以就不修饰了，到了一致性哈希才特殊加个描述词修饰一下。 哈希一般都是将一个大数字取模然后分散到不同的桶里，假设我们只有两个桶，有 2、3、4、5 四个数字，那么模 2 分桶的结果就是：  这时我们嫌桶太少要给哈希表扩容">
 <meta name="twitter:image" content="http://202.104.112.179:8085/2017/07/29/consistHash/unconsist-hash-1.png">
 
 
@@ -456,7 +456,9 @@
       
 
       
-        <p><strong>转载申明</strong>：本文转载博主<a href="http://weibo.com/oilbeater/profile?s=6cm7D0" target="_blank" rel="external">oilbeater</a>的文章<a href="http://oilbeater.com/%E5%8D%9A%E5%AE%A2/2016/12/18/consist-hash.html" target="_blank" rel="external">聊聊一致性哈希</a>，转载请注明出处！</p>
+        <hr>
+<p><strong>转载申明</strong>：本文转载博主<a href="http://weibo.com/oilbeater/profile?s=6cm7D0" target="_blank" rel="external">oilbeater</a>的文章<a href="http://oilbeater.com/%E5%8D%9A%E5%AE%A2/2016/12/18/consist-hash.html" target="_blank" rel="external">聊聊一致性哈希</a>，转载请注明出处！</p>
+<hr>
 <p>既然有一致性哈希，就肯定还有不一致哈希，为啥平时没人说不一致哈希呢？因为常见的哈希都是不一致的，所以就不修饰了，到了一致性哈希才特殊加个描述词修饰一下。</p>
 <p>哈希一般都是将一个大数字取模然后分散到不同的桶里，假设我们只有两个桶，有 2、3、4、5 四个数字，那么模 2 分桶的结果就是：</p>
 <img src="/2017/07/29/consistHash/unconsist-hash-1.png" alt="unconsist-hash-1.png" title="">

@@ -517,9 +517,19 @@ export default {
     <link href="http://202.104.112.179:8085/2017/08/04/python-learning-01/"/>
     <id>http://202.104.112.179:8085/2017/08/04/python-learning-01/</id>
     <published>2017-08-04T02:27:01.000Z</published>
-    <updated>2017-08-10T06:38:58.607Z</updated>
+    <updated>2017-08-10T11:14:00.688Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
+<hr>
+]]></content>
     
     <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;原创申明&lt;/strong&gt;：本文为博主原创，转载请注明出处！&lt;/p&gt;
+&lt;hr&gt;
+
     
     </summary>
     
@@ -537,15 +547,20 @@ export default {
     <link href="http://202.104.112.179:8085/2017/08/01/linux-ops/"/>
     <id>http://202.104.112.179:8085/2017/08/01/linux-ops/</id>
     <published>2017-08-01T06:17:19.000Z</published>
-    <updated>2017-08-10T06:38:41.603Z</updated>
+    <updated>2017-08-10T11:13:11.900Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="查看当前文件夹大小"><a href="#查看当前文件夹大小" class="headerlink" title="查看当前文件夹大小"></a>查看当前文件夹大小</h4><pre><code>du -sh *
+    <content type="html"><![CDATA[<hr>
+<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
+<hr>
+<h4 id="查看当前文件夹大小"><a href="#查看当前文件夹大小" class="headerlink" title="查看当前文件夹大小"></a>查看当前文件夹大小</h4><pre><code>du -sh *
 </code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;查看当前文件夹大小&quot;&gt;&lt;a href=&quot;#查看当前文件夹大小&quot; class=&quot;headerlink&quot; title=&quot;查看当前文件夹大小&quot;&gt;&lt;/a&gt;查看当前文件夹大小&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;du -sh *
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;原创申明&lt;/strong&gt;：本文为博主原创，转载请注明出处！&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;查看当前文件夹大小&quot;&gt;&lt;a href=&quot;#查看当前文件夹大小&quot; class=&quot;headerlink&quot; title=&quot;查看当前文件夹大小&quot;&gt;&lt;/a&gt;查看当
     
     </summary>
     
@@ -561,9 +576,11 @@ export default {
     <link href="http://202.104.112.179:8085/2017/08/01/ceph-ops/"/>
     <id>http://202.104.112.179:8085/2017/08/01/ceph-ops/</id>
     <published>2017-08-01T06:09:41.000Z</published>
-    <updated>2017-08-10T11:01:37.454Z</updated>
+    <updated>2017-08-10T11:11:47.796Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！    </p>
+    <content type="html"><![CDATA[<hr>
+<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！    </p>
+<hr>
 <p>这篇文档主要介绍ceph的搭建过程。</p>
 <h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><p>服务器规划及配置，如下：</p>
 <table>
@@ -854,9 +871,11 @@ ceph osd rm 2
     
     <summary type="html">
     
-      &lt;p&gt;&lt;strong&gt;原创申明&lt;/strong&gt;：本文为博主原创，转载请注明出处！    &lt;/p&gt;
+      &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;原创申明&lt;/strong&gt;：本文为博主原创，转载请注明出处！    &lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;这篇文档主要介绍ceph的搭建过程。&lt;/p&gt;
-&lt;h3 id=&quot;集群规划&quot;&gt;&lt;a href=&quot;#集群规划&quot; class=&quot;headerlink&quot; title=&quot;集群规划&quot;&gt;&lt;/
+&lt;h3 id=&quot;集群规划&quot;&gt;&lt;a href=&quot;#集群规划&quot; class=&quot;headerlink&quot; title
     
     </summary>
     
@@ -878,9 +897,11 @@ ceph osd rm 2
     <link href="http://202.104.112.179:8085/2017/07/29/consistHash/"/>
     <id>http://202.104.112.179:8085/2017/07/29/consistHash/</id>
     <published>2017-07-29T05:10:02.000Z</published>
-    <updated>2017-08-10T11:01:09.980Z</updated>
+    <updated>2017-08-10T11:12:12.859Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>转载申明</strong>：本文转载博主<a href="http://weibo.com/oilbeater/profile?s=6cm7D0" target="_blank" rel="external">oilbeater</a>的文章<a href="http://oilbeater.com/%E5%8D%9A%E5%AE%A2/2016/12/18/consist-hash.html" target="_blank" rel="external">聊聊一致性哈希</a>，转载请注明出处！</p>
+    <content type="html"><![CDATA[<hr>
+<p><strong>转载申明</strong>：本文转载博主<a href="http://weibo.com/oilbeater/profile?s=6cm7D0" target="_blank" rel="external">oilbeater</a>的文章<a href="http://oilbeater.com/%E5%8D%9A%E5%AE%A2/2016/12/18/consist-hash.html" target="_blank" rel="external">聊聊一致性哈希</a>，转载请注明出处！</p>
+<hr>
 <p>既然有一致性哈希，就肯定还有不一致哈希，为啥平时没人说不一致哈希呢？因为常见的哈希都是不一致的，所以就不修饰了，到了一致性哈希才特殊加个描述词修饰一下。</p>
 <p>哈希一般都是将一个大数字取模然后分散到不同的桶里，假设我们只有两个桶，有 2、3、4、5 四个数字，那么模 2 分桶的结果就是：</p>
 <img src="/2017/07/29/consistHash/unconsist-hash-1.png" alt="unconsist-hash-1.png" title="">
@@ -905,7 +926,8 @@ ceph osd rm 2
     
     <summary type="html">
     
-      &lt;p&gt;&lt;strong&gt;转载申明&lt;/strong&gt;：本文转载博主&lt;a href=&quot;http://weibo.com/oilbeater/profile?s=6cm7D0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;oilbeater&lt;/a&gt;的文章&lt;a href=
+      &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;转载申明&lt;/strong&gt;：本文转载博主&lt;a href=&quot;http://weibo.com/oilbeater/profile?s=6cm7D0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;oilbeater&lt;/a&gt;的文章&lt;a 
     
     </summary>
     

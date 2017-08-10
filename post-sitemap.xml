@@ -7,32 +7,8 @@
     </url>
 
     <url>
-        <loc>http://202.104.112.179:8085/2017/08/10/vuejs-demo/</loc>
-        <lastmod>2017-08-10T11:08:33.255Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://202.104.112.179:8085/2017/08/01/ceph-ops/</loc>
-        <lastmod>2017-08-10T11:01:37.454Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://202.104.112.179:8085/2017/07/29/consistHash/</loc>
-        <lastmod>2017-08-10T11:01:09.980Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://202.104.112.179:8085/2017/08/04/python-learning-01/</loc>
-        <lastmod>2017-08-10T06:38:58.607Z</lastmod>
+        <lastmod>2017-08-10T11:14:00.688Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -40,7 +16,31 @@
 
     <url>
         <loc>http://202.104.112.179:8085/2017/08/01/linux-ops/</loc>
-        <lastmod>2017-08-10T06:38:41.603Z</lastmod>
+        <lastmod>2017-08-10T11:13:11.900Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://202.104.112.179:8085/2017/07/29/consistHash/</loc>
+        <lastmod>2017-08-10T11:12:12.859Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://202.104.112.179:8085/2017/08/01/ceph-ops/</loc>
+        <lastmod>2017-08-10T11:11:47.796Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://202.104.112.179:8085/2017/08/10/vuejs-demo/</loc>
+        <lastmod>2017-08-10T11:08:33.255Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
