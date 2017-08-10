@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://202.104.112.179:8085/"/>
-  <updated>2017-08-10T06:20:12.215Z</updated>
+  <updated>2017-08-10T06:38:16.157Z</updated>
   <id>http://202.104.112.179:8085/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>一致性哈希算法</title>
     <link href="http://202.104.112.179:8085/2017/08/10/consistHash/"/>
     <id>http://202.104.112.179:8085/2017/08/10/consistHash/</id>
-    <published>2017-08-10T06:20:12.223Z</published>
-    <updated>2017-08-10T06:20:12.215Z</updated>
+    <published>2017-08-10T06:38:16.166Z</published>
+    <updated>2017-08-10T06:38:16.157Z</updated>
     
     <content type="html"><![CDATA[<p>既然有一致性哈希，就肯定还有不一致哈希，为啥平时没人说不一致哈希呢？因为常见的哈希都是不一致的，所以就不修饰了，到了一致性哈希才特殊加个描述词修饰一下。</p>
 <p>哈希一般都是将一个大数字取模然后分散到不同的桶里，假设我们只有两个桶，有 2、3、4、5 四个数字，那么模 2 分桶的结果就是：</p>
@@ -66,81 +66,11 @@
   </entry>
   
   <entry>
-    <title>这是一个测试文件</title>
-    <link href="http://202.104.112.179:8085/2017/08/04/test/"/>
-    <id>http://202.104.112.179:8085/2017/08/04/test/</id>
-    <published>2017-08-04T09:10:37.833Z</published>
-    <updated>2017-07-27T07:55:34.931Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一个测试文件的内容</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是一个测试文件的内容&lt;/p&gt;
-
-    
-    </summary>
-    
-      <category term="测试" scheme="http://202.104.112.179:8085/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="临时" scheme="http://202.104.112.179:8085/tags/%E4%B8%B4%E6%97%B6/"/>
-    
-      <category term="测试" scheme="http://202.104.112.179:8085/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python学习笔记（一）</title>
-    <link href="http://202.104.112.179:8085/2017/08/04/python-learning-01/"/>
-    <id>http://202.104.112.179:8085/2017/08/04/python-learning-01/</id>
-    <published>2017-08-04T02:27:01.000Z</published>
-    <updated>2017-08-04T09:57:15.267Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="python" scheme="http://202.104.112.179:8085/categories/python/"/>
-    
-    
-      <category term="python" scheme="http://202.104.112.179:8085/tags/python/"/>
-    
-      <category term="编程学习" scheme="http://202.104.112.179:8085/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux常用操作总结</title>
-    <link href="http://202.104.112.179:8085/2017/08/01/linux-ops/"/>
-    <id>http://202.104.112.179:8085/2017/08/01/linux-ops/</id>
-    <published>2017-08-01T06:17:19.000Z</published>
-    <updated>2017-08-04T09:56:37.246Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="查看当前文件夹大小"><a href="#查看当前文件夹大小" class="headerlink" title="查看当前文件夹大小"></a>查看当前文件夹大小</h4><pre><code>du -sh *
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;查看当前文件夹大小&quot;&gt;&lt;a href=&quot;#查看当前文件夹大小&quot; class=&quot;headerlink&quot; title=&quot;查看当前文件夹大小&quot;&gt;&lt;/a&gt;查看当前文件夹大小&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;du -sh *
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="linux" scheme="http://202.104.112.179:8085/categories/linux/"/>
-    
-    
-      <category term="linux" scheme="http://202.104.112.179:8085/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Vue.js学习-搭建一个简单的demo</title>
-    <link href="http://202.104.112.179:8085/2017/08/01/vuejs-demo/"/>
-    <id>http://202.104.112.179:8085/2017/08/01/vuejs-demo/</id>
-    <published>2017-08-01T06:17:19.000Z</published>
-    <updated>2017-08-10T06:30:31.259Z</updated>
+    <link href="http://202.104.112.179:8085/2017/08/10/vuejs-demo/"/>
+    <id>http://202.104.112.179:8085/2017/08/10/vuejs-demo/</id>
+    <published>2017-08-10T02:17:19.000Z</published>
+    <updated>2017-08-10T06:39:32.522Z</updated>
     
     <content type="html"><![CDATA[<p>这里主要记录vue.js+webpack在一个简单实例中的使用过程</p>
 <blockquote>
@@ -603,12 +533,12 @@ export default {
 }
 </code></pre><h4 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h4><p>构建打包</p>
 <pre><code>webpack
-</code></pre><img src="/2017/08/01/vuejs-demo/webpack.png" alt="webpack.png" title="">
+</code></pre><img src="/2017/08/10/vuejs-demo/webpack.png" alt="webpack.png" title="">
 <p>执行webpack-dev-server</p>
 <pre><code>webpack-dev-server
-</code></pre><img src="/2017/08/01/vuejs-demo/webpack-dev-server.png" alt="webpack-dev-server.png" title="">
+</code></pre><img src="/2017/08/10/vuejs-demo/webpack-dev-server.png" alt="webpack-dev-server.png" title="">
 <p>页面效果</p>
-<img src="/2017/08/01/vuejs-demo/index.jpg" alt="index.jpg" title="">
+<img src="/2017/08/10/vuejs-demo/index.jpg" alt="index.jpg" title="">
 ]]></content>
     
     <summary type="html">
@@ -629,11 +559,55 @@ export default {
   </entry>
   
   <entry>
+    <title>python学习笔记（一）</title>
+    <link href="http://202.104.112.179:8085/2017/08/04/python-learning-01/"/>
+    <id>http://202.104.112.179:8085/2017/08/04/python-learning-01/</id>
+    <published>2017-08-04T02:27:01.000Z</published>
+    <updated>2017-08-10T06:38:58.607Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="python" scheme="http://202.104.112.179:8085/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://202.104.112.179:8085/tags/python/"/>
+    
+      <category term="编程学习" scheme="http://202.104.112.179:8085/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux常用操作总结</title>
+    <link href="http://202.104.112.179:8085/2017/08/01/linux-ops/"/>
+    <id>http://202.104.112.179:8085/2017/08/01/linux-ops/</id>
+    <published>2017-08-01T06:17:19.000Z</published>
+    <updated>2017-08-10T06:38:41.603Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="查看当前文件夹大小"><a href="#查看当前文件夹大小" class="headerlink" title="查看当前文件夹大小"></a>查看当前文件夹大小</h4><pre><code>du -sh *
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;查看当前文件夹大小&quot;&gt;&lt;a href=&quot;#查看当前文件夹大小&quot; class=&quot;headerlink&quot; title=&quot;查看当前文件夹大小&quot;&gt;&lt;/a&gt;查看当前文件夹大小&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;du -sh *
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://202.104.112.179:8085/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://202.104.112.179:8085/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CEPH运维之安装部署（luminous）</title>
     <link href="http://202.104.112.179:8085/2017/08/01/ceph-ops/"/>
     <id>http://202.104.112.179:8085/2017/08/01/ceph-ops/</id>
     <published>2017-08-01T06:09:41.000Z</published>
-    <updated>2017-08-04T01:43:52.126Z</updated>
+    <updated>2017-08-10T06:38:29.299Z</updated>
     
     <content type="html"><![CDATA[<p>这篇文档主要介绍ceph的搭建过程。</p>
 <h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><p>服务器规划及配置，如下：</p>
