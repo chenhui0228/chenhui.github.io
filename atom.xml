@@ -112,11 +112,35 @@
   </entry>
   
   <entry>
+    <title>linux常用操作总结</title>
+    <link href="http://202.104.112.179:8085/2017/08/01/linux-ops/"/>
+    <id>http://202.104.112.179:8085/2017/08/01/linux-ops/</id>
+    <published>2017-08-01T06:17:19.000Z</published>
+    <updated>2017-08-04T09:56:37.246Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="查看当前文件夹大小"><a href="#查看当前文件夹大小" class="headerlink" title="查看当前文件夹大小"></a>查看当前文件夹大小</h4><pre><code>du -sh *
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;查看当前文件夹大小&quot;&gt;&lt;a href=&quot;#查看当前文件夹大小&quot; class=&quot;headerlink&quot; title=&quot;查看当前文件夹大小&quot;&gt;&lt;/a&gt;查看当前文件夹大小&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;du -sh *
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://202.104.112.179:8085/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://202.104.112.179:8085/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Vue.js学习-搭建一个简单的demo</title>
     <link href="http://202.104.112.179:8085/2017/08/01/vuejs-demo/"/>
     <id>http://202.104.112.179:8085/2017/08/01/vuejs-demo/</id>
     <published>2017-08-01T06:17:19.000Z</published>
-    <updated>2017-08-10T05:59:34.033Z</updated>
+    <updated>2017-08-10T06:02:43.082Z</updated>
     
     <content type="html"><![CDATA[<p>这里主要记录vue.js+webpack在一个简单实例中的使用过程</p>
 <blockquote>
@@ -602,30 +626,6 @@ export default {
     
     
       <category term="vue" scheme="http://202.104.112.179:8085/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux常用操作总结</title>
-    <link href="http://202.104.112.179:8085/2017/08/01/linux-ops/"/>
-    <id>http://202.104.112.179:8085/2017/08/01/linux-ops/</id>
-    <published>2017-08-01T06:17:19.000Z</published>
-    <updated>2017-08-04T09:56:37.246Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="查看当前文件夹大小"><a href="#查看当前文件夹大小" class="headerlink" title="查看当前文件夹大小"></a>查看当前文件夹大小</h4><pre><code>du -sh *
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;查看当前文件夹大小&quot;&gt;&lt;a href=&quot;#查看当前文件夹大小&quot; class=&quot;headerlink&quot; title=&quot;查看当前文件夹大小&quot;&gt;&lt;/a&gt;查看当前文件夹大小&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;du -sh *
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="linux" scheme="http://202.104.112.179:8085/categories/linux/"/>
-    
-    
-      <category term="linux" scheme="http://202.104.112.179:8085/tags/linux/"/>
     
   </entry>
   
