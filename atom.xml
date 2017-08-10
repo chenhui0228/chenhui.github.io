@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://202.104.112.179:8085/"/>
-  <updated>2017-08-10T11:00:35.876Z</updated>
+  <updated>2017-08-10T11:08:33.255Z</updated>
   <id>http://202.104.112.179:8085/</id>
   
   <author>
@@ -20,9 +20,11 @@
     <link href="http://202.104.112.179:8085/2017/08/10/vuejs-demo/"/>
     <id>http://202.104.112.179:8085/2017/08/10/vuejs-demo/</id>
     <published>2017-08-10T02:17:19.000Z</published>
-    <updated>2017-08-10T11:00:35.876Z</updated>
+    <updated>2017-08-10T11:08:33.255Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
+    <content type="html"><![CDATA[<hr>
+<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
+<hr>
 <p>这里主要记录vue.js+webpack在一个简单实例中的使用过程</p>
 <blockquote>
 <p><strong>说明</strong>：本次搭建基于Win 7平台</p>
@@ -494,10 +496,12 @@ export default {
     
     <summary type="html">
     
-      &lt;p&gt;&lt;strong&gt;原创申明&lt;/strong&gt;：本文为博主原创，转载请注明出处！&lt;/p&gt;
+      &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;原创申明&lt;/strong&gt;：本文为博主原创，转载请注明出处！&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;这里主要记录vue.js+webpack在一个简单实例中的使用过程&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：本次搭建基于Win 7平台&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：本次搭建基于W
     
     </summary>
     
