@@ -3,6 +3,18 @@
   
     
     <entry>
+      <title><![CDATA[test]]></title>
+      <url>/2017/08/10/test/</url>
+      <content type="html"><![CDATA[<hr>
+<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
+<p><strong>转载申明</strong>：本文转载博主的文章test，转载请注明出处！</p>
+<hr>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Vue.js学习-搭建一个简单的demo]]></title>
       <url>/2017/08/10/vuejs-demo/</url>
       <content type="html"><![CDATA[<hr>
