@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://202.104.112.179:8085/2017/08/01/vuejs-demo/</loc>
+        <lastmod>2017-08-10T05:52:45.987Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://202.104.112.179:8085/2017/08/04/python-learning-01/</loc>
         <lastmod>2017-08-04T09:57:15.267Z</lastmod>
         <changefreq>weekly</changefreq>

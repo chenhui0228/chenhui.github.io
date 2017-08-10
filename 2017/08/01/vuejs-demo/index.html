@@ -1,0 +1,1515 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vue," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="陈辉的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="这里主要记录vue.js+webpack在一个简单实例中的使用过程  说明：本次搭建基于Win 7平台  Node.js 安装官网提供了支持多种平台的的LTS版本下载，我们根据需要来进行下载安装。对于Windows平台提供了.mis和.zip(二进制)两种选择，我们可以根据自己需要任选一种安装。具体安装过程就不详说。  注意：为了使用方便，我们需要检测PATH环境变量是否配置了Node.js。点击">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue.js学习-搭建一个简单的demo">
+<meta property="og:url" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/index.html">
+<meta property="og:site_name" content="陈辉的博客">
+<meta property="og:description" content="这里主要记录vue.js+webpack在一个简单实例中的使用过程  说明：本次搭建基于Win 7平台  Node.js 安装官网提供了支持多种平台的的LTS版本下载，我们根据需要来进行下载安装。对于Windows平台提供了.mis和.zip(二进制)两种选择，我们可以根据自己需要任选一种安装。具体安装过程就不详说。  注意：为了使用方便，我们需要检测PATH环境变量是否配置了Node.js。点击">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/webpack.png">
+<meta property="og:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/webpack-dev-server.png">
+<meta property="og:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/index.jpg">
+<meta property="og:updated_time" content="2017-08-10T05:52:45.987Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue.js学习-搭建一个简单的demo">
+<meta name="twitter:description" content="这里主要记录vue.js+webpack在一个简单实例中的使用过程  说明：本次搭建基于Win 7平台  Node.js 安装官网提供了支持多种平台的的LTS版本下载，我们根据需要来进行下载安装。对于Windows平台提供了.mis和.zip(二进制)两种选择，我们可以根据自己需要任选一种安装。具体安装过程就不详说。  注意：为了使用方便，我们需要检测PATH环境变量是否配置了Node.js。点击">
+<meta name="twitter:image" content="http://202.104.112.179:8085/2017/08/01/vuejs-demo/webpack.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://202.104.112.179:8085/2017/08/01/vuejs-demo/"/>
+
+
+
+
+
+  <title> Vue.js学习-搭建一个简单的demo | 陈辉的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0c5bfe2b28edd6628f3b2177186e0772";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈辉的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://202.104.112.179:8085/2017/08/01/vuejs-demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈辉的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Vue.js学习-搭建一个简单的demo
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T14:17:19+08:00">
+                2017-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">Web前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/01/vuejs-demo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/01/vuejs-demo/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这里主要记录vue.js+webpack在一个简单实例中的使用过程</p>
+<blockquote>
+<p><strong>说明</strong>：本次搭建基于Win 7平台</p>
+</blockquote>
+<h3 id="Node-js-安装"><a href="#Node-js-安装" class="headerlink" title="Node.js 安装"></a>Node.js 安装</h3><p><a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="external">官网</a>提供了支持多种平台的的LTS版本下载，我们根据需要来进行下载安装。对于Windows平台提供了.mis和.zip(二进制)两种选择，我们可以根据自己需要任选一种安装。具体安装过程就不详说。</p>
+<blockquote>
+<p><strong>注意</strong>：为了使用方便，我们需要检测PATH环境变量是否配置了Node.js。点击开始=》运行=》输入“cmd”=》输入命令“path”（我们也可以直接使用命令win+R输入“cmd”=》输入命令“path”），输出如下结果：</p>
+<pre><code>C:\Users\01107267&gt;path
+PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;
+D:\Program Files\java\jdk1.8.0-windows-x64\bin;D:\Program Files\java\jdk1.8.0-windows-x64\jre\bin;
+D:\Program Files\TortoiseSVN\bin;D:\Program Files\apache-maven-3.3.9\bin;D:\Program Files\gradle-2.2.1\BIN;
+D:\Python27\Scripts;D:\Python27\;D:\Program Files\nodejs\;D:\Program Files\nodejs\node_global;
+</code></pre><p>我们看到环境变量中已经包含了D:\Program Files\nodejs，我们可以检查一下Node.js版本</p>
+<pre><code>C:\Users\01107267&gt;node --version
+v6.9.4
+</code></pre><p>我们可以看到有这样一个路径在Node.js目录下还有一个npm，这是Nodejs中的包管理工具，它是随Nodejs一起安装的</p>
+<pre><code>C:\Users\01107267&gt;npm -v
+3.10.10 
+</code></pre><p>这里需要说明的是可以看到还有一个路径D:\Program Files\nodejs\node_global;这个路径是说将npm安装时指定全局安装的包放在该路径下，比如后面我们会用的webpack，我们可以去到该目录看一下</p>
+<pre><code>D:\Program Files&gt;cd nodejs
+
+D:\Program Files\nodejs&gt;dir
+ 驱动器 D 中的卷没有标签。
+ 卷的序列号是 0005-FCB7
+
+ D:\Program Files\nodejs 的目录
+
+2017/03/12  11:52&lt;DIR .
+2017/03/12  11:52&lt;DIR ..
+2017/01/05  21:0018,513,048 node.exe
+2016/12/22  18:01   702 nodevars.bat
+2017/08/07  19:29&lt;DIR node_cache
+2017/01/05  20:46 8,997 node_etw_provider.man
+2017/08/08  09:49&lt;DIR node_global
+2017/01/16  10:57&lt;DIR node_modules
+2016/12/22  18:01 4,974 node_perfctr_provider.man
+2016/11/16  19:45   867 npm
+2016/11/16  19:45   483 npm.cmd
+   6 个文件 18,529,071 字节
+   5 个目录 146,669,424,640 可用字节
+
+D:\Program Files\nodejs&gt;cd node_global
+
+D:\Program Files\nodejs\node_global&gt;dir
+ 驱动器 D 中的卷没有标签。
+ 卷的序列号是 0005-FCB7
+
+ D:\Program Files\nodejs\node_global 的目录
+
+2017/08/08  09:49&lt;DIR .
+2017/08/08  09:49&lt;DIR ..
+2017/03/12  11:56&lt;DIR etc
+2017/08/08  09:49&lt;DIR node_modules
+2017/08/07  17:46   321 vue
+2017/08/07  17:46   333 vue-build
+2017/08/07  17:46   210 vue-build.cmd
+2017/08/07  17:46   331 vue-init
+2017/08/07  17:46   208 vue-init.cmd
+2017/08/07  17:46   331 vue-list
+2017/08/07  17:46   208 vue-list.cmd
+2017/08/07  17:46   198 vue.cmd
+2017/08/08  09:49   335 webpack
+2017/08/08  09:49   379 webpack-dev-server
+2017/08/08  09:49   256 webpack-dev-server.cmd
+2017/08/08  09:49   212 webpack.cmd
+  12 个文件  3,322 字节
+   4 个目录 146,669,424,640 可用字节
+
+D:\Program Files\nodejs\node_global&gt;
+</code></pre></blockquote>
+<h3 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h3><h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><p>新建一个项目文件夹，名为vuedemo</p>
+<pre><code>E:\IDC\Workspace&gt;md vuedemo
+
+E:\IDC\Workspace&gt;cd vuedemo
+
+E:\IDC\Workspace\vuedemo&gt;
+</code></pre><p>初始化项目，生成package.json文件</p>
+<pre><code>E:\IDC\Workspace\vuedemo&gt;npm init -y
+Wrote to E:\IDC\Workspace\vuedemo\package.json:
+
+{
+  &quot;name&quot;: &quot;vuedemo&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+&quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}
+
+
+
+E:\IDC\Workspace\vuedemo&gt;dir
+ 驱动器 E 中的卷没有标签。
+ 卷的序列号是 000D-8BC6
+
+ E:\IDC\Workspace\vuedemo 的目录
+
+2017/08/10  09:59&lt;DIR&gt;  .
+2017/08/10  09:59&lt;DIR&gt;  ..
+2017/08/10  09:59   221 package.json
+   1 个文件221 字节
+   2 个目录 91,132,411,904 可用字节
+</code></pre><h4 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h4><p>在使用npm安装依赖之前，我先解释几个参数。npm安装分为全局安装和和本地安装。如：</p>
+<pre><code>npm install express        # 本地安装
+npm install express -g    # 全局安装
+</code></pre><blockquote>
+<p><strong>说明</strong>：</p>
+<p>本地安装</p>
+<blockquote>
+<ul>
+<li>将安装包放在 ./node_modules 下（运行 npm 命令时所在的目录），如果没有 node_modules 目录，会在当前执行 npm 命令的目录下生成 node_modules 目录。</li>
+<li>可以通过 require() 来引入本地安装的包。</li>
+</ul>
+</blockquote>
+<p>全局安装</p>
+<blockquote>
+<ul>
+<li>将安装包放在 .\/node_modules 下（运行 npm 命令时所在的目录），如果没有 node_modules 目录，会在当前执行 npm 命令的目录下生成 node_modules 目录。</li>
+<li>可以直接在命令行里使用。</li>
+</ul>
+</blockquote>
+<p>如果你希望具备两者功能，则需要在两个地方安装它或使用 npm link。</p>
+</blockquote>
+<p>另外，npm install在安装npm包时，有两种命令可以把他们的信息写入package.json文件，一个是npm install –save另一个是 npm install –save-dev，他们表面上的区别是–save 会把依赖包名称添加到 package.json 文件 dependencies 键下，–save-dev 则添加到 package.json 文件 devDependencies 键下，–save-dev 是你开发时候依赖的东西，–save 是你发布之后还依赖的东西。</p>
+<h5 id="安装vue及相关组件"><a href="#安装vue及相关组件" class="headerlink" title="安装vue及相关组件"></a>安装vue及相关组件</h5><p>安装<a href="https://cn.vuejs.org/" target="_blank" rel="external">vue.js</a>，默认安装最新的版本</p>
+<pre><code>nmp install --save vue
+</code></pre><p>安装路由组件vue-router.js</p>
+<pre><code>nmp install --save vue-router
+</code></pre><blockquote>
+<p><strong>拓展</strong>：在一个项目中通常还需要用到的组件<a href="https://github.com/pagekit/vue-resource" target="_blank" rel="external">vue-resource</a>进行HTTP异步请求提交，还可以使用<a href="http://element.eleme.io/#/zh-CN/component/installation" target="_blank" rel="external">element-ui</a>提供的各种前端组件帮助我们快速完成开发。</p>
+</blockquote>
+<h5 id="安装webpack及相关组件"><a href="#安装webpack及相关组件" class="headerlink" title="安装webpack及相关组件"></a>安装webpack及相关组件</h5><p>全局和本地安装<a href="https://webpack.github.io" target="_blank" rel="external">webpack</a>，以及Nodejs.js解释服务器webpack-dev-server</p>
+<pre><code>npm install webpack webpack-dev-server -g                    #全局安装
+npm install --save-dev webpack webpack-dev-server            #本地安装
+</code></pre><h5 id="安装其他有用的组件"><a href="#安装其他有用的组件" class="headerlink" title="安装其他有用的组件"></a>安装其他有用的组件</h5><p>安装babel，其作用是将ES6的语法编译成浏览器认识的语法ES5</p>
+<pre><code>npm install --save-dev babel-core babel-loader babel-preset-es2015
+</code></pre><p>安装vue解析组件，解析.vue后缀文件</p>
+<pre><code>npm install --save-dev vue-loader vue-template-compiler
+</code></pre><p>安装css解析组件</p>
+<pre><code>npm install --save-dev css-loader style-loader
+</code></pre><blockquote>
+<p><strong>拓展</strong>：css-loader 和 style-loader，二者处理的任务不同，css-loader使你能够使用类似@import 和 url(…)的方法实现 require()的功能,style-loader将所有的计算后的样式加入页面中，二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中。</p>
+</blockquote>
+<p>安装url-loader，file-loader打包文件和图片</p>
+<pre><code>npm install --save-dev url-loader file-loader
+</code></pre><p>查看一下package.json文件的内容</p>
+<pre><code>E:\IDC\Workspace\vuedemo&gt;type package.json
+{
+  &quot;name&quot;: &quot;vuedemo&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;vue&quot;: &quot;^2.4.2&quot;,
+    &quot;vue-router&quot;: &quot;^2.7.0&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;babel-core&quot;: &quot;^6.25.0&quot;,
+    &quot;babel-loader&quot;: &quot;^7.1.1&quot;,
+    &quot;babel-preset-es2015&quot;: &quot;^6.24.1&quot;,
+    &quot;css-loader&quot;: &quot;^0.28.4&quot;,
+    &quot;file-loader&quot;: &quot;^0.11.2&quot;,
+    &quot;style-loader&quot;: &quot;^0.18.2&quot;,
+    &quot;url-loader&quot;: &quot;^0.5.9&quot;,
+    &quot;vue-loader&quot;: &quot;^13.0.4&quot;,
+    &quot;vue-template-compiler&quot;: &quot;^2.4.2&quot;,
+    &quot;webpack&quot;: &quot;^3.5.2&quot;,
+    &quot;webpack-dev-server&quot;: &quot;^2.7.1&quot;
+  }
+}
+</code></pre><h4 id="编辑显目目录和添加代码"><a href="#编辑显目目录和添加代码" class="headerlink" title="编辑显目目录和添加代码"></a>编辑显目目录和添加代码</h4><p>查看当前目录</p>
+<pre><code>E:\IDC\Workspace\vuedemo&gt;tree
+E:.
+├─dist
+├─node_modules
+│  ├─.bin
+│  └─...
+├─src
+│   ├─assets
+│   │   ├─imgs
+│    │   │   └─logo.png
+│   │   └─styles
+│    │       └─base.css
+│   ├─components
+│    │       └─header.vue
+│   ├─views
+│    │    ├─about.vue
+│    │    └─home.vue
+│   ├─App.vue
+│    ├─main.js
+│    └─routes.js
+├─index.html  
+├─package.json    
+└─webpack.config.js
+</code></pre><h5 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h5><p>//dist文件是后面执行webpack指令生产的，不用管；</p>
+<p>//webpack.config.js 配置文件，本身也是一个标准的Commonjs规范的模块；</p>
+<p>//routes.js文件放路由配置文件；</p>
+<p>//index.html首页入口文件</p>
+<p>//App.vue是项目入口文件。</p>
+<p>//main.js这是项目的核心文件。全局的配置都在这个文件里面配置。</p>
+<p>//components目录里面放了公共组件header文件。</p>
+<p>//views文件放详情页面；</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><h6 id="根目录代码"><a href="#根目录代码" class="headerlink" title="根目录代码"></a>根目录代码</h6><p>这里主要是编写webpack.config.js配置文件</p>
+<pre><code>/**
+ * Created by 01107267 on 2017/8/7.
+ */
+var path = require(&apos;path&apos;)
+var webpack = require(&apos;webpack&apos;)
+
+module.exports = {
+    entry: &apos;./src/main.js&apos;,//也可以是数组，对象
+    output: {
+        path: path.resolve(__dirname, &apos;./dist&apos;),//webpack 构建后的结果存在此位置
+        publicPath: &apos;/dist/&apos;,   //许多Webpack的插件用于在生产模式和开发模式下下更新内嵌到css、html，img文件里的url值
+        filename: &apos;build.js&apos;
+    },
+    module: {
+        rules: [
+            {
+                test: /\.vue$/, //一个匹配loaders所处理的文件的拓展名的正则表达式（必须）
+                loader: &apos;vue-loader&apos;, //loader的名称（必须）
+                options: {
+                    loaders: {
+                    }
+                    //other vue-oader options go here
+                }
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
+                loader: &apos;file-loader&apos;,
+                query: {
+                    name: &apos;[name].[ext]?[hash]&apos;
+                }
+            },
+            {
+                test: /\.js$/,
+                loader: &apos;babel-loader&apos;,
+                exclude: /node_modules/
+            },
+            // self define
+            {
+                test: /\.css$/,
+                loader: &quot;style-loader!css-loader&quot;
+            }
+            ,
+            {
+                test: /\.scss$/,
+                loader: &quot;style-loader!css-loader!sass-loader!&quot;
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+                loader: &apos;file-loader&apos;
+            }
+          ]
+    },
+    resolve: {
+        alias: {
+            &apos;vue$&apos;: &apos;vue/dist/vue.esm.js&apos;
+        }
+    },
+    devServer: {//webpack-dev-server配置
+        historyApiFallback: true,//不跳转
+        noInfo: true,
+        inline: true//实时刷新
+    },
+    performance: {
+        hints: false
+    },
+    devtool: &apos;#eval-source-map&apos;
+}
+
+if (process.env.NODE_ENV === &apos;production&apos;) {
+    module.exports.devtool = &apos;#source-map&apos;
+    // http://vue-loader.vuejs.org/en/workflow/production.html
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new webpack.DefinePlugin({
+            &apos;process.env&apos;: {
+                NODE_ENV: &apos;&quot;production&quot;&apos;
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        })
+    ])
+}
+</code></pre><blockquote>
+<p><strong>注释</strong>：<br>test：一个匹配loaders所处理的文件的拓展名的正则表达式（必须）<br>loader：loader的名称（必须）<br>include/exclude:手动添加必须处理的文件（文件夹）或屏蔽不需要处理的文件（文件夹）（可选）</p>
+</blockquote>
+<p>编写routes.js文件</p>
+<pre><code>// 引用模板
+import Vue from &apos;vue&apos;;
+import Router from &apos;vue-router&apos;;
+import indexPage from &apos;./components/header.vue&apos;
+import homePage from &apos;./views/home.vue&apos;
+import aboutPage from &apos;./views/about.vue&apos;
+
+Vue.use(Router)
+
+export default new Router({
+    routes:[
+        {
+            path:&apos;/&apos;,
+            component:homePage
+        },
+        {
+            path:&apos;/about&apos;,
+            component:aboutPage
+        }
+    ]
+})
+</code></pre><p>编写index.html文件</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;appIndex&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;script src=&quot;./dist/build.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>编写App.vue文件</p>
+<pre><code>&lt;!--App.vue是项目入口文件。--&gt;
+&lt;template&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;header-tab&gt;&lt;/header-tab&gt;
+        &lt;h2&gt;{{msg}}&lt;/h2&gt;
+        &lt;div class=&quot;nav-box&quot;&gt;
+            &lt;p class=&quot;nav-list&quot;&gt;
+                &lt;router-link class=&quot;nav-item&quot; to=&quot;/&quot;&gt;首页&lt;/router-link&gt;
+                &lt;router-link class=&quot;nav-item&quot; to=&quot;/about&quot;&gt;关于&lt;/router-link&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;router-view&gt;&lt;/router-view&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import HeaderTab from &apos;./components/header.vue&apos;;
+export default {
+  name: &apos;app&apos;,
+  data () {
+    return {
+      msg: &apos;Welcome to Your Vue.js App&apos;
+    }
+  },
+  components:{
+    HeaderTab
+  }
+}
+&lt;/script&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;
+    h2{
+        color:#ff0000;
+    }
+    #app {
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
+    h1, h2 {
+        font-weight: normal;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        text-align: left;
+        margin: 0 10px;
+    }
+    a {
+        color: #42b983;
+    }
+&lt;/style&gt;
+</code></pre><p>编写main.js文件</p>
+<pre><code>//main.js这是项目的核心文件。全局的配置都在这个文件里面配置
+import Vue from &apos;vue&apos;
+import App from &apos;./App.vue&apos;
+import router from &apos;./routes.js&apos;
+
+import &apos;./assets/styles/base.css&apos;
+//import &apos;./assets/sass/reset.sass&apos;//报错暂时不用sass
+Vue.config.debug = true;//开启错误提示
+
+new Vue({
+        router,
+        el: &apos;#appIndex&apos;,
+        render: h =&gt; h(App)
+})
+</code></pre><h6 id="components组件目录代码"><a href="#components组件目录代码" class="headerlink" title="components组件目录代码"></a>components组件目录代码</h6><p>编写header.vue文件</p>
+<pre><code>&lt;template&gt;
+    &lt;div&gt;
+        &lt;h1&gt;共同header&lt;/h1&gt;
+        &lt;img src=&quot;../assets/imgs/logo.png&quot;&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre><h6 id="views目录代码"><a href="#views目录代码" class="headerlink" title="views目录代码"></a>views目录代码</h6><p>编写about.vue文件</p>
+<pre><code>//about.vue
+&lt;template&gt;
+    &lt;div&gt;about&lt;/div&gt;
+&lt;/template&gt;
+</code></pre><p>编写home.vue文件</p>
+<pre><code>//index.vue
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;ol&gt;
+            &lt;li v-for=&quot;todo in todos&quot;&gt;
+                {{ todo.text }}
+            &lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;button @click=&quot;eClick()&quot;&gt;事件&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &apos;indexP&apos;,
+  data () {
+    return {
+       todos: [
+          { text: &apos;Learn JavaScript&apos; },
+          { text: &apos;Learn Vue&apos; },
+          { text: &apos;Build something awesome&apos; }
+        ]
+    }
+  },
+  methods:{
+    eClick(){
+        console.log(9999);
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre><h6 id="style目录代码"><a href="#style目录代码" class="headerlink" title="style目录代码"></a>style目录代码</h6><p>编写base.css文件</p>
+<pre><code>h1{
+    color: #999;
+}
+</code></pre><h4 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h4><p>构建打包</p>
+<pre><code>webpack
+</code></pre><img src="/2017/08/01/vuejs-demo/webpack.png" alt="webpack.png" title="">
+<p>执行webpack-dev-server</p>
+<pre><code>webpack-dev-server
+</code></pre><img src="/2017/08/01/vuejs-demo/webpack-dev-server.png" alt="webpack-dev-server.png" title="">
+<p>页面效果</p>
+<img src="/2017/08/01/vuejs-demo/index.jpg" alt="index.jpg" title="">
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/01/ceph-ops/" rel="next" title="CEPH运维之安装部署（luminous）">
+                <i class="fa fa-chevron-left"></i> CEPH运维之安装部署（luminous）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/01/linux-ops/" rel="prev" title="linux常用操作总结">
+                linux常用操作总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/01/vuejs-demo/"
+           data-title="Vue.js学习-搭建一个简单的demo" data-url="http://202.104.112.179:8085/2017/08/01/vuejs-demo/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈辉" />
+          <p class="site-author-name" itemprop="name">陈辉</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chenhui0228" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.tianjun.ml/" title="Tian Jun" target="_blank">Tian Jun</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://javayhu.me/" title="Hujiawei" target="_blank">Hujiawei</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-js-安装"><span class="nav-number">1.</span> <span class="nav-text">Node.js 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目搭建"><span class="nav-number">2.</span> <span class="nav-text">项目搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化项目"><span class="nav-number">2.1.</span> <span class="nav-text">初始化项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装依赖库"><span class="nav-number">2.2.</span> <span class="nav-text">安装依赖库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装vue及相关组件"><span class="nav-number">2.2.1.</span> <span class="nav-text">安装vue及相关组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装webpack及相关组件"><span class="nav-number">2.2.2.</span> <span class="nav-text">安装webpack及相关组件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装其他有用的组件"><span class="nav-number">2.2.3.</span> <span class="nav-text">安装其他有用的组件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑显目目录和添加代码"><span class="nav-number">2.3.</span> <span class="nav-text">编辑显目目录和添加代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#项目目录"><span class="nav-number">2.3.1.</span> <span class="nav-text">项目目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码"><span class="nav-number">2.3.2.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#根目录代码"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">根目录代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#components组件目录代码"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">components组件目录代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#views目录代码"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">views目录代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#style目录代码"><span class="nav-number">2.3.2.4.</span> <span class="nav-text">style目录代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目启动"><span class="nav-number">2.4.</span> <span class="nav-text">项目启动</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈辉</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chenhui"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+</body>
+</html>
