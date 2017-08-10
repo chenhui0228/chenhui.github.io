@@ -101,18 +101,18 @@
 
 
 
-<meta name="description" content="这篇文档主要介绍ceph的搭建过程。 集群规划服务器规划及配置，如下：    hostname public ip cluster ip 节点说明     ch-osd-1 172.16.30.73 172.16.31.73 osd节点   ch-osd-2 172.16.30.72 172.16.31.72 osd节点   ch-osd-3 172.16.30.75 172.16.31.75 o">
+<meta name="description" content="原创申明：本文为博主原创，转载请注明出处！     这篇文档主要介绍ceph的搭建过程。 集群规划服务器规划及配置，如下：    hostname public ip cluster ip 节点说明     ch-osd-1 172.16.30.73 172.16.31.73 osd节点   ch-osd-2 172.16.30.72 172.16.31.72 osd节点   ch-osd-3 1">
 <meta name="keywords" content="ceph,分布式存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CEPH运维之安装部署（luminous）">
 <meta property="og:url" content="http://202.104.112.179:8085/2017/08/01/ceph-ops/index.html">
 <meta property="og:site_name" content="陈辉的博客">
-<meta property="og:description" content="这篇文档主要介绍ceph的搭建过程。 集群规划服务器规划及配置，如下：    hostname public ip cluster ip 节点说明     ch-osd-1 172.16.30.73 172.16.31.73 osd节点   ch-osd-2 172.16.30.72 172.16.31.72 osd节点   ch-osd-3 172.16.30.75 172.16.31.75 o">
+<meta property="og:description" content="原创申明：本文为博主原创，转载请注明出处！     这篇文档主要介绍ceph的搭建过程。 集群规划服务器规划及配置，如下：    hostname public ip cluster ip 节点说明     ch-osd-1 172.16.30.73 172.16.31.73 osd节点   ch-osd-2 172.16.30.72 172.16.31.72 osd节点   ch-osd-3 1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T06:38:29.299Z">
+<meta property="og:updated_time" content="2017-08-10T11:01:37.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CEPH运维之安装部署（luminous）">
-<meta name="twitter:description" content="这篇文档主要介绍ceph的搭建过程。 集群规划服务器规划及配置，如下：    hostname public ip cluster ip 节点说明     ch-osd-1 172.16.30.73 172.16.31.73 osd节点   ch-osd-2 172.16.30.72 172.16.31.72 osd节点   ch-osd-3 172.16.30.75 172.16.31.75 o">
+<meta name="twitter:description" content="原创申明：本文为博主原创，转载请注明出处！     这篇文档主要介绍ceph的搭建过程。 集群规划服务器规划及配置，如下：    hostname public ip cluster ip 节点说明     ch-osd-1 172.16.30.73 172.16.31.73 osd节点   ch-osd-2 172.16.30.72 172.16.31.72 osd节点   ch-osd-3 1">
 
 
 
@@ -460,7 +460,8 @@
       
 
       
-        <p>这篇文档主要介绍ceph的搭建过程。</p>
+        <p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！    </p>
+<p>这篇文档主要介绍ceph的搭建过程。</p>
 <h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><p>服务器规划及配置，如下：</p>
 <table>
 <thead>
@@ -746,8 +747,7 @@ ceph osd rm 2
 <p>更详细的使用方法见<a href="http://docs.ceph.com/docs/master/rados/operations/add-or-rm-osds/#removing-osds-manual" target="_blank" rel="external">官方文档</a></p>
 <h4 id="配置推送"><a href="#配置推送" class="headerlink" title="配置推送"></a>配置推送</h4><p>我们无需再每台服务器上修改ceph.conf文件中的配置信息，只需要在管理节点修改一份，然后推送到需要更行的节点上即可，如这里我们修改了ch-mon-1上/etc/ceph/ceph.conf内容，需要同时在ch-mon-2, ch-mon-3生效</p>
 <pre><code>ceph-deploy --overwrite-conf config push ch-mon-2 ch-mon-3
-</code></pre><p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！    </p>
-
+</code></pre>
       
     </div>
 
