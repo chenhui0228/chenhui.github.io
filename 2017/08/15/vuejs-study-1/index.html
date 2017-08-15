@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端,WVVM,Vue," />
 
 
 
@@ -101,13 +101,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="陈辉的博客">
-<meta property="og:url" content="http://202.104.112.179:8085/archives/index.html">
+<meta name="description" content="转载申明：本文转载博主Xheldon的文章Vue学习总结，转载请注明出处！  这篇文章从Vue 2.0官方文档的”实例”一节开始, 研究一些 Vue API 的使用方法, 以及 Vue 实现一些功能的原理, 此外还有自己的使用感受, 以及站在自己浅薄的角度分析 Vue 为什么要这么设计的不敬之举, 如有得罪还请海涵, 刚接触 Vue 不久, 不当之处烦请指出, 先行谢过。  注意: 基础知识直接">
+<meta name="keywords" content="前端,WVVM,Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuejs-study-1">
+<meta property="og:url" content="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/index.html">
 <meta property="og:site_name" content="陈辉的博客">
+<meta property="og:description" content="转载申明：本文转载博主Xheldon的文章Vue学习总结，转载请注明出处！  这篇文章从Vue 2.0官方文档的”实例”一节开始, 研究一些 Vue API 的使用方法, 以及 Vue 实现一些功能的原理, 此外还有自己的使用感受, 以及站在自己浅薄的角度分析 Vue 为什么要这么设计的不敬之举, 如有得罪还请海涵, 刚接触 Vue 不久, 不当之处烦请指出, 先行谢过。  注意: 基础知识直接">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/props-vs-data.png">
+<meta property="og:image" content="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/computed-vs-data1.png">
+<meta property="og:updated_time" content="2017-08-15T01:29:20.148Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陈辉的博客">
+<meta name="twitter:title" content="vuejs-study-1">
+<meta name="twitter:description" content="转载申明：本文转载博主Xheldon的文章Vue学习总结，转载请注明出处！  这篇文章从Vue 2.0官方文档的”实例”一节开始, 研究一些 Vue API 的使用方法, 以及 Vue 实现一些功能的原理, 此外还有自己的使用感受, 以及站在自己浅薄的角度分析 Vue 为什么要这么设计的不敬之举, 如有得罪还请海涵, 刚接触 Vue 不久, 不当之处烦请指出, 先行谢过。  注意: 基础知识直接">
+<meta name="twitter:image" content="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/props-vs-data.png">
 
 
 
@@ -135,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://202.104.112.179:8085/archives/"/>
+  <link rel="canonical" href="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/"/>
 
 
 
 
 
-  <title> 归档 | 陈辉的博客 </title>
+  <title> vuejs-study-1 | 陈辉的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -176,7 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -314,295 +322,273 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 7 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/15/vuejs-study-1/" itemprop="url">
-              
-                <span itemprop="name">vuejs-study-1</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-15T09:18:54+08:00"
-              content="2017-08-15" >
-          08-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/10/vuejs-demo/" itemprop="url">
-              
-                <span itemprop="name">Vue.js学习-搭建一个简单的demo</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-10T10:17:19+08:00"
-              content="2017-08-10" >
-          08-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/04/python-learning-01/" itemprop="url">
-              
-                <span itemprop="name">python学习笔记（一）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-04T10:27:01+08:00"
-              content="2017-08-04" >
-          08-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/01/linux-ops/" itemprop="url">
-              
-                <span itemprop="name">linux常用操作总结</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-01T14:17:19+08:00"
-              content="2017-08-01" >
-          08-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/01/ceph-ops/" itemprop="url">
-              
-                <span itemprop="name">CEPH运维之安装部署（luminous）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-01T14:09:41+08:00"
-              content="2017-08-01" >
-          08-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/29/consistHash/" itemprop="url">
-              
-                <span itemprop="name">一致性哈希算法</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-29T13:10:02+08:00"
-              content="2017-07-29" >
-          07-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/10/test/" itemprop="url">
-              
-                <span itemprop="name">test</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-10T19:24:35+08:00"
-              content="2017-07-10" >
-          07-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈辉">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈辉的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                vuejs-study-1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T09:18:54+08:00">
+                2017-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端技术/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端技术/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/15/vuejs-study-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/15/vuejs-study-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p><strong>转载申明</strong>：本文转载博主<a href="http://www.xheldon.com" target="_blank" rel="external">Xheldon</a>的文章<a href="http://www.xheldon.com/vue-learning-summary.html" target="_blank" rel="external">Vue学习总结</a>，转载请注明出处！</p>
+<hr>
+<p>这篇文章从Vue 2.0官方文档的”实例”一节开始, 研究一些 Vue API 的使用方法, 以及 Vue 实现一些功能的原理, 此外还有自己的使用感受, 以及站在自己浅薄的角度分析 Vue 为什么要这么设计的不敬之举, 如有得罪还请海涵, 刚接触 Vue 不久, 不当之处烦请指出, 先行谢过。</p>
+<blockquote>
+<p><strong>注意</strong>: 基础知识直接略过, 我只说我认为需要说的点。</p>
+</blockquote>
+<h4 id="Vue实例"><a href="#Vue实例" class="headerlink" title="Vue实例"></a>Vue实例</h4><p>每个 Vue.js 的应用都是通过构造函数创建一个 Vue 的根实例启动的, 意思就是, 每个页面的数据都应该只由这一个实例维护, 原始数据的来源都应该只由根实例来发出和接收统一管理, 根实例再通过 props, 分发数据, 或者 events 来监听数据. 子组件只需要 watch/computed 数据变化, 及时更新即可。</p>
+<p>文档中说了一句话叫: 所有的 Vue.js 组件其实都是被扩展的 Vue 实例, 这句话正确理解起来应该是, 你可以在组件上使用和实例一样的方法和钩子函数, 除了 data 。</p>
+<p>组件中的 data, 必须是一个函数, 因为组件会被复用, 所以必须每次调用组件都生成一份数据。</p>
+<p>数据代理(proxy), 指的是 Vue 实例会代理其 data 对象中的所有属性, 而实例属性 $data 则表示 data 属性本身, 以区别被代理的 data。</p>
+<p>意思是, 如果一个 vm 的 data 属性为 {a: ‘xheldon’}, 那么 vm.a 即为 ‘xheldon’, 而 vm.$data 则为 {a: ‘xheldon’}。</p>
+<p>组件其实也是一个(被扩展的) Vue 实例, 下面是个简单的验证:</p>
+<p>有一个 list.vue 组件(template 和 style 省略)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">  data()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue);<span class="comment">//true</span></div><div class="line">    <span class="keyword">return</span> &#123;&#125;</div><div class="line">  &#125;</div><div class="line">  name: <span class="string">'com-list'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="props-vs-data"><a href="#props-vs-data" class="headerlink" title="props vs data"></a>props vs data</h4><p>初始化组件的时候, prop 上的属性和 data 上的属性以及 computed 的方法, 都被绑定到 Vue 实例上了, 但是 porps 上的属性, 优先级比 data 同名属性要高,下面是验证:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">  data()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'first:'</span>,<span class="keyword">this</span>);<span class="comment">//list 的实例</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">a</span>: <span class="string">'a'</span>,<span class="comment">//属性 a 代表的值挂在 data 上, 但是被下面的 prop 属性同名覆盖(查看上面控制台输出的内容即可)</span></div><div class="line">      d: <span class="string">'d'</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">props</span>: [<span class="string">'a'</span>],<span class="comment">//和 data 中的 a 属性同名, 因此来自父级的数据将 data 中的同名属性 a 上的数据覆盖.(注:父级是根组件, 挂载在一个实例上)</span></div><div class="line">  name: <span class="string">'com-list'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果出现警告(不是报错, 不影响渲染):</p>
+<img src="/2017/08/15/vuejs-study-1/props-vs-data.png" alt="props-vs-data.png" title="">
+<p>而 computed 返回的函数名和 data 上的属性名可以重复, 并且不会有任何提示, 但是同名覆盖了之后, 因为在初始化的时候, 从控制台可以看到 _data 后于 _computedWatcher 来设置这个重复属性的 getter 和 setter(不知道是不是这个原因, 先放在这个地方以待我深入研究之后再修改这篇文章), 因此导致了被覆盖. 相关原理可以看<a href="https://juejin.im/entry/577639de165abd00547b0924" target="_blank" rel="external">这篇介绍</a></p>
+<p>它们都在初始化的时候绑定到了实例 属性 上, 同名的 computed 属性被覆盖了, 但是 Vue devtool 仍然正确显示了出来)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">  data()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'first:'</span>,<span class="keyword">this</span>);<span class="comment">//list 的实例</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">ab</span>: <span class="string">'a'</span>,<span class="comment">//属性 a 代表的值挂在 data 上, 但是被下面的 prop 属性同名覆盖(查看上面控制台输出的内容即可)</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">computed</span>: &#123;</div><div class="line">    ab()&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'computed a'</span>;<span class="comment">//方法名跟 data 上的 a 属性同名, 因此console 出来的 this 不会出现它的值, 用花括号输出的时候也是输出的 data 上的同名属性</span></div><div class="line">    &#125;,</div><div class="line">    f()&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'computed f'</span><span class="comment">//方法名没有重复的, 因此 console 出来的 this 会有它的同名属性, 且值为 'computed f', 我们提供的 function 被作为该属性的 getter(计算属性默认只有 getter, 可以手动添加 setter)</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">name</span>: <span class="string">'com-list'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<img src="/2017/08/15/vuejs-study-1/computed-vs-data1.png" alt="computed-vs-data1.png" title="">
+<p>Vue devtool 正确显示了出来:</p>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/WVVM/" rel="tag"># WVVM</a>
+          
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/10/vuejs-demo/" rel="next" title="Vue.js学习-搭建一个简单的demo">
+                <i class="fa fa-chevron-left"></i> Vue.js学习-搭建一个简单的demo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/15/vuejs-study-1/"
+           data-title="vuejs-study-1" data-url="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -622,8 +608,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -725,6 +720,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue实例"><span class="nav-number">1.</span> <span class="nav-text">Vue实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#props-vs-data"><span class="nav-number">2.</span> <span class="nav-text">props vs data</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -852,11 +863,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   

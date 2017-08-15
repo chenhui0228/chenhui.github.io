@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://202.104.112.179:8085/2017/08/15/vuejs-study-1/</loc>
+        <lastmod>2017-08-15T01:29:20.148Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://202.104.112.179:8085/2017/08/10/vuejs-demo/</loc>
         <lastmod>2017-08-10T12:29:05.039Z</lastmod>
         <changefreq>weekly</changefreq>
