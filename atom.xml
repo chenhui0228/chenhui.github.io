@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://202.104.112.179:8085/"/>
-  <updated>2017-08-15T01:29:20.148Z</updated>
+  <updated>2017-09-11T07:02:59.543Z</updated>
   <id>http://202.104.112.179:8085/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>笔记</title>
+    <link href="http://202.104.112.179:8085/2017/09/11/notobook/"/>
+    <id>http://202.104.112.179:8085/2017/09/11/notobook/</id>
+    <published>2017-09-11T06:03:07.000Z</published>
+    <updated>2017-09-11T07:02:59.543Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
+<hr>
+<h4 id="pip安装理想python包"><a href="#pip安装理想python包" class="headerlink" title="pip安装理想python包"></a>pip安装理想python包</h4><h5 id="准备python包"><a href="#准备python包" class="headerlink" title="准备python包"></a>准备python包</h5><p>在一台可以连网得服务器上，编写requirements文件，或者根据已经安装好的包生成requirements文件。</p>
+<pre><code>pip list #查看安装的包
+pip freeze &gt;requirements.txt
+pip download -d /data/packages -r requirements.txt
+</code></pre><h5 id="离线情况安装打包好的包"><a href="#离线情况安装打包好的包" class="headerlink" title="离线情况安装打包好的包"></a>离线情况安装打包好的包</h5><p>将packages文件夹和requirement.txt拷贝至离线机器上目录下</p>
+<pre><code>pip install --no-index --find-index=/data/packages -r requirements.txt
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;原创申明&lt;/strong&gt;：本文为博主原创，转载请注明出处！&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;pip安装理想python包&quot;&gt;&lt;a href=&quot;#pip安装理想python包&quot; class=&quot;headerlink&quot; title=&quot;pip安装理想p
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://202.104.112.179:8085/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="操作命令" scheme="http://202.104.112.179:8085/tags/%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>vuejs-study-1</title>
@@ -46,7 +80,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">  data()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'first:'</span>,<span class="keyword">this</span>);<span class="comment">//list 的实例</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">ab</span>: <span class="string">'a'</span>,<span class="comment">//属性 a 代表的值挂在 data 上, 但是被下面的 prop 属性同名覆盖(查看上面控制台输出的内容即可)</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">computed</span>: &#123;</div><div class="line">    ab()&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'computed a'</span>;<span class="comment">//方法名跟 data 上的 a 属性同名, 因此console 出来的 this 不会出现它的值, 用花括号输出的时候也是输出的 data 上的同名属性</span></div><div class="line">    &#125;,</div><div class="line">    f()&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'computed f'</span><span class="comment">//方法名没有重复的, 因此 console 出来的 this 会有它的同名属性, 且值为 'computed f', 我们提供的 function 被作为该属性的 getter(计算属性默认只有 getter, 可以手动添加 setter)</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">name</span>: <span class="string">'com-list'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <img src="/2017/08/15/vuejs-study-1/computed-vs-data1.png" alt="computed-vs-data1.png" title="">
 <p>Vue devtool 正确显示了出来:</p>
-
+<img src="/2017/08/15/vuejs-study-1/computed-vs-data3.png" alt="computed-vs-data3.png" title="">
 ]]></content>
     
     <summary type="html">

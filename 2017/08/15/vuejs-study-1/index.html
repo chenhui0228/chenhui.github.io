@@ -111,6 +111,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/props-vs-data.png">
 <meta property="og:image" content="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/computed-vs-data1.png">
+<meta property="og:image" content="http://202.104.112.179:8085/2017/08/15/vuejs-study-1/computed-vs-data3.png">
 <meta property="og:updated_time" content="2017-08-15T01:29:20.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vuejs-study-1">
@@ -476,7 +477,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">  data()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'first:'</span>,<span class="keyword">this</span>);<span class="comment">//list 的实例</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">ab</span>: <span class="string">'a'</span>,<span class="comment">//属性 a 代表的值挂在 data 上, 但是被下面的 prop 属性同名覆盖(查看上面控制台输出的内容即可)</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">computed</span>: &#123;</div><div class="line">    ab()&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'computed a'</span>;<span class="comment">//方法名跟 data 上的 a 属性同名, 因此console 出来的 this 不会出现它的值, 用花括号输出的时候也是输出的 data 上的同名属性</span></div><div class="line">    &#125;,</div><div class="line">    f()&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'computed f'</span><span class="comment">//方法名没有重复的, 因此 console 出来的 this 会有它的同名属性, 且值为 'computed f', 我们提供的 function 被作为该属性的 getter(计算属性默认只有 getter, 可以手动添加 setter)</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">name</span>: <span class="string">'com-list'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <img src="/2017/08/15/vuejs-study-1/computed-vs-data1.png" alt="computed-vs-data1.png" title="">
 <p>Vue devtool 正确显示了出来:</p>
-
+<img src="/2017/08/15/vuejs-study-1/computed-vs-data3.png" alt="computed-vs-data3.png" title="">
 
       
     </div>
@@ -532,6 +533,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/11/notobook/" rel="prev" title="笔记">
+                笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -633,7 +638,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -644,7 +649,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -655,7 +660,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
