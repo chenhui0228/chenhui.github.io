@@ -12,8 +12,9 @@
 <li><p>硬件</p>
 <p>  这里只使用了一台服务器，既作为Controller Node，也作为Storage Node</p>
 <pre><code>| 主机名 | IP | OS | 磁盘 | 文件系统 |
-</code></pre><p>  | —– | —– | —– |—– | —– |<br>  | sf-dev | 10.202.127.4 | Centos-7.4 | /dev/sdb<br>/dev/sdc<br>/dev/sdd | XFS |</p>
-</li>
+| ----- | ----- | ----- | ----- | ----- |
+| sf-dev | 10.202.127.4 | Centos-7.4 | /dev/sdb&lt;br&gt;/dev/sdc&lt;br&gt;/dev/sdd | XFS |
+</code></pre></li>
 <li><p>软件</p>
 <p>  我们使用<a href="https://mirrors.tuna.tsinghua.edu.cn/centos/7/cloud/x86_64/openstack-pike/" target="_blank" rel="external">Openstack Pike</a>版本</p>
 </li>
