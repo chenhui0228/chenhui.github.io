@@ -3,12 +3,12 @@
   
     
     <entry>
-      <title><![CDATA[python-memorey]]></title>
+      <title><![CDATA[Python内存管理机制]]></title>
       <url>/2018/03/06/python-memorey/</url>
       <content type="html"><![CDATA[<hr>
-<p><strong>转载申明</strong>：本文转载博主alertbear的文章<img src="http://blog.csdn.net/alertbear/article/details/50808178" alt="Python内存管理机制">，转载请注明出处！</p>
+<p><strong>转载申明</strong>：本文转载博主alertbear的文章<a href="http://blog.csdn.net/alertbear/article/details/50808178" target="_blank" rel="external">Python内存管理机制</a>，转载请注明出处！</p>
 <hr>
-<h1 id="Python内存管理机制"><a href="#Python内存管理机制" class="headerlink" title="Python内存管理机制"></a>Python内存管理机制</h1><p>Python内存管理机制主要包括以下三个方面：</p>
+<p>Python内存管理机制主要包括以下三个方面：</p>
 <ul>
 <li><strong>引用计数机制</strong></li>
 <li><strong>垃圾回收机制</strong></li>
