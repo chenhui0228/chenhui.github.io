@@ -109,12 +109,12 @@
 <meta property="og:site_name" content="陈辉的博客">
 <meta property="og:description" content="转载申明：本文转载博主alertbear的文章Python内存管理机制，转载请注明出处！  Python内存管理机制主要包括以下三个方面：  引用计数机制 垃圾回收机制 内存池机制   引用计数举个例子说明引用是什么： 1a = 1 如上为一个简单的赋值语句，1就是对象，a就是引用，引用a指向对象1。同理： 1b = 1 b也是对象1的引用。通过内置函数id()返回对象的地址。 12print">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://images.cnitblog.com/blog/333250/201410/110017426714010.x-png">
-<meta property="og:updated_time" content="2018-03-06T03:21:14.855Z">
+<meta property="og:image" content="http://202.104.112.179:8085/2018/03/06/python-memorey/mempool.png">
+<meta property="og:updated_time" content="2018-03-06T03:30:05.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python内存管理机制">
 <meta name="twitter:description" content="转载申明：本文转载博主alertbear的文章Python内存管理机制，转载请注明出处！  Python内存管理机制主要包括以下三个方面：  引用计数机制 垃圾回收机制 内存池机制   引用计数举个例子说明引用是什么： 1a = 1 如上为一个简单的赋值语句，1就是对象，a就是引用，引用a指向对象1。同理： 1b = 1 b也是对象1的引用。通过内置函数id()返回对象的地址。 12print">
-<meta name="twitter:image" content="http://images.cnitblog.com/blog/333250/201410/110017426714010.x-png">
+<meta name="twitter:image" content="http://202.104.112.179:8085/2018/03/06/python-memorey/mempool.png">
 
 
 
@@ -490,7 +490,7 @@
 <li><p>分代回收<br><br>从前面“标记-清除”这样的垃圾收集机制来看，这种垃圾收集机制所带来的额外操作实际上与系统中总的内存块的数量是相关的，当需要回收的内存块越多时，垃圾检测带来的额外操作就越多，而垃圾回收带来的额外操作就越少；反之，当需回收的内存块越少时，垃圾检测就将比垃圾回收带来更少的额外操作。<br>举个例子来说明：<br>当某些内存块M经过了3次垃圾收集的清洗之后还存活时，我们就将内存块M划到一个集合A中去，而新分配的内存都划分到集合B中去。当垃圾收集开始工作时，大多数情况都只对集合B进行垃圾回收，而对集合A进行垃圾回收要隔相当长一段时间后才进行，这就使得垃圾收集机制需要处理的内存少了，效率自然就提高了。在这个过程中，集合B中的某些内存块由于存活时间长而会被转移到集合A中，当然，集合A中实际上也存在一些垃圾，这些垃圾的回收会因为这种分代的机制而被延迟。</p>
 </li>
 </ul>
-<h2 id="内存池"><a href="#内存池" class="headerlink" title="内存池"></a>内存池</h2><p><img src="http://images.cnitblog.com/blog/333250/201410/110017426714010.x-png" alt="python内存机制层次"></p>
+<h2 id="内存池"><a href="#内存池" class="headerlink" title="内存池"></a>内存池</h2><img src="/2018/03/06/python-memorey/mempool.png" alt="mempool.png" title="">
 <ul>
 <li>Python的内存机制呈现金字塔形状，-1，-2层主要有操作系统进行操作；</li>
 <li>第0层是C中的malloc，free等内存分配和释放函数进行操作；</li>
