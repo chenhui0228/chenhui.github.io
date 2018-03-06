@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="openstack swift,对象存储," />
+  <meta name="keywords" content="Python内存管理," />
 
 
 
@@ -101,18 +101,21 @@
 
 
 
-<meta name="description" content="原创申明：本文为博主原创，转载请注明出处！  环境 硬件   这里只使用了一台服务器，既作为Controller Node，也作为Storage Node      主机名 IP OS 磁盘 文件系统     sf-dev 10.202.127.4 Centos-7.4 /dev/sdb/dev/sdc/dev/sdd XFS     软件   我们使用Openstack Pike版本  配置可">
-<meta name="keywords" content="openstack swift,对象存储">
+<meta name="description" content="转载申明：本文转载博主alertbear的文章，转载请注明出处！  Python内存管理机制Python内存管理机制主要包括以下三个方面：  引用计数机制 垃圾回收机制 内存池机制   引用计数举个例子说明引用是什么： 1a = 1 如上为一个简单的赋值语句，1就是对象，a就是引用，引用a指向对象1。同理： 1b = 1 b也是对象1的引用。通过内置函数id()返回对象的地址。 12print">
+<meta name="keywords" content="Python内存管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Openstack-Swift部署指南">
-<meta property="og:url" content="http://202.104.112.179:8085/2018/01/19/Openstack-Swift-intall/index.html">
+<meta property="og:title" content="python-memorey">
+<meta property="og:url" content="http://202.104.112.179:8085/2018/03/06/python-memorey/index.html">
 <meta property="og:site_name" content="陈辉的博客">
-<meta property="og:description" content="原创申明：本文为博主原创，转载请注明出处！  环境 硬件   这里只使用了一台服务器，既作为Controller Node，也作为Storage Node      主机名 IP OS 磁盘 文件系统     sf-dev 10.202.127.4 Centos-7.4 /dev/sdb/dev/sdc/dev/sdd XFS     软件   我们使用Openstack Pike版本  配置可">
+<meta property="og:description" content="转载申明：本文转载博主alertbear的文章，转载请注明出处！  Python内存管理机制Python内存管理机制主要包括以下三个方面：  引用计数机制 垃圾回收机制 内存池机制   引用计数举个例子说明引用是什么： 1a = 1 如上为一个简单的赋值语句，1就是对象，a就是引用，引用a指向对象1。同理： 1b = 1 b也是对象1的引用。通过内置函数id()返回对象的地址。 12print">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-19T08:22:15.628Z">
+<meta property="og:image" content="http://blog.csdn.net/alertbear/article/details/50808178">
+<meta property="og:image" content="http://images.cnitblog.com/blog/333250/201410/110017426714010.x-png">
+<meta property="og:updated_time" content="2018-03-06T03:17:10.182Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openstack-Swift部署指南">
-<meta name="twitter:description" content="原创申明：本文为博主原创，转载请注明出处！  环境 硬件   这里只使用了一台服务器，既作为Controller Node，也作为Storage Node      主机名 IP OS 磁盘 文件系统     sf-dev 10.202.127.4 Centos-7.4 /dev/sdb/dev/sdc/dev/sdd XFS     软件   我们使用Openstack Pike版本  配置可">
+<meta name="twitter:title" content="python-memorey">
+<meta name="twitter:description" content="转载申明：本文转载博主alertbear的文章，转载请注明出处！  Python内存管理机制Python内存管理机制主要包括以下三个方面：  引用计数机制 垃圾回收机制 内存池机制   引用计数举个例子说明引用是什么： 1a = 1 如上为一个简单的赋值语句，1就是对象，a就是引用，引用a指向对象1。同理： 1b = 1 b也是对象1的引用。通过内置函数id()返回对象的地址。 12print">
+<meta name="twitter:image" content="http://blog.csdn.net/alertbear/article/details/50808178">
 
 
 
@@ -140,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://202.104.112.179:8085/2018/01/19/Openstack-Swift-intall/"/>
+  <link rel="canonical" href="http://202.104.112.179:8085/2018/03/06/python-memorey/"/>
 
 
 
 
 
-  <title> Openstack-Swift部署指南 | 陈辉的博客 </title>
+  <title> python-memorey | 陈辉的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -329,7 +332,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://202.104.112.179:8085/2018/01/19/Openstack-Swift-intall/">
+    <link itemprop="mainEntityOfPage" href="http://202.104.112.179:8085/2018/03/06/python-memorey/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈辉">
@@ -350,7 +353,7 @@
             
             
               
-                Openstack-Swift部署指南
+                python-memorey
               
             
           </h1>
@@ -365,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T15:00:55+08:00">
-                2018-01-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T11:04:22+08:00">
+                2018-03-06
               </time>
             
 
@@ -388,30 +391,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式存储/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式存储</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式存储/运维操作/" itemprop="url" rel="index">
-                    <span itemprop="name">运维操作</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式存储/运维操作/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -428,8 +409,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/19/Openstack-Swift-intall/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/19/Openstack-Swift-intall/" itemprop="commentCount"></span>
+                <a href="/2018/03/06/python-memorey/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/06/python-memorey/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -461,356 +442,64 @@
 
       
         <hr>
-<p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
+<p><strong>转载申明</strong>：本文转载博主alertbear的文章<img src="http://blog.csdn.net/alertbear/article/details/50808178" alt="Python内存管理机制">，转载请注明出处！</p>
 <hr>
-<h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><ul>
-<li><p>硬件</p>
-<p>  这里只使用了一台服务器，既作为Controller Node，也作为Storage Node</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>主机名</th>
-<th>IP</th>
-<th>OS</th>
-<th>磁盘</th>
-<th>文件系统</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sf-dev</td>
-<td>10.202.127.4</td>
-<td>Centos-7.4</td>
-<td>/dev/sdb<br>/dev/sdc<br>/dev/sdd</td>
-<td>XFS</td>
-</tr>
-</tbody>
-</table>
+<h1 id="Python内存管理机制"><a href="#Python内存管理机制" class="headerlink" title="Python内存管理机制"></a>Python内存管理机制</h1><p>Python内存管理机制主要包括以下三个方面：</p>
 <ul>
-<li><p>软件</p>
-<p>  我们使用<a href="https://mirrors.tuna.tsinghua.edu.cn/centos/7/cloud/x86_64/openstack-pike/" target="_blank" rel="external">Openstack Pike</a>版本</p>
-</li>
-<li><p>配置可用的Openstack源</p>
-<p>  这里使用了清华开源镜像。配置服务器镜像：</p>
-<pre><code>cd /etc/yum.repos.d/
-vim CentOS-Base.repo
-</code></pre><p>  增加如下配置</p>
-<pre><code>...
-[openstack]
-name=Openstack
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/7/cloud/x86_64/openstack-pike/
-gpgcheck=0
-...
-</code></pre><p>  使用YUM跟新库</p>
-<pre><code>yum update -y
-</code></pre></li>
+<li><strong>引用计数机制</strong></li>
+<li><strong>垃圾回收机制</strong></li>
+<li><strong>内存池机制</strong></li>
 </ul>
-<h4 id="Swift组件安装于配置"><a href="#Swift组件安装于配置" class="headerlink" title="Swift组件安装于配置"></a>Swift组件安装于配置</h4><p><strong>1. 安装必要的组件包</strong></p>
-<pre><code># yum install openstack-swift-proxy python-swiftclient \
-  python-keystoneclient python-keystonemiddleware \
-  memcached
-</code></pre><ul>
-<li><p>从Swift源镜像获取代理服务配置文件,并进行配置</p>
-<pre><code># curl -o /etc/swift/proxy-server.conf https://git.openstack.org/cgit/openstack/swift/plain/etc/proxy-server.conf-sample?h=stable/pike
-</code></pre><p>  编辑代理服务器配置文件<code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift/proxy-server.conf</code> </p>
+<hr>
+<h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><p>举个例子说明引用是什么：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>如上为一个简单的赋值语句，1就是对象，a就是引用，引用a指向对象1。<br>同理：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">b = <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>b也是对象1的引用。<br>通过内置函数id()返回对象的地址。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> id(a)  <span class="comment">#43220320</span></div><div class="line"><span class="keyword">print</span> id(b)  <span class="comment">#43220320</span></div></pre></td></tr></table></figure>
+<p>当我们创建多个等于1的引用时，实际上是让所有这些引用指向同一个对象。为了检验两个引用指向同一个对象，我们可以用is关键字。is用于判断两个引用所指向的对象是否相同。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> (a <span class="keyword">is</span> b)  <span class="comment">#True</span></div></pre></td></tr></table></figure>
+<p>在Python中，整数和短小的字符，Python都会缓存这些对象，以便重复使用。赋值语句，只是创造了新的引用，而不是对象本身。长的字符串和其它对象可以有多个相同的对象，可以使用赋值语句创建出新的对象。每个对象都有存有指向该对象的引用总数，即引用计数(reference count)。<br>可以使用sys.getrefcount()获得引用计数，需要注意的是，当使用某个引用作为参数，传递给getrefcount()时，参数实际上创建了一个临时的引用。因此，getrefcount()所得到的结果，会比期望的多1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from sys import getrefcount</div><div class="line"></div><div class="line">a = [1, 2, 3]</div><div class="line">print(getrefcount(a)) # 2</div><div class="line"></div><div class="line">b = a</div><div class="line">print(getrefcount(b)) # 3</div></pre></td></tr></table></figure>
+<ul>
+<li><p>引用计数增加</p>
 <ol>
-<li><p>编辑 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[DEFAULT]</code> 段内容，配置如下内容</p>
-<pre><code>[DEFAULT]
-...
-bind_port = 8080
-user = swift
-swift_dir = /etc/swift
-</code></pre></li>
-<li><p>编辑 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[pipeline:main]</code></p>
-<pre><code>[pipeline:main]
-pipeline = catch_errors gatekeeper healthcheck proxy-logging cache container_sync bulk tempurl ratelimit tempauth copy container-quotas account-quotas slo dlo versioned_writes proxy-logging proxy-server    
-</code></pre></li>
-<li><p>编辑 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[app:proxy-server]</code> 段内容，允许自动创建账户</p>
-<pre><code>[app:proxy-server]
-use = egg:swift#proxy
-...
-account_autocreate = True
-</code></pre></li>
-<li><p>在 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[filter:tempauth]</code> 段中，设置允许的的账户/用户</p>
-<pre><code>[filter:tempauth]
-...
-user_admin_admin = admin .admin .reseller_admin
-user_test_tester = testing .admin
-</code></pre></li>
-<li><p>在 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[filter:cache]</code> 段中，设置memcache位置</p>
-<pre><code>[filter:cache]
-use = egg:swift#memcache
-...
-memcache_servers = 127.0.0.1:11211
-</code></pre></li>
+<li>对象被创建：x=4</li>
+<li>另外的别人被创建：y=x</li>
+<li>被作为参数传递给函数：foo(x)</li>
+<li>作为容器对象的一个元素：a=[1, x, ‘33’]</li>
+</ol>
+</li>
+<li><p>引用计数减少</p>
+<ol>
+<li>一个本地引用离开了它的作用域。比如上面的foo(x)函数结束时，x指向的对象引用减1。</li>
+<li>对象的别名被显式的销毁：del x ；或者del y</li>
+<li>对象的一个别名被赋值给其他对象：x=789</li>
+<li>对象从一个窗口对象中移除：myList.remove(x)</li>
+<li>窗口对象本身被销毁：del myList，或者窗口对象本身离开了作用域。</li>
 </ol>
 </li>
 </ul>
-<blockquote>
-<p><font color="red"><strong>注意：</strong></font>如果控制节点与存储节点分离，以上配置只需在控制节点进行配置，如果使用keystone请参考配置说明，更详细的说明请阅读<a href="https://docs.openstack.org/swift/latest/install/index.html" target="_blank" rel="external">官方文档</a></p>
-</blockquote>
-<p><strong>2. 存储节点组件包安装于配置说明</strong></p>
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><ul>
+<li>引用计数<br><br>引用计数也是一种垃圾收集机制，而且也是一种最直观，最简单的垃圾收集技术。当Python的某个对象的引用计数降为0时，说明没有任何引用指向该对象，该对象就成为要被回收的垃圾了。比如某个新建对象，它被分配给某个引用，对象的引用计数变为1。如果引用被删除，对象的引用计数为0，那么该对象就可以被垃圾回收。<br>不过如果出现循环引用的话，引用计数机制就不再起有效的作用了</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a = []</div><div class="line">b = []</div><div class="line">a.append(b)</div><div class="line">b.append(a)</div><div class="line"><span class="keyword">print</span> a  <span class="comment"># [[[…]]]</span></div><div class="line"><span class="keyword">print</span> b  <span class="comment"># [[[…]]]</span></div></pre></td></tr></table></figure>
+<p>循环引用可以使一组对象的引用计数不为0，然而这些对象实际上并没有被任何外部对象所引用，它们之间只是相互引用。这意味着不会再有人使用这组对象，应该回收这组对象所占用的内存空间，然而由于相互引用的存在，每一个对象的引用计数都不为0，因此这些对象所占用的内存永远不会被释放。<br>Python又引入了其他的垃圾收集机制来弥补引用计数的缺陷：“标记-清除“，“分代回收”两种收集技术。</p>
 <ul>
-<li><p>安装实用软件包</p>
-<pre><code># yum install xfsprogs rsync
-</code></pre></li>
-<li><p>格式化磁盘</p>
-<pre><code># mkfs.xfs /dev/sdb -f
-# mkfs.xfs /dev/sdc -f
-# mkfs.xfs /dev/sdd -f
-</code></pre></li>
-<li><p>创建mount点</p>
-<pre><code># mkdir -p /srv/node/sdb
-# mkdir -p /srv/node/sdc
-# mkdir -p /srv/node/sdd
-</code></pre></li>
-<li><p>编辑 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/fstab</code> 文件，添加如下内容：</p>
-<pre><code>/dev/sdb /srv/node/sdb xfs noatime,nodiratime,nobarrier,logbufs=8 0 2
-/dev/sdc /srv/node/sdc xfs noatime,nodiratime,nobarrier,logbufs=8 0 2
-/dev/sdd /srv/node/sdd xfs noatime,nodiratime,nobarrier,logbufs=8 0 2
-</code></pre></li>
-<li><p>Mount 设备</p>
-<pre><code># mount /srv/node/sdb
-# mount /srv/node/sdc
-# mount /srv/node/sdd
-</code></pre></li>
-<li><p>创建并编辑 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/rsyncd.conf</code> 文件，内容如下：</p>
-<pre><code>uid = swift
-gid = swift
-log file = /var/log/rsyncd.log
-pid file = /var/run/rsyncd.pid
-address = 10.202.127.4 #控制节点IP
+<li><p>标记清除<br><br>如果两个对象的引用计数都为1，但是仅仅存在他们之间的循环引用，那么这两个对象都是需要被回收的，也就是说，它们的引用计数虽然表现为非0，但实际上有效的引用计数为0。所以先将循环引用摘掉，就会得出这两个对象的有效计数。<br>在实际操作中，并不改动真实的引用计数，而是将集合中对象的引用计数复制一份副本，改动该对象引用的副本。对于副本做任何的改动，都不会影响到对象生命周期的维护。<br>这个计数副本的唯一作用是寻找root object集合（该集合中的对象是不能被回收的）。当成功寻找到root object集合之后，首先将现在的内存链表一分为二，一条链表中维护root object集合，成为root链表，而另外一条链表中维护剩下的对象，成为unreachable链表。之所以要剖成两个链表，是基于这样的一种考虑：现在的unreachable可能存在被root链表中的对象，直接或间接引用的对象，这些对象是不能被回收的，一旦在标记的过程中，发现这样的对象，就将其从unreachable链表中移到root链表中；当完成标记后，unreachable链表中剩下的所有对象就是名副其实的垃圾对象了，接下来的垃圾回收只需限制在unreachable链表中即可。</p>
+</li>
+<li><p>分代回收<br><br>从前面“标记-清除”这样的垃圾收集机制来看，这种垃圾收集机制所带来的额外操作实际上与系统中总的内存块的数量是相关的，当需要回收的内存块越多时，垃圾检测带来的额外操作就越多，而垃圾回收带来的额外操作就越少；反之，当需回收的内存块越少时，垃圾检测就将比垃圾回收带来更少的额外操作。<br>举个例子来说明：<br>当某些内存块M经过了3次垃圾收集的清洗之后还存活时，我们就将内存块M划到一个集合A中去，而新分配的内存都划分到集合B中去。当垃圾收集开始工作时，大多数情况都只对集合B进行垃圾回收，而对集合A进行垃圾回收要隔相当长一段时间后才进行，这就使得垃圾收集机制需要处理的内存少了，效率自然就提高了。在这个过程中，集合B中的某些内存块由于存活时间长而会被转移到集合A中，当然，集合A中实际上也存在一些垃圾，这些垃圾的回收会因为这种分代的机制而被延迟。</p>
+</li>
+</ul>
+<h2 id="内存池"><a href="#内存池" class="headerlink" title="内存池"></a>内存池</h2><p><img src="http://images.cnitblog.com/blog/333250/201410/110017426714010.x-png" alt="python内存机制层次"></p>
+<ul>
+<li>Python的内存机制呈现金字塔形状，-1，-2层主要有操作系统进行操作；</li>
+<li>第0层是C中的malloc，free等内存分配和释放函数进行操作；</li>
+<li>第1层和第2层是内存池，有Python的接口函数PyMem_Malloc函数实现，当对象小于256K时有该层直接分配内存；</li>
+<li>第3层是最上层，也就是我们对Python对象的直接操作；</li>
+</ul>
+<p>Python在运行期间会大量地执行malloc和free的操作，频繁地在用户态和核心态之间进行切换，这将严重影响Python的执行效率。为了加速Python的执行效率，Python引入了一个内存池机制，用于管理对小块内存的申请和释放。<br>Python内部默认的小块内存与大块内存的分界点定在256个字节，当申请的内存小于256字节时，PyObject_Malloc会在内存池中申请内存；当申请的内存大于256字节时，PyObject_Malloc的行为将蜕化为malloc的行为。当然，通过修改Python源代码，我们可以改变这个默认值，从而改变Python的默认内存管理行为。</p>
 
-[account]
-max connections = 2
-path = /srv/node/
-read only = False
-lock file = /var/lock/account.lock
-
-[container]
-max connections = 2
-path = /srv/node/
-read only = False
-lock file = /var/lock/container.lock
-
-[object]
-max connections = 2
-path = /srv/node/
-read only = False
-lock file = /var/lock/object.lock
-</code></pre></li>
-<li><p>存储节点软件包安装</p>
-<pre><code># yum install openstack-swift-account openstack-swift-container \
-  openstack-swift-object
-</code></pre></li>
-<li><p>从Swift源镜像获取账户(accounting)、容器(container)以及对象(object)服务配置文件,并进行配置</p>
-<pre><code># curl -o /etc/swift/account-server.conf https://git.openstack.org/cgit/openstack/swift/plain/etc/account-server.conf-sample?h=stable/pike
-# curl -o /etc/swift/container-server.conf https://git.openstack.org/cgit/openstack/swift/plain/etc/container-server.conf-sample?h=stable/pike
-# curl -o /etc/swift/object-server.conf https://git.openstack.org/cgit/openstack/swift/plain/etc/object-server.conf-sample?h=stable/pike
-</code></pre></li>
-<li><p>编辑账户服务配置文件 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift/account-server.conf</code></p>
-<ol>
-<li><p>在 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[DEFAULT]</code> 中配置如下信息：</p>
-<pre><code>[DEFAULT]
-...
-bind_ip = 10.202.127.4
-bind_port = 6202
-user = swift
-swift_dir = /etc/swift
-devices = /srv/node
-mount_check = True
-</code></pre></li>
-<li><p>编辑 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[pipeline:main]</code></p>
-<pre><code>[pipeline:main]
-pipeline = healthcheck recon account-server
-</code></pre></li>
-<li><p>在 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[filter:recon]</code> 中，设置recon cache 目录:</p>
-<pre><code>[filter:recon]
-use = egg:swift#recon
-...
-recon_cache_path = /var/cache/swift
-</code></pre></li>
-</ol>
-</li>
-<li><p>编辑账户服务配置文件 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift/container-server.conf</code></p>
-<ol>
-<li><p>在 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[DEFAULT]</code> 中配置如下信息：</p>
-<pre><code>[DEFAULT]
-...
-bind_ip = 10.202.127.4
-bind_port = 6201
-user = swift
-swift_dir = /etc/swift
-devices = /srv/node
-mount_check = True
-</code></pre></li>
-<li><p>编辑 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[pipeline:main]</code></p>
-<pre><code>[pipeline:main]
-pipeline = healthcheck recon container-server
-</code></pre></li>
-<li><p>在 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[filter:recon]</code> 中，设置recon cache 目录:</p>
-<pre><code>[filter:recon]
-use = egg:swift#recon
-...
-recon_cache_path = /var/cache/swift
-</code></pre></li>
-</ol>
-</li>
-<li><p>编辑账户服务配置文件 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift/object-server.conf</code></p>
-<ol>
-<li><p>在 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[DEFAULT]</code> 中配置如下信息：</p>
-<pre><code>[DEFAULT]
-...
-bind_ip = 10.202.127.4
-bind_port = 6200
-user = swift
-swift_dir = /etc/swift
-devices = /srv/node
-mount_check = True
-</code></pre></li>
-<li><p>编辑 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[pipeline:main]</code></p>
-<pre><code>[pipeline:main]
-pipeline = healthcheck recon object-server
-</code></pre></li>
-<li><p>在 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[filter:recon]</code> 中，设置recon cache 目录:</p>
-<pre><code>[filter:recon]
-use = egg:swift#recon
-...
-recon_cache_path = /var/cache/swift
-recon_lock_path = /var/lock
-</code></pre></li>
-</ol>
-</li>
-<li><p>Mount 点目录所属权限设置</p>
-<pre><code># chown -R swift:swift /srv/node
-</code></pre></li>
-<li><p>创建 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">recon</code>目录，并设置目录所属权限</p>
-<pre><code># mkdir -p /var/cache/swift
-# chown -R root:swift /var/cache/swift
-# chmod -R 775 /var/cache/swift
-</code></pre></li>
-</ul>
-<p><strong>3. 创建Rings</strong></p>
-<p>在启动对象存储服务前，需要创建并初始化account，container，object的rings。这里使用一个region，1个zone。总共设置2^10（1024）个最大分区（partitions），使用3副本策略（replicas），设置1小时来限制需要多次移动分区时为最小间隔</p>
-<ul>
-<li><p>创建account ring</p>
-<pre><code>cd /etc/swift
-# swift-ring-builder account.builder create 10 3 1
-</code></pre><p>  添加所有存储到ring</p>
-<pre><code># swift-ring-builder account.builder add \
-  --region 1 --zone 1 --ip 10.202.127.4 --port 6202 --device sdb --weight 100
-# swift-ring-builder account.builder add \
-  --region 1 --zone 1 --ip 10.202.127.4 --port 6202 --device sdc --weight 100
-# swift-ring-builder account.builder add \
-  --region 1 --zone 1 --ip 10.202.127.4 --port 6202 --device sdd --weight 100
-</code></pre><p>  Rebalance the ring</p>
-<pre><code># swift-ring-builder account.builder rebalance
-</code></pre><p>  确认ring</p>
-<pre><code># swift-ring-builder account.builder
-</code></pre></li>
-<li><p>创建container ring</p>
-<pre><code>cd /etc/swift
-# swift-ring-builder container.builder create 10 3 1
-</code></pre><p>  添加所有存储到ring</p>
-<pre><code># swift-ring-builder container.builder add \
-  --region 1 --zone 1 --ip 10.202.127.4 --port 6201 --device sdb --weight 100
-# swift-ring-builder container.builder add \
-  --region 1 --zone 1 --ip 10.202.127.4 --port 6201 --device sdc --weight 100
-# swift-ring-builder container.builder add \
-  --region 1 --zone 1 --ip 10.202.127.4 --port 6201 --device sdd --weight 100
-</code></pre><p>  Rebalance the ring</p>
-<pre><code># swift-ring-builder container.builder rebalance
-</code></pre><p>  确认ring</p>
-<pre><code># swift-ring-builder container.builder
-</code></pre></li>
-<li><p>创建object ring</p>
-<pre><code>cd /etc/swift
-# swift-ring-builder object.builder create 10 3 1
-</code></pre><p>  添加所有存储到ring</p>
-<pre><code># swift-ring-builder object.builder add \
-  --region 1 --zone 1 --ip 10.202.127.4 --port 6200 --device sdb --weight 100
-# swift-ring-builder object.builder add \
-  --region 1 --zone 1 --ip 10.202.127.4 --port 6200 --device sdc --weight 100
-# swift-ring-builder object.builder add \
-  --region 1 --zone 1 --ip 10.202.127.4 --port 6200 --device sdd --weight 100
-</code></pre><p>  Rebalance the ring</p>
-<pre><code># swift-ring-builder object.builder rebalance
-</code></pre><p>  确认ring</p>
-<pre><code># swift-ring-builder object.builder
-</code></pre></li>
-</ul>
-<blockquote>
-<p><font color="red"><strong>注意：</strong></font>如果有多个存储节点，需要将ring配置文件 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">account.ring.gz</code>, <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">container.ring.gz</code>，<code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">object.ring.gz</code> 分发到各个存储节点的 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift</code> 目录下</p>
-</blockquote>
-<p><strong>3. 配置swift.conf 并启动各组件服务</strong></p>
-<ul>
-<li><p>从swift git仓库中获取配置文件到 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift/</code> 目录</p>
-<pre><code># curl -o /etc/swift/swift.conf \
-  https://git.openstack.org/cgit/openstack/swift/plain/etc/swift.conf-sample?h=stable/pike
-</code></pre><p>  编辑配置文件<code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift/swift.conf</code></p>
-<ol>
-<li><p>在 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">[swift-hash]</code> 中，设置如下内容：</p>
-<pre><code>[swift-hash]
-...
-swift_hash_path_suffix = HASH_PATH_SUFFIX #替换为自己的内容，如swift
-swift_hash_path_prefix = HASH_PATH_PREFIX #替换为自己的内容，如swift
-</code></pre></li>
-<li><p>创建并配置默认策略</p>
-<pre><code>[storage-policy:0]
-...
-name = Policy-0
-default = yes
-</code></pre></li>
-<li><p>如果是多存储节点，将配置文件 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">swift.conf</code> 拷贝到各节点的 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift</code> 目录下</p>
-</li>
-<li><p>修改所有节点 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift/</code> 目录所属权限如下：</p>
-<pre><code># chown -R root:swift /etc/swift
-</code></pre></li>
-</ol>
-</li>
-<li><p>控制节点启动代理服务和memcache服务</p>
-<pre><code># systemctl enable openstack-swift-proxy.service memcached.service
-# systemctl start openstack-swift-proxy.service memcached.service
-</code></pre></li>
-<li><p>存储节点启动如下服务</p>
-<pre><code># systemctl enable openstack-swift-account.service openstack-swift-account-auditor.service \
-  openstack-swift-account-reaper.service openstack-swift-account-replicator.service
-# systemctl start openstack-swift-account.service openstack-swift-account-auditor.service \
-  openstack-swift-account-reaper.service openstack-swift-account-replicator.service
-# systemctl enable openstack-swift-container.service \
-  openstack-swift-container-auditor.service openstack-swift-container-replicator.service \
-  openstack-swift-container-updater.service
-# systemctl start openstack-swift-container.service \
-  openstack-swift-container-auditor.service openstack-swift-container-replicator.service \
-  openstack-swift-container-updater.service
-# systemctl enable openstack-swift-object.service openstack-swift-object-auditor.service \
-  openstack-swift-object-replicator.service openstack-swift-object-updater.service
-# systemctl start openstack-swift-object.service openstack-swift-object-auditor.service \
-  openstack-swift-object-replicator.service openstack-swift-object-updater.service
-</code></pre></li>
-</ul>
-<h4 id="服务验证"><a href="#服务验证" class="headerlink" title="服务验证"></a>服务验证</h4><p>新建并编辑 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">testrc</code> 文件</p>
-<pre><code>cd $HOME
-vim testrc
-</code></pre><p>写入 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">/etc/swift/proxy-server.conf</code> 配置文件中 配置的用户权限信息，如下：</p>
-<pre><code>export ST_AUTH=http://10.202.127.4:8080/auth/v1.0
-export ST_USER=test:tester
-export ST_KEY=testing
-</code></pre><p>执行上诉配置脚本，使配置信息生效</p>
-<pre><code>. testrc
-</code></pre><p>查看swift服务状态</p>
-<pre><code>swift stat
-</code></pre><p>获取 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">X-Storage-Url</code> 和 <code style="color:#e74c3c; padding:1px 3px; border: solid 1px #e1e4e5">X-Auth-Token</code>：</p>
-<pre><code>curl -v -H &apos;X-Storage-User: test:tester&apos; -H &apos;X-Storage-Pass: testing&apos; http://127.0.0.1:8080/auth/v1.0
-</code></pre><p>查看账户</p>
-<pre><code>curl -v -H &apos;X-Auth-Token: &lt;token-from-x-auth-token-above&gt;&apos; &lt;url-from-x-storage-url-above&gt;
-</code></pre><p>我们可以使用如下命令获取账户下容器列表</p>
-<pre><code>swift list
-</code></pre><p>获取容器下的对象列表</p>
-<pre><code>swift list &lt;container&gt;
-</code></pre>
       
     </div>
 
@@ -839,9 +528,7 @@ export ST_KEY=testing
       
         <div class="post-tags">
           
-            <a href="/tags/openstack-swift/" rel="tag"># openstack swift</a>
-          
-            <a href="/tags/对象存储/" rel="tag"># 对象存储</a>
+            <a href="/tags/Python内存管理/" rel="tag"># Python内存管理</a>
           
         </div>
       
@@ -854,8 +541,8 @@ export ST_KEY=testing
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/11/notobook/" rel="next" title="笔记">
-                <i class="fa fa-chevron-left"></i> 笔记
+              <a href="/2018/01/19/Openstack-Swift-intall/" rel="next" title="Openstack-Swift部署指南">
+                <i class="fa fa-chevron-left"></i> Openstack-Swift部署指南
               </a>
             
           </div>
@@ -863,10 +550,6 @@ export ST_KEY=testing
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/06/python-memorey/" rel="prev" title="python-memorey">
-                python-memorey <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -918,8 +601,8 @@ export ST_KEY=testing
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2018/01/19/Openstack-Swift-intall/"
-           data-title="Openstack-Swift部署指南" data-url="http://202.104.112.179:8085/2018/01/19/Openstack-Swift-intall/">
+      <div class="ds-thread" data-thread-key="2018/03/06/python-memorey/"
+           data-title="python-memorey" data-url="http://202.104.112.179:8085/2018/03/06/python-memorey/">
       </div>
     
   </div>
@@ -1065,7 +748,7 @@ export ST_KEY=testing
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Swift组件安装于配置"><span class="nav-number">2.</span> <span class="nav-text">Swift组件安装于配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务验证"><span class="nav-number">3.</span> <span class="nav-text">服务验证</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python内存管理机制"><span class="nav-number">1.</span> <span class="nav-text">Python内存管理机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引用计数"><span class="nav-number">1.1.</span> <span class="nav-text">引用计数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.2.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存池"><span class="nav-number">1.3.</span> <span class="nav-text">内存池</span></a></li></ol></li></ol></div>
             
 
           </div>
