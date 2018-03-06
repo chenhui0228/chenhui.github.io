@@ -14,20 +14,6 @@
     </url>
 
     <url>
-        <loc>http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/</loc>
-        <lastmod>2017-08-10T11:12:12.859Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/</loc>
-        <lastmod>2017-08-10T11:12:12.859Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://202.104.112.179:8085/categories/python/</loc>
         <lastmod>2017-08-10T11:14:00.688Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -93,6 +79,34 @@
     <url>
         <loc>http://202.104.112.179:8085/categories/linux/</loc>
         <lastmod>2018-03-06T06:04:38.297Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/</loc>
+        <lastmod>2018-03-06T07:45:08.091Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/Python/</loc>
+        <lastmod>2018-03-06T07:45:08.091Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/</loc>
+        <lastmod>2018-03-06T07:45:46.266Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/Python/</loc>
+        <lastmod>2018-03-06T07:45:46.266Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
