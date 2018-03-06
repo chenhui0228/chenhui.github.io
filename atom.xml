@@ -101,7 +101,7 @@
     <link href="http://202.104.112.179:8085/2018/03/01/interview-python/"/>
     <id>http://202.104.112.179:8085/2018/03/01/interview-python/</id>
     <published>2018-03-01T06:17:19.000Z</published>
-    <updated>2018-03-06T07:45:46.266Z</updated>
+    <updated>2018-03-06T08:55:28.496Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p><strong>原创申明</strong>：本文转载博主<a href="https://github.com/taizilongxu" target="_blank" rel="external">taizilongxu</a>的文章<a href="https://github.com/taizilongxu/interview_python" target="_blank" rel="external">关于Python的面试题</a>，转载请注明出处！</p>
@@ -866,9 +866,7 @@
     
     </summary>
     
-      <category term="转载" scheme="http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/"/>
-    
-      <category term="Python" scheme="http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/Python/"/>
+      <category term="Python" scheme="http://202.104.112.179:8085/categories/Python/"/>
     
     
       <category term="Python" scheme="http://202.104.112.179:8085/tags/Python/"/>
@@ -880,7 +878,7 @@
     <link href="http://202.104.112.179:8085/2018/02/28/python-pattern/"/>
     <id>http://202.104.112.179:8085/2018/02/28/python-pattern/</id>
     <published>2018-02-28T05:10:02.000Z</published>
-    <updated>2018-03-06T07:45:08.091Z</updated>
+    <updated>2018-03-06T08:55:07.436Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p><strong>转载申明</strong>：本文转载博主<a href="https://github.com/taizilongxu" target="_blank" rel="external">taizilongxu</a>的文章<a href="https://github.com/taizilongxu/interview_python/blob/master/pattern.md" target="_blank" rel="external">Python设计模式</a>，转载请注明出处！</p>
@@ -911,11 +909,7 @@
     
     </summary>
     
-      <category term="转载" scheme="http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/"/>
-    
-      <category term="技术原理" scheme="http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="Python" scheme="http://202.104.112.179:8085/categories/%E8%BD%AC%E8%BD%BD/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/Python/"/>
+      <category term="Python" scheme="http://202.104.112.179:8085/categories/Python/"/>
     
     
       <category term="Python" scheme="http://202.104.112.179:8085/tags/Python/"/>
@@ -1670,7 +1664,7 @@ E:.
     <link href="http://202.104.112.179:8085/2017/08/04/python-learning-01/"/>
     <id>http://202.104.112.179:8085/2017/08/04/python-learning-01/</id>
     <published>2017-08-04T02:27:01.000Z</published>
-    <updated>2017-08-10T11:14:00.688Z</updated>
+    <updated>2018-03-06T08:54:01.623Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
@@ -1686,10 +1680,10 @@ E:.
     
     </summary>
     
-      <category term="python" scheme="http://202.104.112.179:8085/categories/python/"/>
+      <category term="Python" scheme="http://202.104.112.179:8085/categories/Python/"/>
     
     
-      <category term="python" scheme="http://202.104.112.179:8085/tags/python/"/>
+      <category term="Python" scheme="http://202.104.112.179:8085/tags/Python/"/>
     
       <category term="编程学习" scheme="http://202.104.112.179:8085/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     

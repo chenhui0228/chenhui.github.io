@@ -841,8 +841,6 @@
       
         <categories>
             
-            <category> 转载 </category>
-            
             <category> Python </category>
             
         </categories>
@@ -882,10 +880,6 @@
 ]]></content>
       
         <categories>
-            
-            <category> 转载 </category>
-            
-            <category> 技术原理 </category>
             
             <category> Python </category>
             
@@ -1632,14 +1626,14 @@ E:.
       
         <categories>
             
-            <category> python </category>
+            <category> Python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> python </tag>
+            <tag> Python </tag>
             
             <tag> 编程学习 </tag>
             

@@ -37,20 +37,6 @@
     </url>
 
     <url>
-        <loc>http://202.104.112.179:8085/tags/python/</loc>
-        <lastmod>2017-08-10T11:14:00.688Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://202.104.112.179:8085/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2017-08-10T11:14:00.688Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://202.104.112.179:8085/tags/vue/</loc>
         <lastmod>2017-08-10T12:29:05.039Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -114,15 +100,22 @@
     </url>
 
     <url>
+        <loc>http://202.104.112.179:8085/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2018-03-06T08:54:01.623Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://202.104.112.179:8085/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-        <lastmod>2018-03-06T07:45:08.091Z</lastmod>
+        <lastmod>2018-03-06T08:55:07.436Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://202.104.112.179:8085/tags/Python/</loc>
-        <lastmod>2018-03-06T07:45:46.266Z</lastmod>
+        <lastmod>2018-03-06T08:55:28.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
