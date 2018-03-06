@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>http://202.104.112.179:8085/2017/08/01/linux-ops/</loc>
+        <lastmod>2018-03-06T06:02:46.763Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://202.104.112.179:8085/2018/03/06/python-memorey/</loc>
-        <lastmod>2018-03-06T03:30:05.239Z</lastmod>
+        <lastmod>2018-03-06T05:25:14.941Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -57,14 +65,6 @@
     <url>
         <loc>http://202.104.112.179:8085/2017/08/04/python-learning-01/</loc>
         <lastmod>2017-08-10T11:14:00.688Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://202.104.112.179:8085/2017/08/01/linux-ops/</loc>
-        <lastmod>2017-08-10T11:13:11.900Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://202.104.112.179:8085/"/>
-  <updated>2018-03-06T03:30:05.239Z</updated>
+  <updated>2018-03-06T05:25:14.941Z</updated>
   <id>http://202.104.112.179:8085/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://202.104.112.179:8085/2018/03/06/python-memorey/"/>
     <id>http://202.104.112.179:8085/2018/03/06/python-memorey/</id>
     <published>2018-03-06T03:04:22.000Z</published>
-    <updated>2018-03-06T03:30:05.239Z</updated>
+    <updated>2018-03-06T05:25:14.941Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p><strong>转载申明</strong>：本文转载博主alertbear的文章<a href="http://blog.csdn.net/alertbear/article/details/50808178" target="_blank" rel="external">Python内存管理机制</a>，转载请注明出处！</p>
@@ -872,20 +872,49 @@ E:.
     <link href="http://202.104.112.179:8085/2017/08/01/linux-ops/"/>
     <id>http://202.104.112.179:8085/2017/08/01/linux-ops/</id>
     <published>2017-08-01T06:17:19.000Z</published>
-    <updated>2017-08-10T11:13:11.900Z</updated>
+    <updated>2018-03-06T06:02:46.763Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p><strong>原创申明</strong>：本文为博主原创，转载请注明出处！</p>
 <hr>
-<h4 id="查看当前文件夹大小"><a href="#查看当前文件夹大小" class="headerlink" title="查看当前文件夹大小"></a>查看当前文件夹大小</h4><pre><code>du -sh *
-</code></pre>]]></content>
+<ul>
+<li><p>查看当前文件夹大小</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">du -sh &lt;dir_path&gt;</div><div class="line">or</div><div class="line">du -ah --max-depth=1</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看系统默认的文件句柄数</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">ulimit</span> -n</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程打开的文件句柄数】</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsof -n|awk <span class="string">'&#123;print $2&#125;'</span>|sort|uniq -c|sort -nr|more</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看某块磁盘上的读写进程</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">lsof /dev/xxx | head</div><div class="line"><span class="comment"># 查看详情</span></div><div class="line">lsof -p <span class="variable">$pid</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>获取进程IO信息(内核版本&gt;2.6.20)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /proc/<span class="variable">$pid</span>/io <span class="comment">#iotop -oP</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>批量删除<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```bash</div><div class="line">find /tmp -name &quot;*.pyc&quot; | xargs rm -rf</div><div class="line">sudo find /tmp -name &quot;*.pyc&quot; | xargs rm -rf</div><div class="line">find /tmp -name &quot;*.pyc&quot; -exec rm -f &#123;&#125;\</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>使用gdb调试</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">gdb attach <span class="variable">$pid</span></div><div class="line">b [module]/[<span class="keyword">function</span>]/:[lineno]</div><div class="line">c <span class="comment">#run</span></div><div class="line">n <span class="comment">#next</span></div><div class="line">s <span class="comment">#into func</span></div><div class="line">list <span class="comment">#content</span></div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看端口zhanyon</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -tpnl | grep <span class="variable">$pid</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>格式化文件系统，如xfs</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkfs.xfs -f /dev/sdx</div></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;原创申明&lt;/strong&gt;：本文为博主原创，转载请注明出处！&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id=&quot;查看当前文件夹大小&quot;&gt;&lt;a href=&quot;#查看当前文件夹大小&quot; class=&quot;headerlink&quot; title=&quot;查看当前文件夹大小&quot;&gt;&lt;/a&gt;查看当
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;查看当前文件夹大小&lt;/p&gt;
+ &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutt
     
     </summary>
     

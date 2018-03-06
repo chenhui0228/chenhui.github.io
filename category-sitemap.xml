@@ -28,13 +28,6 @@
     </url>
 
     <url>
-        <loc>http://202.104.112.179:8085/categories/linux/</loc>
-        <lastmod>2017-08-10T11:13:11.900Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://202.104.112.179:8085/categories/python/</loc>
         <lastmod>2017-08-10T11:14:00.688Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -92,7 +85,14 @@
 
     <url>
         <loc>http://202.104.112.179:8085/categories/Python/</loc>
-        <lastmod>2018-03-06T03:30:05.239Z</lastmod>
+        <lastmod>2018-03-06T05:25:14.941Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://202.104.112.179:8085/categories/linux/</loc>
+        <lastmod>2018-03-06T06:02:46.763Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
