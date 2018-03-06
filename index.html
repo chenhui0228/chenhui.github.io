@@ -1559,7 +1559,7 @@
 <h2 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h2><p>简单来说就是把一些具有相同方法的类再进行封装,抽象共同的方法以供调用.是工厂方法的进阶版本.</p>
 <p>实例 -&gt; 类 -&gt; 类工厂 -&gt; 抽象工厂</p>
 <h2 id="惰性初始化-Lazy-evaluation"><a href="#惰性初始化-Lazy-evaluation" class="headerlink" title="惰性初始化 Lazy evaluation"></a>惰性初始化 Lazy evaluation</h2><p>这个Python里可以使用@property实现,就是当调用的时候才生成.</p>
-<h2 id="生成器-Builder"><a href="#生成器-Builder" class="headerlink" title="生成器 Builder"></a>生成器 Builder</h2><p><img src="img/builder.png" alt=""></p>
+<h2 id="生成器-Builder"><a href="#生成器-Builder" class="headerlink" title="生成器 Builder"></a>生成器 Builder</h2><img src="/2018/02/28/python-pattern/builder.png" alt="builder.png" title="">
 <p>Builder模式主要用于构建一个复杂的对象，但这个对象构建的算法是稳定的，对象中的各个部分经常变化。Builder模式主要在于应对复杂对象各个部分的频繁需求变动。但是难以应对算法的需求变动。这点一定要注意，如果用错了，会带来很多不必要的麻烦。</p>
 <p>重点是将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方法可以构造出不同表现（属性）的对象。</p>
 <p>简单的说：子对象变化较频繁，对算法相对稳定。</p>
